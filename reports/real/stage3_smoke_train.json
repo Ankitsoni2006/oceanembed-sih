@@ -1,0 +1,32 @@
+{
+  "PointwiseMLP": {
+    "initial_train_loss": 7.5618,
+    "final_train_loss": 7.5454,
+    "loss_decreased": true,
+    "avg_val_loss": 8.7346,
+    "train_time_s": 0.4,
+    "ram_used_gb": 10.04,
+    "checkpoint_verified": true,
+    "status": "PASSED"
+  },
+  "SimpleCNNBaseline": {
+    "initial_train_loss": 7.7946,
+    "final_train_loss": 4.1266,
+    "loss_decreased": true,
+    "avg_val_loss": 5.8253,
+    "train_time_s": 0.76,
+    "ram_used_gb": 10.03,
+    "checkpoint_verified": true,
+    "status": "PASSED"
+  },
+  "OceanEmbedNet": {
+    "initial_train_loss": 9.0119,
+    "final_train_loss": 5.3575,
+    "loss_decreased": true,
+    "avg_val_loss": 7.6937,
+    "train_time_s": 23.51,
+    "ram_used_gb": 10.34,
+    "checkpoint_verified": true,
+    "status": "PASSED"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "frozen_artifact_hashes": {
+    "checkpoints/pointwise_mlp_best.pt": {
+      "size_bytes": 27673,
+      "sha256": "208e19a00489ab9efd45104e26a0e8eb4df7e738f52e10dff534b48f6f169002"
+    },
+    "checkpoints/simple_cnn_best.pt": {
+      "size_bytes": 187381,
+      "sha256": "572909d4c13b242147b91c392d7a8896716a6e420c9c67ce84d831a75fb8f439"
+    },
+    "checkpoints/oceanembed_best.pt": {
+      "size_bytes": 5416375,
+      "sha256": "0d2ba68163c08ba136562dce478770114a53eb37860fa71e9a21464d20a1ac8d"
+    },
+    "configs/scaler_params_experiment_2020.json": {
+      "size_bytes": 444,
+      "sha256": "8458d64b3cc33c4fcffac7ea869b3926a4bbfc8c5f7cba49c98f14df3023ed28"
+    },
+    "data/processed/chunk_2020_01.pt": {
+      "size_bytes": 87532757,
+      "sha256": "6256b1b0425b32231eb63f41b0de6086e3eaf661b6304059544684299134b11d"
+    },
+    "data/processed/chunk_2020_02.pt": {
+      "size_bytes": 81885653,
+      "sha256": "269e1170db017d17111e70ac211df31abb59500a9414638c6de33c2be0a1f604"
+    },
+    "data/processed/chunk_2020_03.pt": {
+      "size_bytes": 87532757,
+      "sha256": "48873b65cd45621ed7490f3ae781a2de7198aee377477be590a158e7fab31428"
+    },
+    "data/processed/chunk_2020_04.pt": {
+      "size_bytes": 84709141,
+      "sha256": "674fa97831c608f9750dd4f3f9c2e68f06422e855bd1ff3777e8bcd2178159b6"
+    },
+    "data/processed/chunk_2020_05.pt": {
+      "size_bytes": 87532757,
+      "sha256": "892035a69b0a985799ffcb459189e394d2c7ed70e0795d673d016ccc428abed7"
+    },
+    "data/processed/chunk_2020_06.pt": {
+      "size_bytes": 84709141,
+      "sha256": "df4fb7b74198f77df96fd24911cf5328d567a229ddb3f5ae403ac91df7b86241"
+    },
+    "data/processed/chunk_2020_07.pt": {
+      "size_bytes": 87532757,
+      "sha256": "19334558503711462709d2eb434b3312aea27810aa6cb636eb4efb67d7bcc74b"
+    },
+    "data/processed/chunk_2020_08.pt": {
+      "size_bytes": 87532757,
+      "sha256": "3922993fea627d9cb95917305f2f66e35d0ae89f6213bb3b2dba8b47efe8750e"
+    },
+    "data/processed/chunk_2020_09.pt": {
+      "size_bytes": 84709141,
+      "sha256": "38f530ed595889b0fac6d59cec06de58cf0f5a8862156c00512195a86bb2c3ff"
+    }
+  },
+  "raw_provenance": {
+    "SST": {
+      "folder": "data/raw/sst",
+      "file_count": 12,
+      "sample_file": "sst_2020-01-01_2020-01-01.nc",
+      "data_vars": [
+        "analysed_sst"
+      ],
+      "coords": [
+        "latitude",
+        "longitude",
+        "time"
+      ],
+      "attrs_title": "Global SST & Sea Ice Analysis, L4 OSTIA, 0.05 deg daily (METOFFICE-GLO-SST-L4-REP-OBS-SST-V2)"
+    },
+    "SSS": {
+      "folder": "data/raw/sss",
+      "file_count": 12,
+      "sample_file": "sss_2019-12-24_2020-01-09.nc",
+      "data_vars": [
+        "sss"
+      ],
+      "coords": [
+        "latitude",
+        "longitude",
+        "time"
+      ],
+      "attrs_title": "SSS SMOS/SMAP L4 OI - LOPS-v2025"
+    },
+    "SSH": {
+      "folder": "data/raw/ssh",
+      "file_count": 12,
+      "sample_file": "ssh_2020-01-01_2020-01-01.nc",
+      "data_vars": [
+        "sla"
+      ],
+      "coords": [
+        "latitude",
+        "longitude",
+        "time"
+      ],
+      "attrs_title": "DT merged all satellites Global Ocean Gridded SSALTO/DUACS Sea Surface Height L4 product and derived variables"
+    },
+    "CURRENTS": {
+      "folder": "data/raw/currents",
+      "file_count": 12,
+      "sample_file": "currents_2020-01-01_2020-01-01.nc",
+      "data_vars": [
+        "uo",
+        "vo"
+      ],
+      "coords": [
+        "depth",
+        "latitude",
+        "longitude",
+        "time"
+      ],
+      "attrs_title": "Daily mean total surface and 15m velocities"
+    },
+    "WINDS": {
+      "folder": "data/raw/winds",
+      "file_count": 74,
+      "sample_file": "winds_2020-01-01_2020-01-01.nc",
+      "data_vars": [
+        "eastward_wind",
+        "northward_wind"
+      ],
+      "coords": [
+        "latitude",
+        "longitude",
+        "time"
+      ],
+      "attrs_title": " Global Ocean - Wind and Stress - Hourly - Reprocessed - From Scatterometer and Model"
+    },
+    "GLORYS": {
+      "folder": "data/raw/glorys",
+      "file_count": 273,
+      "sample_file": "glorys_2020-01-01_2020-01-01.nc",
+      "data_vars": [
+        "thetao"
+      ],
+      "coords": [
+        "depth",
+        "latitude",
+        "longitude",
+        "time"
+      ],
+      "attrs_title": "daily mean fields from Global Ocean Physics Analysis and Forecast updated Daily"
+    }
+  },
+  "glorys_native_depths": {
+    "depth_dim": "depth",
+    "num_levels": 36,
+    "min_depth": 0.49402499198913574,
+    "max_depth": 1062.43994140625,
+    "levels_sample": [
+      0.49402499198913574,
+      1.5413750410079956,
+      2.6456689834594727,
+      3.8194949626922607,
+      5.078224182128906,
+      763.3331298828125,
+      902.3392944335938,
+      1062.43994140625
+    ]
+  },
+  "glorys_3d_variability": {
+    "surface_mean_c": 27.20204213431913,
+    "deepest_mean_c": 7.215885673058292,
+    "is_genuine_3d": true
+  },
+  "scaler_audit": {
+    "train_days": 213,
+    "train_start": "2020-01-01",
+    "train_end": "2020-07-31",
+    "max_mean_diff": 8.883081612509613e-07,
+    "max_std_diff": 8.545971086348914e-08,
+    "exact_match": true
+  },
+  "model_architecture": {
+    "mlp_params": 6095,
+    "cnn_params": 46031,
+    "oceanembed_params": 1342928,
+    "depth_sensitivity_delta": 24.120845794677734,
+    "depth_conditioning_active": true
+  },
+  "glorys_test_sampling": {
+    "num_days": 30,
+    "ocean_cells_per_day": 11855,
+    "total_spatial_columns": 355650,
+    "total_valid_scalar_cells": 4601790,
+    "claim_730230_meaning": "30 days * 24,341 ocean grid columns = 730,230 spatial columns evaluated across depth"
+  },
+  "glorys_reproduced_metrics": {
+    "climatology": {
+      "rmse": 2.9976093769073486,
+      "mae": 2.470519781112671,
+      "bias": -2.135316848754883,
+      "corr": 0.9662901163101196
+    },
+    "pointwise_mlp": {
+      "rmse": 1.1177088022232056,
+      "mae": 0.7568957209587097,
+      "bias": 0.05474894866347313,
+      "corr": 0.989295244216919
+    },
+    "simple_cnn": {
+      "rmse": 1.0418208837509155,
+      "mae": 0.7100213766098022,
+      "bias": -0.005207744427025318,
+      "corr": 0.9906845092773438
+    },
+    "oceanembed": {
+      "rmse": 1.814195156097412,
+      "mae": 1.3229060173034668,
+      "bias": -0.2972163259983063,
+      "corr": 0.9740696549415588
+    }
+  },
+  "argo_final_metrics": {
+    "climatology": {
+      "name": "Static Climatology Profile",
+      "count": 497,
+      "rmse": 3.0363,
+      "mae": 2.559,
+      "bias": -2.2871,
+      "corr": 0.9685
+    },
+    "pointwise_mlp": {
+      "name": "Pointwise MLP",
+      "count": 497,
+      "rmse": 1.1602,
+      "mae": 0.656,
+      "bias": 0.167,
+      "corr": 0.9888
+    },
+    "simple_cnn": {
+      "name": "Simple CNN Baseline",
+      "count": 497,
+      "rmse": 0.9526,
+      "mae": 0.5874,
+      "bias": 0.0757,
+      "corr": 0.9924
+    },
+    "oceanembed": {
+      "name": "OceanEmbedNet (Multi-Scale U-Net)",
+      "count": 497,
+      "rmse": 1.8126,
+      "mae": 1.2805,
+      "bias": -0.3397,
+      "corr": 0.9738
+    }
+  },
+  "latency_breakdown": {
+    "pure_model_inference_ms": 365.88,
+    "scaler_preprocessing_ms": 1.13,
+    "combined_ms": 367.01
+  },
+  "credential_scan": {
+    "hits_count": 1,
+    "details": [
+      {
+        "file": ".\\run_72_hour_gate.sh",
+        "pattern": "(?i)copernicus.*(password|secret)\\s*[:=]\\s*['\\\"][^'\\\"]+['\\\"]"
+      }
+    ],
+    "status": "FAIL"
+  }
+}

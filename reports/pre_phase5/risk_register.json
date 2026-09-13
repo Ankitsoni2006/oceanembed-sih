@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-09-13T16:00:00Z",
+  "risks": [
+    {
+      "id": "RISK-01",
+      "category": "Model Performance",
+      "risk": "OceanEmbedNet underperforms Simple CNN baseline by 0.86C on ARGO and 0.77C on GLORYS",
+      "severity": "HIGH",
+      "evidence": "ARGO RMSE: CNN=0.9526C, OceanEmbed=1.8126C; GLORYS RMSE: CNN=1.0418C, OceanEmbed=1.8142C",
+      "impact": "SIH judges will question the utility of the 1.34M parameter OceanEmbed architecture over a 46k CNN",
+      "status": "OPEN (PHASE 5 SCOPE)",
+      "action_type": "PHASE 5 ACTION REQUIRED",
+      "mitigation": "Frame Simple CNN as an essential baseline; undertake controlled thermocline-focused architecture enhancement in Phase 5"
+    },
+    {
+      "id": "RISK-02",
+      "category": "Scientific Narrative",
+      "risk": "Claiming a 'near-zero generalization gap' of 0.0016C between GLORYS and ARGO",
+      "severity": "HIGH",
+      "evidence": "|1.8142 - 1.8126| = 0.0016C is an arithmetic coincidence of heterogeneous observational references",
+      "impact": "Loss of scientific credibility under expert oceanographic review",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION CORRECTION",
+      "mitigation": "Claim formally rescinded and replaced with 'similar aggregate RMSE magnitude (~1.81C)'"
+    },
+    {
+      "id": "RISK-03",
+      "category": "Scientific Accuracy",
+      "risk": "Describing the model as 'well-calibrated' without probabilistic uncertainty evaluation",
+      "severity": "HIGH",
+      "evidence": "OceanEmbed outputs deterministic point estimates; no conformal intervals or calibration curves were evaluated",
+      "impact": "Statistical inaccuracy",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION CORRECTION",
+      "mitigation": "Calibration claim removed; model explicitly presented as deterministic point prediction with -0.34C bias"
+    },
+    {
+      "id": "RISK-04",
+      "category": "Data Representation",
+      "risk": "Ambiguity in '730,230 grid cells' sample size citation for GLORYS September 2020 test",
+      "severity": "HIGH",
+      "evidence": "Total domain is 101x241=24,341 columns * 30 days = 730,230 columns; valid ocean cells evaluated across 15 depths = 4,601,790",
+      "impact": "Confusion regarding observation sample size",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION CORRECTION",
+      "mitigation": "Explicitly documented: 730,230 represents total domain columns; 355,650 are ocean columns; 4,601,790 are evaluated 3D scalar points"
+    },
+    {
+      "id": "RISK-05",
+      "category": "Engineering Claims",
+      "risk": "Presenting TensorRT and ONNX optimization as implemented rather than planned",
+      "severity": "MEDIUM",
+      "evidence": "PyTorch CPU/CUDA is operational; TensorRT/ONNX scripts are not yet compiled in the codebase",
+      "impact": "Technical discrepancy during live demo",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION CORRECTION",
+      "mitigation": "TensorRT and ONNX explicitly designated as PLANNED production optimizations"
+    },
+    {
+      "id": "RISK-06",
+      "category": "Deployment Scope",
+      "risk": "Presenting full FastAPI web microservice and 3D Deck.gl visualization as operational",
+      "severity": "MEDIUM",
+      "evidence": "Frontend React code and inference CLI exist; full API orchestration is scheduled for Phase 5",
+      "impact": "Premature presentation claim",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION CORRECTION",
+      "mitigation": "Labeled as deployment architecture ready for Phase 5 integration"
+    },
+    {
+      "id": "RISK-07",
+      "category": "Data Provenance",
+      "risk": "Unverified assumption regarding ARGO float assimilation into GLORYS12V1",
+      "severity": "MEDIUM",
+      "evidence": "GLORYS assimilates available in-situ CTD profiles, but specific assimilation status of these 36 floats was not audited",
+      "impact": "Over-claiming true ground truth independence",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION CORRECTION",
+      "mitigation": "Added explicit caveat: ARGO is independent of model inputs; assimilation into GLORYS was unverified"
+    },
+    {
+      "id": "RISK-08",
+      "category": "Artifact Inventory",
+      "risk": "Presence of legacy prototype checkpoints (e.g. mlp_best.pt, 81KB) alongside active ones",
+      "severity": "LOW",
+      "evidence": "checkpoints/ contains both pointwise_mlp_best.pt (active) and mlp_best.pt (legacy prototype)",
+      "impact": "Potential confusion if wrong checkpoint is invoked",
+      "status": "RESOLVED",
+      "action_type": "DOCUMENTATION ONLY",
+      "mitigation": "Cataloged frozen production checkpoints explicitly in artifact integrity register"
+    }
+  ]
+}

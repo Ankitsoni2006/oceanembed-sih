@@ -1,0 +1,70 @@
+{
+  "start_date": "2020-02-01",
+  "end_date": "2020-02-07",
+  "num_days": 7,
+  "total_wall_clock_seconds": 612.97,
+  "downloaded_count": 3,
+  "cached_count": 4,
+  "avg_download_seconds_per_day": 108.39,
+  "throughput_days_per_hour": 33.2,
+  "total_size_mb": 106.47,
+  "all_days_verified": true,
+  "day_results": [
+    {
+      "date": "2020-02-01",
+      "status": "CACHED",
+      "duration_seconds": 0.0,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-01_2020-02-01.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    },
+    {
+      "date": "2020-02-02",
+      "status": "CACHED",
+      "duration_seconds": 0.0,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-02_2020-02-02.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    },
+    {
+      "date": "2020-02-03",
+      "status": "CACHED",
+      "duration_seconds": 0.0,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-03_2020-02-03.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    },
+    {
+      "date": "2020-02-04",
+      "status": "CACHED",
+      "duration_seconds": 0.0,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-04_2020-02-04.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    },
+    {
+      "date": "2020-02-05",
+      "status": "SUCCESS",
+      "duration_seconds": 109.07,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-05_2020-02-05.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    },
+    {
+      "date": "2020-02-06",
+      "status": "SUCCESS",
+      "duration_seconds": 153.41,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-06_2020-02-06.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    },
+    {
+      "date": "2020-02-07",
+      "status": "SUCCESS",
+      "duration_seconds": 62.69,
+      "file_size_bytes": 15948702,
+      "file_path": "data/raw/glorys\\glorys_2020-02-07_2020-02-07.nc",
+      "verification": "Verified (15,948,702 bytes, 36 depths)"
+    }
+  ]
+}

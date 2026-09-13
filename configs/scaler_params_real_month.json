@@ -1,0 +1,69 @@
+{
+  "description": "OceanEmbed Feature Normalization Parameters fit strictly on 24-day historical training partition (Jan 1-24, 2020)",
+  "training_period": {
+    "start": "2020-01-01",
+    "end": "2020-01-24",
+    "num_days": 24
+  },
+  "validation_period": {
+    "start": "2020-01-25",
+    "end": "2020-01-31",
+    "num_days": 7
+  },
+  "num_physical_channels": 7,
+  "channels": [
+    "analysed_sst",
+    "sss",
+    "sla",
+    "uo",
+    "vo",
+    "eastward_wind",
+    "northward_wind"
+  ],
+  "means": {
+    "analysed_sst": 27.001201629638672,
+    "sss": 34.58235549926758,
+    "sla": 0.06697795540094376,
+    "uo": -0.11788097769021988,
+    "vo": -5.8010282373288646e-05,
+    "eastward_wind": -1.793641448020935,
+    "northward_wind": -1.913353443145752
+  },
+  "stds": {
+    "analysed_sst": 1.8647429943084717,
+    "sss": 1.862504482269287,
+    "sla": 0.08799975365400314,
+    "uo": 0.19716770946979523,
+    "vo": 0.17704711854457855,
+    "eastward_wind": 2.5834786891937256,
+    "northward_wind": 2.8477566242218018
+  },
+  "valid_pixel_counts": {
+    "analysed_sst": 287088,
+    "sss": 250685,
+    "sla": 288960,
+    "uo": 275749,
+    "vo": 275749,
+    "eastward_wind": 583504,
+    "northward_wind": 583504
+  },
+  "means_array": [
+    27.001201629638672,
+    34.58235549926758,
+    0.06697795540094376,
+    -0.11788097769021988,
+    -5.8010282373288646e-05,
+    -1.793641448020935,
+    -1.913353443145752
+  ],
+  "stds_array": [
+    1.8647429943084717,
+    1.862504482269287,
+    0.08799975365400314,
+    0.19716770946979523,
+    0.17704711854457855,
+    2.5834786891937256,
+    2.8477566242218018
+  ],
+  "eps": 1e-06
+}

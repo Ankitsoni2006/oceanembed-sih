@@ -1,0 +1,38 @@
+{
+  "SST": {
+    "name": "SST",
+    "dataset_id": "METOFFICE-GLO-SST-L4-REP-OBS-SST",
+    "status": "ERROR",
+    "error": "'CopernicusMarineService' object has no attribute 'coordinates'"
+  },
+  "SSS": {
+    "name": "SSS",
+    "dataset_id": "cmems_obs-mob_glo_phy-sal_my_multi-oi_P7D-c",
+    "status": "ERROR",
+    "error": "'CopernicusMarineService' object has no attribute 'coordinates'"
+  },
+  "SSH": {
+    "name": "SSH",
+    "dataset_id": "cmems_obs-sl_glo_phy-ssh_my_allsat-l4-duacs-0.125deg_P1D",
+    "status": "ERROR",
+    "error": "'CopernicusMarineService' object has no attribute 'coordinates'"
+  },
+  "CURRENTS": {
+    "name": "CURRENTS",
+    "dataset_id": "cmems_obs-mob_glo_phy-cur_my_0.25deg_P1D-m",
+    "status": "ERROR",
+    "error": "'CopernicusMarineService' object has no attribute 'coordinates'"
+  },
+  "WINDS": {
+    "name": "WINDS",
+    "dataset_id": "cmems_obs-wind_glo_phy_my_l4_0.125deg_PT1H",
+    "status": "ERROR",
+    "error": "'CopernicusMarineService' object has no attribute 'coordinates'"
+  },
+  "GLORYS": {
+    "name": "GLORYS",
+    "dataset_id": "cmems_mod_glo_phy_my_0.083deg_P1D-m",
+    "status": "ERROR",
+    "error": "'CopernicusMarineService' object has no attribute 'coordinates'"
+  }
+}

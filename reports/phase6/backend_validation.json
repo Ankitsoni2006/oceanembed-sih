@@ -1,0 +1,188 @@
+{
+  "timestamp": "2026-09-13T18:20:00Z",
+  "service": "OceanEmbed Subsurface Temperature Reconstruction API",
+  "model_architecture": "OceanEmbedNetV3_Decoder",
+  "checkpoint": "checkpoints/phase5/oceanembed_v3_decoder.pt",
+  "parameter_count": 1275934,
+  "endpoints_tested": {
+    "/health": {
+      "status_code": 200,
+      "response": {
+        "status": "ok",
+        "model_loaded": true,
+        "device": "cpu",
+        "model": "OceanEmbedNetV3_Decoder"
+      }
+    },
+    "/model-info": {
+      "status_code": 200,
+      "response": {
+        "model": "OceanEmbedNetV3_Decoder",
+        "version": "v3",
+        "parameters": 1275934,
+        "input_variables": [
+          "SST",
+          "SSS",
+          "SSH",
+          "surface_u_current",
+          "surface_v_current",
+          "surface_u_wind",
+          "surface_v_wind"
+        ],
+        "output_depths_m": [
+          0,
+          5,
+          10,
+          20,
+          30,
+          50,
+          75,
+          100,
+          125,
+          150,
+          200,
+          300,
+          500,
+          700,
+          1000
+        ],
+        "grid_resolution": "0.25\u00b0",
+        "region": {
+          "lat_min": 5.0,
+          "lat_max": 30.0,
+          "lon_min": 45.0,
+          "lon_max": 105.0
+        },
+        "device": "cpu",
+        "checkpoint": "checkpoints/phase5/oceanembed_v3_decoder.pt",
+        "status": "validated"
+      }
+    },
+    "/available-dates": {
+      "status_code": 200,
+      "total_dates": 274,
+      "date_range": {
+        "start": "2020-01-01",
+        "end": "2020-09-30"
+      }
+    }
+  },
+  "real_predictions": [
+    {
+      "region": "Central Bay of Bengal",
+      "request": {
+        "date": "2020-09-15",
+        "latitude": 15.0,
+        "longitude": 85.0
+      },
+      "roundtrip_ms": 57.66,
+      "inference_ms": 28.9,
+      "temperatures_c": [
+        29.6491,
+        29.5883,
+        29.5593,
+        29.6089,
+        29.5342,
+        28.9432,
+        26.8237,
+        23.7514,
+        20.6049,
+        17.9237,
+        14.6842,
+        11.899,
+        10.0433,
+        8.5787,
+        6.6754
+      ],
+      "oceanographic_indicators": {
+        "mixed_layer_depth_m": 32.88,
+        "thermocline_depth_m": 112.5,
+        "ocean_heat_content_300m_gj_m2": 24.465
+      }
+    },
+    {
+      "region": "Central Arabian Sea",
+      "request": {
+        "date": "2020-09-15",
+        "latitude": 12.0,
+        "longitude": 65.0
+      },
+      "roundtrip_ms": 31.71,
+      "inference_ms": 28.09,
+      "temperatures_c": [
+        28.2073,
+        28.2402,
+        28.1975,
+        28.2024,
+        28.1031,
+        27.9213,
+        27.0259,
+        25.5837,
+        23.4083,
+        20.6653,
+        16.7166,
+        13.3429,
+        11.4224,
+        10.1291,
+        8.022
+      ],
+      "oceanographic_indicators": {
+        "mixed_layer_depth_m": 40.54,
+        "thermocline_depth_m": 137.5,
+        "ocean_heat_content_300m_gj_m2": 25.975
+      }
+    },
+    {
+      "region": "Southern Bay of Bengal / Equatorial",
+      "request": {
+        "date": "2020-09-01",
+        "latitude": 6.0,
+        "longitude": 90.0
+      },
+      "roundtrip_ms": 29.38,
+      "inference_ms": 25.76,
+      "temperatures_c": [
+        29.6045,
+        29.5435,
+        29.5021,
+        29.5173,
+        29.5512,
+        29.2987,
+        27.5838,
+        24.6892,
+        20.9678,
+        17.8317,
+        14.4032,
+        11.9955,
+        10.1969,
+        8.7272,
+        6.7614
+      ],
+      "oceanographic_indicators": {
+        "mixed_layer_depth_m": 41.62,
+        "thermocline_depth_m": 112.5,
+        "ocean_heat_content_300m_gj_m2": 24.622
+      }
+    }
+  ],
+  "error_handling_verified": {
+    "land_cell_rejection": {
+      "status_code": 400,
+      "response": {
+        "detail": "Requested coordinates (23.0\u00b0N, 78.0\u00b0E) mapped to grid cell (23.0\u00b0N, 78.0\u00b0E) which is on land or has missing satellite observations."
+      }
+    },
+    "unavailable_date_rejection": {
+      "status_code": 404,
+      "response": {
+        "detail": "Date '2021-01-01' is unavailable. Available date range: 2020-01-01 to 2020-09-30 (274 days total)."
+      }
+    },
+    "out_of_bounds_latitude": {
+      "status_code": 422
+    }
+  },
+  "tests_passed": 12,
+  "total_tests": 12,
+  "overall_status": "PASSED \u2014 READY FOR FRONTEND"
+}

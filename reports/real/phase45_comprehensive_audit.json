@@ -1,0 +1,670 @@
+{
+  "audit_timestamp": "2026-09-13T07:11:52Z",
+  "total_checks": 17,
+  "pass_count": 16,
+  "fail_count": 0,
+  "warning_count": 1,
+  "not_verifiable_count": 0,
+  "checks": {
+    "CHECK_01_DATASET_INTEGRITY": "PASS",
+    "CHECK_02_INPUT_VARIABLE_PROVENANCE": "PASS",
+    "CHECK_03_MASK_INTEGRITY": "PASS",
+    "CHECK_04_GLORYS_TARGET_INTEGRITY": "PASS",
+    "CHECK_05_TIMESTAMP_ALIGNMENT": "PASS",
+    "CHECK_06_NORMALIZATION_LEAKAGE": "PASS",
+    "CHECK_07_TRAINING_LEAKAGE": "PASS",
+    "CHECK_08_MODEL_ARCHITECTURE": "PASS",
+    "CHECK_09_CHECKPOINT_VALIDITY": "PASS",
+    "CHECK_10_REPRODUCE_PRIMARY_METRICS": "PASS",
+    "CHECK_11_DEPTH_WISE_METRICS": "PASS",
+    "CHECK_12_ARGO_VALIDATION": "WARNING",
+    "CHECK_13_INFERENCE_BENCHMARK": "PASS",
+    "CHECK_14_RAM_SAFETY": "PASS",
+    "CHECK_15_FIGURE_VALIDITY": "PASS",
+    "CHECK_16_DOCUMENTATION_CONSISTENCY": "PASS",
+    "CHECK_17_REPRODUCIBILITY": "PASS"
+  },
+  "check_details": {
+    "check1": {
+      "status": "PASS",
+      "expected_days": 274,
+      "actual_days": 274,
+      "date_start": "2020-01-01",
+      "date_end": "2020-09-30",
+      "chronologically_sorted": true,
+      "duplicate_count": 0,
+      "missing_count": 0,
+      "shapes_valid": true,
+      "grid": {
+        "lat_min": 5.0,
+        "lat_max": 30.0,
+        "lon_min": 45.0,
+        "lon_max": 105.0,
+        "resolution": 0.25,
+        "shape": [
+          101,
+          241
+        ]
+      },
+      "chunks": {
+        "chunk_2020_01.pt": {
+          "days": 31,
+          "start": "2020-01-01",
+          "end": "2020-01-31",
+          "X_shape": [
+            31,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            31,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 87532757
+        },
+        "chunk_2020_02.pt": {
+          "days": 29,
+          "start": "2020-02-01",
+          "end": "2020-02-29",
+          "X_shape": [
+            29,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            29,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 81885653
+        },
+        "chunk_2020_03.pt": {
+          "days": 31,
+          "start": "2020-03-01",
+          "end": "2020-03-31",
+          "X_shape": [
+            31,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            31,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 87532757
+        },
+        "chunk_2020_04.pt": {
+          "days": 30,
+          "start": "2020-04-01",
+          "end": "2020-04-30",
+          "X_shape": [
+            30,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            30,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 84709141
+        },
+        "chunk_2020_05.pt": {
+          "days": 31,
+          "start": "2020-05-01",
+          "end": "2020-05-31",
+          "X_shape": [
+            31,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            31,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 87532757
+        },
+        "chunk_2020_06.pt": {
+          "days": 30,
+          "start": "2020-06-01",
+          "end": "2020-06-30",
+          "X_shape": [
+            30,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            30,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 84709141
+        },
+        "chunk_2020_07.pt": {
+          "days": 31,
+          "start": "2020-07-01",
+          "end": "2020-07-31",
+          "X_shape": [
+            31,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            31,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 87532757
+        },
+        "chunk_2020_08.pt": {
+          "days": 31,
+          "start": "2020-08-01",
+          "end": "2020-08-31",
+          "X_shape": [
+            31,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            31,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 87532757
+        },
+        "chunk_2020_09.pt": {
+          "days": 30,
+          "start": "2020-09-01",
+          "end": "2020-09-30",
+          "X_shape": [
+            30,
+            14,
+            101,
+            241
+          ],
+          "Y_shape": [
+            30,
+            15,
+            101,
+            241
+          ],
+          "size_bytes": 84709141
+        }
+      }
+    },
+    "check2": {
+      "status": "PASS",
+      "glorys_input_leak_detected": false,
+      "sst_vs_glorys_surface_diff_mean_degC": 0.3134,
+      "sst_vs_glorys_surface_diff_max_degC": 3.467,
+      "sources": {
+        "sst": {
+          "status": "PASS",
+          "file_count": 12,
+          "sample_file": "sst_2020-01-01_2020-01-01.nc",
+          "target_variable": "analysed_sst",
+          "found_variable": true,
+          "available_vars": [
+            "analysed_sst"
+          ],
+          "dataset_attrs": {
+            "Conventions": "CF-1.4, ACDD-1.3",
+            "Metadata_Conventions": "Unidata Observation Dataset v1.0",
+            "acknowledgment": "Please acknowledge the use of these data with the following statement: These dat",
+            "cdm_data_type": "grid",
+            "comment": "WARNING Some applications are unable to properly handle signed byte values. If v"
+          }
+        },
+        "sss": {
+          "status": "PASS",
+          "file_count": 12,
+          "sample_file": "sss_2019-12-24_2020-01-09.nc",
+          "target_variable": "sss",
+          "found_variable": true,
+          "available_vars": [
+            "sss"
+          ],
+          "dataset_attrs": {
+            "Conventions": "CF-1.8",
+            "DOI": "10.12770/639a918e-0711-4eff-965d-15a728acb27d",
+            "DOI_link": "https://doi.org/10.12770/639a918e-0711-4eff-965d-15a728acb27d",
+            "citation": "CATDS (2025). CATDS-PDC L4OS SMOS/SMAP-OI - Weekly optimal interpolation salinit",
+            "comment": "config_131 : SMOS_OPER_L3G-SMAPV6.0_70km-9d-gauss-varJLV-OI1-V1-500-1-0-OI2-25-1"
+          }
+        },
+        "ssh": {
+          "status": "PASS",
+          "file_count": 12,
+          "sample_file": "ssh_2020-01-01_2020-01-01.nc",
+          "target_variable": "sla",
+          "found_variable": true,
+          "available_vars": [
+            "sla"
+          ],
+          "dataset_attrs": {
+            "Conventions": "CF-1.6",
+            "Metadata_Conventions": "Unidata Dataset Discovery v1.0",
+            "cdm_data_type": "Grid",
+            "comment": "Sea Surface Height measured by Altimetry and derived variables",
+            "contact": "servicedesk.cmems@mercator-ocean.eu"
+          }
+        },
+        "currents": {
+          "status": "PASS",
+          "file_count": 12,
+          "sample_file": "currents_2020-01-01_2020-01-01.nc",
+          "target_variable": "uo",
+          "found_variable": true,
+          "available_vars": [
+            "uo",
+            "vo"
+          ],
+          "dataset_attrs": {
+            "Conventions": "CF-1.6",
+            "contact": "servicedesk.cmems@mercator-ocean.eu",
+            "creation_date": "2024-05-04 14:09:15",
+            "geospatial_lat_units": "degrees_north",
+            "geospatial_lon_units": "degrees_east"
+          }
+        },
+        "winds": {
+          "status": "PASS",
+          "file_count": 75,
+          "sample_file": "test_winds_0125.nc",
+          "target_variable": "eastward_wind",
+          "found_variable": true,
+          "available_vars": [
+            "eastward_wind",
+            "northward_wind"
+          ],
+          "dataset_attrs": {
+            "Conventions": "CF-1.6, ACDD-1.3",
+            "date_created": "2024-03-25T23:58:22",
+            "date_modified": "2024-03-25T23:58:22",
+            "geospatial_lat_max": "89.9375",
+            "geospatial_lat_min": "-89.9375"
+          }
+        },
+        "glorys": {
+          "status": "PASS",
+          "file_count": 273,
+          "sample_file": "glorys_2020-01-01_2020-01-01.nc",
+          "target_variable": "thetao",
+          "found_variable": true,
+          "available_vars": [
+            "thetao"
+          ],
+          "dataset_attrs": {
+            "Conventions": "CF-1.4",
+            "bulletin_date": "2021-07-07 00:00:00",
+            "bulletin_type": "operational",
+            "comment": "CMEMS product",
+            "domain_name": "GL12"
+          }
+        }
+      }
+    },
+    "check3": {
+      "status": "PASS",
+      "masks_strictly_binary": true,
+      "masked_cells_zeroed_cleanly": true,
+      "channels": {
+        "channel_0_sst": {
+          "valid_fraction": 0.4914,
+          "min_valid": 13.714993476867676,
+          "max_valid": 30.844993591308594,
+          "masked_zeros_only": true
+        },
+        "channel_1_sss": {
+          "valid_fraction": 0.4295,
+          "min_valid": 27.830278396606445,
+          "max_valid": 44.183040618896484,
+          "masked_zeros_only": true
+        },
+        "channel_2_ssh": {
+          "valid_fraction": 0.4946,
+          "min_valid": -0.37975001335144043,
+          "max_valid": 0.3596250116825104,
+          "masked_zeros_only": true
+        },
+        "channel_3_u_curr": {
+          "valid_fraction": 0.4721,
+          "min_valid": -1.4327499866485596,
+          "max_valid": 0.7242500185966492,
+          "masked_zeros_only": true
+        },
+        "channel_4_v_curr": {
+          "valid_fraction": 0.4721,
+          "min_valid": -1.1367499828338623,
+          "max_valid": 0.8532500267028809,
+          "masked_zeros_only": true
+        },
+        "channel_5_u_wind": {
+          "valid_fraction": 0.9991,
+          "min_valid": -12.20270824432373,
+          "max_valid": 11.791770935058594,
+          "masked_zeros_only": true
+        },
+        "channel_6_v_wind": {
+          "valid_fraction": 0.9991,
+          "min_valid": -14.424166679382324,
+          "max_valid": 11.44197940826416,
+          "masked_zeros_only": true
+        }
+      }
+    },
+    "check4": {
+      "status": "PASS",
+      "raw_glorys_sample": "glorys_2020-01-01_2020-01-01.nc",
+      "has_thetao": true,
+      "native_depth_levels_count": 36,
+      "native_min_depth_m": 0.49402499198913574,
+      "native_max_depth_m": 1062.43994140625,
+      "target_depths_count": 15,
+      "expected_target_depths": [
+        0.0,
+        5.0,
+        10.0,
+        20.0,
+        30.0,
+        50.0,
+        75.0,
+        100.0,
+        125.0,
+        150.0,
+        200.0,
+        300.0,
+        500.0,
+        700.0,
+        1000.0
+      ],
+      "target_temperature_min_degC": 5.64,
+      "target_temperature_max_degC": 32.72,
+      "vertical_interpolation_verified": true
+    },
+    "check5": {
+      "status": "PASS",
+      "alignment_checks": [
+        {
+          "target_date": "2020-01-15",
+          "raw_glorys_internal_date": "2020-01-15",
+          "processed_chunk_date": "2020-01-15",
+          "exact_alignment": true
+        },
+        {
+          "target_date": "2020-04-15",
+          "raw_glorys_internal_date": "2020-04-15",
+          "processed_chunk_date": "2020-04-15",
+          "exact_alignment": true
+        },
+        {
+          "target_date": "2020-07-15",
+          "raw_glorys_internal_date": "2020-07-15",
+          "processed_chunk_date": "2020-07-15",
+          "exact_alignment": true
+        },
+        {
+          "target_date": "2020-09-15",
+          "raw_glorys_internal_date": "2020-09-15",
+          "processed_chunk_date": "2020-09-15",
+          "exact_alignment": true
+        }
+      ]
+    },
+    "check6": {
+      "status": "PASS",
+      "train_period_start": "2020-01-01",
+      "train_period_end": "2020-07-31",
+      "train_days_count": 213,
+      "august_excluded": true,
+      "september_excluded": true,
+      "masks_unmodified_during_transform": true,
+      "channel_means": [
+        28.638744354248047,
+        34.720096588134766,
+        0.11056827008724213,
+        0.023055901750922203,
+        0.006787291262298822,
+        0.44144517183303833,
+        0.20741231739521027
+      ],
+      "channel_stds": [
+        2.079108476638794,
+        1.607825756072998,
+        0.09741838276386261,
+        0.24183470010757446,
+        0.20285099744796753,
+        3.3480265140533447,
+        3.22556471824646
+      ]
+    },
+    "check7": {
+      "status": "PASS",
+      "train_chunks_oe": "chunk_2020_01 to 07 (Jan-Jul)",
+      "val_chunks_oe": "chunk_2020_08 (Aug)",
+      "test_chunks_oe": "chunk_2020_09 (Sep)",
+      "test_data_in_training_loop": false
+    },
+    "check8": {
+      "status": "PASS",
+      "parameters": 1342928,
+      "output_shape": [
+        2,
+        15,
+        101,
+        241
+      ],
+      "has_multi_scale_encoder": true,
+      "has_latent_bottleneck": true,
+      "has_depth_embedding": true,
+      "has_conditioned_decoder": true,
+      "has_physical_climatology_prior": true,
+      "depth_conditioning_active": true,
+      "depth_output_variation_delta": 8.7008
+    },
+    "check9": {
+      "status": "PASS",
+      "models": {
+        "pointwise_mlp": {
+          "status": "PASS",
+          "epoch": 13,
+          "val_loss": 1.178214207291603,
+          "size_kb": 27.0,
+          "output_finite": true,
+          "deterministic": true,
+          "output_shape": [
+            1,
+            15,
+            101,
+            241
+          ]
+        },
+        "simple_cnn": {
+          "status": "PASS",
+          "epoch": 10,
+          "val_loss": 0.9525853767991066,
+          "size_kb": 183.0,
+          "output_finite": true,
+          "deterministic": true,
+          "output_shape": [
+            1,
+            15,
+            101,
+            241
+          ]
+        },
+        "oceanembed": {
+          "status": "PASS",
+          "epoch": 3,
+          "val_loss": 3.5631215274333954,
+          "size_kb": 5289.4,
+          "output_finite": true,
+          "deterministic": true,
+          "output_shape": [
+            1,
+            15,
+            101,
+            241
+          ]
+        }
+      }
+    },
+    "check10": {
+      "status": "PASS",
+      "comparison": {
+        "climatology": {
+          "reported_rmse": 2.9976,
+          "recomputed_rmse": 2.9976,
+          "reported_mae": 2.4705,
+          "recomputed_mae": 2.4705,
+          "reported_corr": 0.9663,
+          "recomputed_corr": 0.9663,
+          "max_delta": 0.0,
+          "verified": true
+        },
+        "pointwise_mlp": {
+          "reported_rmse": 1.1177,
+          "recomputed_rmse": 1.1177,
+          "reported_mae": 0.7569,
+          "recomputed_mae": 0.7569,
+          "reported_corr": 0.9893,
+          "recomputed_corr": 0.9893,
+          "max_delta": 0.0,
+          "verified": true
+        },
+        "simple_cnn": {
+          "reported_rmse": 1.0418,
+          "recomputed_rmse": 1.0418,
+          "reported_mae": 0.71,
+          "recomputed_mae": 0.71,
+          "reported_corr": 0.9907,
+          "recomputed_corr": 0.9907,
+          "max_delta": 0.0,
+          "verified": true
+        },
+        "oceanembed": {
+          "reported_rmse": 1.8142,
+          "recomputed_rmse": 1.8142,
+          "reported_mae": 1.3229,
+          "recomputed_mae": 1.3229,
+          "reported_corr": 0.9741,
+          "recomputed_corr": 0.9741,
+          "max_delta": 0.0,
+          "verified": true
+        }
+      }
+    },
+    "check11": {
+      "status": "PASS",
+      "depths_match_catalogue": true,
+      "peak_error_depth_m": 125,
+      "peak_error_rmse_degC": 3.359973669052124,
+      "thermocline_physics_consistent": true,
+      "deep_ocean_low_variance_consistent": true,
+      "depth_metrics": {
+        "0": 1.3148174285888672,
+        "5": 1.3572722673416138,
+        "10": 1.2434526681900024,
+        "20": 1.2595049142837524,
+        "30": 1.323936939239502,
+        "50": 1.182559609413147,
+        "75": 2.0690135955810547,
+        "100": 3.1018502712249756,
+        "125": 3.359973669052124,
+        "150": 2.9129061698913574,
+        "200": 1.892879605293274,
+        "300": 1.0889571905136108,
+        "500": 0.6186634302139282,
+        "700": 0.6151947379112244,
+        "1000": 1.1756501197814941
+      }
+    },
+    "check12": {
+      "status": "WARNING",
+      "scientific_validity": "INVALID_FOR_CONTEMPORANEOUS_VALIDATION",
+      "valid_as": "CROSS_TEMPORAL_CLIMATOLOGICAL_STRUCTURE_TRANSFER_TEST",
+      "temporal_gap_days": 762,
+      "argo_observation_date": "2022-11-01",
+      "model_test_period": [
+        "2020-09-01",
+        "2020-09-30"
+      ],
+      "reason": "ARGO file date is 2022-11-01 while model test inputs are 2020-09-01 to 2020-09-30. A temporal gap of 762 days exists. The matching algorithm accurately performs spatial and vertical interpolation against Coriolis floats, but cannot be claimed as contemporaneous validation of the September 2020 ocean state.",
+      "recommendation": "Clearly document as cross-temporal float transfer test. For contemporaneous validation, 2020 ARGO GDAC data is required."
+    },
+    "check13": {
+      "status": "PASS",
+      "reported_latency_ms": 360.82,
+      "recomputed_latency_ms": 344.06,
+      "ratio": 0.95,
+      "hardware": "CPU (16 logical cores)"
+    },
+    "check14": {
+      "status": "PASS",
+      "process_ram_mb": 836.4,
+      "system_ram_used_pct": 67.5,
+      "system_ram_available_gb": 5.14,
+      "dataset_ram_delta_mb": 49.5
+    },
+    "check15": {
+      "status": "PASS",
+      "figures": {
+        "fig1_glorys_vs_oceanembed_reconstruction.png": {
+          "exists": true,
+          "size_bytes": 518368,
+          "valid": true
+        },
+        "fig2_depth_wise_rmse_curves.png": {
+          "exists": true,
+          "size_bytes": 299953,
+          "valid": true
+        },
+        "fig3_depth_wise_correlation_curves.png": {
+          "exists": true,
+          "size_bytes": 261653,
+          "valid": true
+        },
+        "fig4_representative_vertical_profiles.png": {
+          "exists": true,
+          "size_bytes": 547451,
+          "valid": true
+        },
+        "fig5_model_performance_summary_bars.png": {
+          "exists": true,
+          "size_bytes": 198538,
+          "valid": true
+        }
+      }
+    },
+    "check16": {
+      "status": "PASS",
+      "inconsistencies_count": 0,
+      "inconsistencies": []
+    },
+    "check17": {
+      "status": "PASS",
+      "single_sample_rmse": 1.885,
+      "single_sample_mae": 1.3459,
+      "reproducible_pipeline": true
+    }
+  }
+}

@@ -1,0 +1,1131 @@
+{
+  "month": "2020-07",
+  "chunk_name": "chunk_2020_07",
+  "file_path": "data/processed\\chunk_2020_07.pt",
+  "file_size_bytes": 87532821,
+  "preprocessing_version": "1.0.0",
+  "acquisition_timestamp": "2026-09-12T19:10:17.162400+00:00",
+  "validation_status": "PASSED",
+  "qc_all_passed": true,
+  "num_days": 31,
+  "date_start": "2020-07-01",
+  "date_end": "2020-07-31",
+  "dates_included": [
+    "2020-07-01",
+    "2020-07-02",
+    "2020-07-03",
+    "2020-07-04",
+    "2020-07-05",
+    "2020-07-06",
+    "2020-07-07",
+    "2020-07-08",
+    "2020-07-09",
+    "2020-07-10",
+    "2020-07-11",
+    "2020-07-12",
+    "2020-07-13",
+    "2020-07-14",
+    "2020-07-15",
+    "2020-07-16",
+    "2020-07-17",
+    "2020-07-18",
+    "2020-07-19",
+    "2020-07-20",
+    "2020-07-21",
+    "2020-07-22",
+    "2020-07-23",
+    "2020-07-24",
+    "2020-07-25",
+    "2020-07-26",
+    "2020-07-27",
+    "2020-07-28",
+    "2020-07-29",
+    "2020-07-30",
+    "2020-07-31"
+  ],
+  "missing_dates": [],
+  "dimensions": {
+    "X_shape": [
+      31,
+      14,
+      101,
+      241
+    ],
+    "Y_shape": [
+      31,
+      15,
+      101,
+      241
+    ],
+    "spatial_grid": [
+      101,
+      241
+    ],
+    "num_surface_channels": 14,
+    "num_depth_levels": 15
+  },
+  "grid_definition": {
+    "region": "North Indian Ocean",
+    "lat_min": 5.0,
+    "lat_max": 30.0,
+    "lon_min": 45.0,
+    "lon_max": 105.0,
+    "resolution": 0.25,
+    "shape": [
+      101,
+      241
+    ]
+  },
+  "target_depths": [
+    0.0,
+    5.0,
+    10.0,
+    20.0,
+    30.0,
+    50.0,
+    75.0,
+    100.0,
+    125.0,
+    150.0,
+    200.0,
+    300.0,
+    500.0,
+    700.0,
+    1000.0
+  ],
+  "source_datasets": {
+    "SST": "METOFFICE-GLO-SST-L4-REP-OBS-SST",
+    "SSS": "cmems_obs-mob_glo_phy-sal_my_multi-oi_P7D-c",
+    "SSH": "cmems_obs-sl_glo_phy-ssh_my_allsat-l4-duacs-0.125deg_P1D",
+    "CURRENTS": "cmems_obs-mob_glo_phy-cur_my_0.25deg_P1D-m",
+    "WINDS": "cmems_obs-wind_glo_phy_my_l4_0.125deg_PT1H",
+    "GLORYS": "cmems_mod_glo_phy_my_0.083deg_P1D-m"
+  },
+  "surface_variable_statistics": {
+    "sst": {
+      "channel_index": 0,
+      "mask_index": 7,
+      "valid_cells": 370822,
+      "nan_cells": 0,
+      "min": 18.2675,
+      "max": 36.1175,
+      "mean": 29.0733,
+      "std": 1.5945
+    },
+    "sss": {
+      "channel_index": 1,
+      "mask_index": 8,
+      "valid_cells": 323981,
+      "nan_cells": 0,
+      "min": 24.6331,
+      "max": 42.2273,
+      "mean": 34.8938,
+      "std": 1.6122
+    },
+    "ssh": {
+      "channel_index": 2,
+      "mask_index": 9,
+      "valid_cells": 373240,
+      "nan_cells": 0,
+      "min": -0.2068,
+      "max": 0.4704,
+      "mean": 0.1316,
+      "std": 0.0872
+    },
+    "u_curr": {
+      "channel_index": 3,
+      "mask_index": 10,
+      "valid_cells": 356469,
+      "nan_cells": 0,
+      "min": -1.2085,
+      "max": 1.9335,
+      "mean": 0.1688,
+      "std": 0.2457
+    },
+    "v_curr": {
+      "channel_index": 4,
+      "mask_index": 11,
+      "valid_cells": 356469,
+      "nan_cells": 0,
+      "min": -1.558,
+      "max": 1.6083,
+      "mean": 0.0169,
+      "std": 0.2405
+    },
+    "u_wind": {
+      "channel_index": 5,
+      "mask_index": 12,
+      "valid_cells": 754571,
+      "nan_cells": 0,
+      "min": -9.3068,
+      "max": 13.8535,
+      "mean": 2.8153,
+      "std": 3.436
+    },
+    "v_wind": {
+      "channel_index": 6,
+      "mask_index": 13,
+      "valid_cells": 754571,
+      "nan_cells": 0,
+      "min": -9.1843,
+      "max": 16.0917,
+      "mean": 2.482,
+      "std": 3.1654
+    }
+  },
+  "subsurface_depth_statistics": {
+    "0m": {
+      "depth_index": 0,
+      "depth_meters": 0.0,
+      "valid_cells": 367505,
+      "nan_cells": 387066,
+      "min": 20.7004,
+      "max": 36.0613,
+      "mean": 29.2741,
+      "std": 1.4655
+    },
+    "5m": {
+      "depth_index": 1,
+      "depth_meters": 5.0,
+      "valid_cells": 367505,
+      "nan_cells": 387066,
+      "min": 20.6884,
+      "max": 35.9778,
+      "mean": 29.2219,
+      "std": 1.435
+    },
+    "10m": {
+      "depth_index": 2,
+      "depth_meters": 10.0,
+      "valid_cells": 356221,
+      "nan_cells": 398350,
+      "min": 20.6366,
+      "max": 35.1813,
+      "mean": 29.1392,
+      "std": 1.3757
+    },
+    "20m": {
+      "depth_index": 3,
+      "depth_meters": 20.0,
+      "valid_cells": 347448,
+      "nan_cells": 407123,
+      "min": 20.2519,
+      "max": 34.9068,
+      "mean": 28.9777,
+      "std": 1.3485
+    },
+    "30m": {
+      "depth_index": 4,
+      "depth_meters": 30.0,
+      "valid_cells": 337125,
+      "nan_cells": 417446,
+      "min": 19.7769,
+      "max": 33.722,
+      "mean": 28.7106,
+      "std": 1.4786
+    },
+    "50m": {
+      "depth_index": 5,
+      "depth_meters": 50.0,
+      "valid_cells": 322431,
+      "nan_cells": 432140,
+      "min": 19.1856,
+      "max": 31.497,
+      "mean": 27.7106,
+      "std": 1.9157
+    },
+    "75m": {
+      "depth_index": 6,
+      "depth_meters": 75.0,
+      "valid_cells": 309504,
+      "nan_cells": 445067,
+      "min": 17.0509,
+      "max": 30.276,
+      "mean": 25.85,
+      "std": 2.1815
+    },
+    "100m": {
+      "depth_index": 7,
+      "depth_meters": 100.0,
+      "valid_cells": 302684,
+      "nan_cells": 451887,
+      "min": 15.2942,
+      "max": 29.6606,
+      "mean": 23.6584,
+      "std": 2.2432
+    },
+    "125m": {
+      "depth_index": 8,
+      "depth_meters": 125.0,
+      "valid_cells": 301103,
+      "nan_cells": 453468,
+      "min": 13.2624,
+      "max": 28.4985,
+      "mean": 21.2538,
+      "std": 2.2524
+    },
+    "150m": {
+      "depth_index": 9,
+      "depth_meters": 150.0,
+      "valid_cells": 299615,
+      "nan_cells": 454956,
+      "min": 12.5209,
+      "max": 27.2086,
+      "mean": 18.9825,
+      "std": 2.151
+    },
+    "200m": {
+      "depth_index": 10,
+      "depth_meters": 200.0,
+      "valid_cells": 296887,
+      "nan_cells": 457684,
+      "min": 11.4041,
+      "max": 23.6609,
+      "mean": 15.946,
+      "std": 1.8043
+    },
+    "300m": {
+      "depth_index": 11,
+      "depth_meters": 300.0,
+      "valid_cells": 294252,
+      "nan_cells": 460319,
+      "min": 10.4237,
+      "max": 18.8415,
+      "mean": 13.2522,
+      "std": 1.501
+    },
+    "500m": {
+      "depth_index": 12,
+      "depth_meters": 500.0,
+      "valid_cells": 289199,
+      "nan_cells": 465372,
+      "min": 8.7971,
+      "max": 17.8011,
+      "mean": 11.3085,
+      "std": 1.1838
+    },
+    "700m": {
+      "depth_index": 13,
+      "depth_meters": 700.0,
+      "valid_cells": 285510,
+      "nan_cells": 469061,
+      "min": 6.128,
+      "max": 16.1789,
+      "mean": 9.8904,
+      "std": 1.1305
+    },
+    "1000m": {
+      "depth_index": 14,
+      "depth_meters": 1000.0,
+      "valid_cells": 278194,
+      "nan_cells": 476377,
+      "min": 4.8747,
+      "max": 12.4604,
+      "mean": 7.8231,
+      "std": 1.0045
+    }
+  },
+  "daily_manifests": [
+    {
+      "date": "2020-07-01",
+      "processed_at": "2026-09-13T00:38:34.652322",
+      "elapsed_seconds": 4.2,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-01",
+        "t0": "2020-06-25T00:00:00",
+        "t1": "2020-07-02T00:00:00",
+        "alpha": 0.8571,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-02",
+      "processed_at": "2026-09-13T00:38:37.755337",
+      "elapsed_seconds": 3.1,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "exact_observation",
+        "target_date": "2020-07-02",
+        "t0": "2020-07-02",
+        "t1": "2020-07-02",
+        "weight": 1.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-03",
+      "processed_at": "2026-09-13T00:38:41.041008",
+      "elapsed_seconds": 3.28,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-03",
+        "t0": "2020-07-02T00:00:00",
+        "t1": "2020-07-09T00:00:00",
+        "alpha": 0.1429,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-04",
+      "processed_at": "2026-09-13T00:38:44.378454",
+      "elapsed_seconds": 3.34,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-04",
+        "t0": "2020-07-02T00:00:00",
+        "t1": "2020-07-09T00:00:00",
+        "alpha": 0.2857,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-05",
+      "processed_at": "2026-09-13T00:38:47.774762",
+      "elapsed_seconds": 3.39,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-05",
+        "t0": "2020-07-02T00:00:00",
+        "t1": "2020-07-09T00:00:00",
+        "alpha": 0.4286,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-06",
+      "processed_at": "2026-09-13T00:38:51.022109",
+      "elapsed_seconds": 3.25,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-06",
+        "t0": "2020-07-02T00:00:00",
+        "t1": "2020-07-09T00:00:00",
+        "alpha": 0.5714,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-07",
+      "processed_at": "2026-09-13T00:38:54.279117",
+      "elapsed_seconds": 3.26,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-07",
+        "t0": "2020-07-02T00:00:00",
+        "t1": "2020-07-09T00:00:00",
+        "alpha": 0.7143,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-08",
+      "processed_at": "2026-09-13T00:38:57.485115",
+      "elapsed_seconds": 3.2,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-08",
+        "t0": "2020-07-02T00:00:00",
+        "t1": "2020-07-09T00:00:00",
+        "alpha": 0.8571,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-09",
+      "processed_at": "2026-09-13T00:39:00.723377",
+      "elapsed_seconds": 3.24,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "exact_observation",
+        "target_date": "2020-07-09",
+        "t0": "2020-07-09",
+        "t1": "2020-07-09",
+        "weight": 1.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-10",
+      "processed_at": "2026-09-13T00:39:03.908925",
+      "elapsed_seconds": 3.18,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-10",
+        "t0": "2020-07-09T00:00:00",
+        "t1": "2020-07-16T00:00:00",
+        "alpha": 0.1429,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-11",
+      "processed_at": "2026-09-13T00:39:07.283179",
+      "elapsed_seconds": 3.37,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-11",
+        "t0": "2020-07-09T00:00:00",
+        "t1": "2020-07-16T00:00:00",
+        "alpha": 0.2857,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-12",
+      "processed_at": "2026-09-13T00:39:10.493855",
+      "elapsed_seconds": 3.21,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-12",
+        "t0": "2020-07-09T00:00:00",
+        "t1": "2020-07-16T00:00:00",
+        "alpha": 0.4286,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-13",
+      "processed_at": "2026-09-13T00:39:13.821345",
+      "elapsed_seconds": 3.33,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-13",
+        "t0": "2020-07-09T00:00:00",
+        "t1": "2020-07-16T00:00:00",
+        "alpha": 0.5714,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-14",
+      "processed_at": "2026-09-13T00:39:17.668283",
+      "elapsed_seconds": 3.85,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-14",
+        "t0": "2020-07-09T00:00:00",
+        "t1": "2020-07-16T00:00:00",
+        "alpha": 0.7143,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-15",
+      "processed_at": "2026-09-13T00:39:21.143792",
+      "elapsed_seconds": 3.47,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-15",
+        "t0": "2020-07-09T00:00:00",
+        "t1": "2020-07-16T00:00:00",
+        "alpha": 0.8571,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-16",
+      "processed_at": "2026-09-13T00:39:24.690722",
+      "elapsed_seconds": 3.55,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "exact_observation",
+        "target_date": "2020-07-16",
+        "t0": "2020-07-16",
+        "t1": "2020-07-16",
+        "weight": 1.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-17",
+      "processed_at": "2026-09-13T00:39:28.324423",
+      "elapsed_seconds": 3.63,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-17",
+        "t0": "2020-07-16T00:00:00",
+        "t1": "2020-07-23T00:00:00",
+        "alpha": 0.1429,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-18",
+      "processed_at": "2026-09-13T00:39:31.694919",
+      "elapsed_seconds": 3.37,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-18",
+        "t0": "2020-07-16T00:00:00",
+        "t1": "2020-07-23T00:00:00",
+        "alpha": 0.2857,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-19",
+      "processed_at": "2026-09-13T00:39:35.089911",
+      "elapsed_seconds": 3.39,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-19",
+        "t0": "2020-07-16T00:00:00",
+        "t1": "2020-07-23T00:00:00",
+        "alpha": 0.4286,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-20",
+      "processed_at": "2026-09-13T00:39:38.396409",
+      "elapsed_seconds": 3.31,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-20",
+        "t0": "2020-07-16T00:00:00",
+        "t1": "2020-07-23T00:00:00",
+        "alpha": 0.5714,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-21",
+      "processed_at": "2026-09-13T00:39:42.328674",
+      "elapsed_seconds": 3.93,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-21",
+        "t0": "2020-07-16T00:00:00",
+        "t1": "2020-07-23T00:00:00",
+        "alpha": 0.7143,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-22",
+      "processed_at": "2026-09-13T00:39:45.816248",
+      "elapsed_seconds": 3.49,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-22",
+        "t0": "2020-07-16T00:00:00",
+        "t1": "2020-07-23T00:00:00",
+        "alpha": 0.8571,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-23",
+      "processed_at": "2026-09-13T00:39:49.336429",
+      "elapsed_seconds": 3.52,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "exact_observation",
+        "target_date": "2020-07-23",
+        "t0": "2020-07-23",
+        "t1": "2020-07-23",
+        "weight": 1.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-24",
+      "processed_at": "2026-09-13T00:39:52.524208",
+      "elapsed_seconds": 3.19,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-24",
+        "t0": "2020-07-23T00:00:00",
+        "t1": "2020-07-30T00:00:00",
+        "alpha": 0.1429,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-25",
+      "processed_at": "2026-09-13T00:39:55.765915",
+      "elapsed_seconds": 3.24,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-25",
+        "t0": "2020-07-23T00:00:00",
+        "t1": "2020-07-30T00:00:00",
+        "alpha": 0.2857,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-26",
+      "processed_at": "2026-09-13T00:39:59.156161",
+      "elapsed_seconds": 3.39,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-26",
+        "t0": "2020-07-23T00:00:00",
+        "t1": "2020-07-30T00:00:00",
+        "alpha": 0.4286,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-27",
+      "processed_at": "2026-09-13T00:40:03.111282",
+      "elapsed_seconds": 3.95,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-27",
+        "t0": "2020-07-23T00:00:00",
+        "t1": "2020-07-30T00:00:00",
+        "alpha": 0.5714,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-28",
+      "processed_at": "2026-09-13T00:40:06.638080",
+      "elapsed_seconds": 3.53,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-28",
+        "t0": "2020-07-23T00:00:00",
+        "t1": "2020-07-30T00:00:00",
+        "alpha": 0.7143,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-29",
+      "processed_at": "2026-09-13T00:40:09.902216",
+      "elapsed_seconds": 3.26,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-29",
+        "t0": "2020-07-23T00:00:00",
+        "t1": "2020-07-30T00:00:00",
+        "alpha": 0.8571,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-30",
+      "processed_at": "2026-09-13T00:40:13.307186",
+      "elapsed_seconds": 3.4,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "exact_observation",
+        "target_date": "2020-07-30",
+        "t0": "2020-07-30",
+        "t1": "2020-07-30",
+        "weight": 1.0
+      },
+      "qc_passed": true
+    },
+    {
+      "date": "2020-07-31",
+      "processed_at": "2026-09-13T00:40:16.803022",
+      "elapsed_seconds": 3.49,
+      "X_shape": [
+        1,
+        14,
+        101,
+        241
+      ],
+      "Y_shape": [
+        1,
+        15,
+        101,
+        241
+      ],
+      "sss_provenance": {
+        "method": "bounded_linear_interpolation",
+        "target_date": "2020-07-31",
+        "t0": "2020-07-30T00:00:00",
+        "t1": "2020-08-06T00:00:00",
+        "alpha": 0.1429,
+        "span_days": 7.0
+      },
+      "qc_passed": true
+    }
+  ]
+}

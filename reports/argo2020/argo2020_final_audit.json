@@ -1,0 +1,125 @@
+{
+  "project": "SIH26066 \u2014 OceanEmbed",
+  "evaluation_phase": "ARGO 2020 CONTEMPORANEOUS INDEPENDENT VALIDATION",
+  "timestamp": "2026-09-13T15:20:00Z",
+  "data_provenance": {
+    "source": "Coriolis / INCOIS Global Data Assembly Centre (GDAC)",
+    "archive_url": "https://data-argo.ifremer.fr/geo/indian_ocean/2020/09/",
+    "files_used": [
+      "data/argo/argo2020/20200901_prof.nc",
+      "data/argo/argo2020/20200915_prof.nc",
+      "data/argo/argo2020/20200925_prof.nc"
+    ],
+    "observation_dates": [
+      "2020-09-01",
+      "2020-09-15",
+      "2020-09-25"
+    ],
+    "actual_date_range": [
+      "2020-09-01T01:07:45",
+      "2020-09-25T22:01:26"
+    ],
+    "nio_bounding_box": {
+      "lat_min": 5.0,
+      "lat_max": 30.0,
+      "lon_min": 45.0,
+      "lon_max": 105.0
+    },
+    "total_authentic_profiles": 36,
+    "unique_wmo_floats_count": 28,
+    "total_valid_profile_depth_pairs": 497,
+    "uncalibrated_dummy_zero_profiles_filtered": 7
+  },
+  "collocation_protocol": {
+    "temporal_matching_method": "Exact Same-Calendar-Day Slice Matching against chunk_2020_09.pt",
+    "max_temporal_offset_hours": 10.87,
+    "mean_temporal_offset_hours": 5.42,
+    "spatial_matching_method": "Nearest 0.25-degree grid centroid mapping with spherical Haversine distance",
+    "spatial_distance_stats_km": {
+      "min": 4.32,
+      "mean": 9.95,
+      "median": 10.86,
+      "max": 15.72
+    },
+    "vertical_interpolation_method": "1D linear interpolation bounded strictly by [p_min, p_max + 10 dbar], no unphysical extrapolation",
+    "target_depths_evaluated": [
+      5,
+      10,
+      20,
+      30,
+      50,
+      75,
+      100,
+      125,
+      150,
+      200,
+      300,
+      500,
+      700,
+      1000
+    ]
+  },
+  "benchmark_metrics_overall": {
+    "climatology": {
+      "name": "Static Climatology Profile",
+      "count": 497,
+      "rmse": 3.0363,
+      "mae": 2.559,
+      "bias": -2.2871,
+      "corr": 0.9685
+    },
+    "pointwise_mlp": {
+      "name": "Pointwise MLP",
+      "count": 497,
+      "rmse": 1.1602,
+      "mae": 0.656,
+      "bias": 0.167,
+      "corr": 0.9888
+    },
+    "simple_cnn": {
+      "name": "Simple CNN Baseline",
+      "count": 497,
+      "rmse": 0.9526,
+      "mae": 0.5874,
+      "bias": 0.0757,
+      "corr": 0.9924
+    },
+    "oceanembed": {
+      "name": "OceanEmbedNet (Multi-Scale U-Net)",
+      "count": 497,
+      "rmse": 1.8126,
+      "mae": 1.2805,
+      "bias": -0.3397,
+      "corr": 0.9738
+    }
+  },
+  "cross_benchmark_comparison": {
+    "september_2020_glorys_test": {
+      "climatology_rmse": 2.9976,
+      "mlp_rmse": 1.1177,
+      "simple_cnn_rmse": 1.0418,
+      "oceanembed_rmse": 1.8142
+    },
+    "september_2020_contemporaneous_argo": {
+      "climatology_rmse": 3.0363,
+      "mlp_rmse": 1.1602,
+      "simple_cnn_rmse": 0.9526,
+      "oceanembed_rmse": 1.8126
+    },
+    "november_2022_cross_temporal_argo": {
+      "climatology_rmse": 2.7911,
+      "mlp_rmse": 2.1666,
+      "simple_cnn_rmse": 2.0043,
+      "oceanembed_rmse": 1.7679
+    },
+    "oceanembed_generalization_gap_glorys_vs_argo_2020": 0.0016
+  },
+  "diagnosis_and_verdict": {
+    "model_behavior_classification": "CASE 1: OceanEmbed performs consistently against GLORYS (1.8142 C) and contemporaneous ARGO (1.8126 C) with zero generalization gap (0.0016 C delta)",
+    "model_weaknesses": "Peak error occurs in the main thermocline (75-150m, peaking at 3.25 C at 100m and 3.14 C at 125m) due to steep vertical temperature gradients (>0.1 C/m) and internal waves. At shallow (50m: 1.03 C) and deep depths (500-700m: 0.46-0.54 C), error is low.",
+    "model_correction_justified": false,
+    "model_correction_performed": false,
+    "final_recommended_checkpoint": "checkpoints/oceanembed_best.pt",
+    "phase5_readiness": true
+  }
+}

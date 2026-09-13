@@ -1,0 +1,92 @@
+{
+  "scaler_file": "configs/scaler_params_experiment_2020.json",
+  "created_at": "2026-09-13T06:28:48Z",
+  "train_period": {
+    "start": "2020-01-01",
+    "end": "2020-07-31",
+    "num_days": 213,
+    "chunks": [
+      "chunk_2020_01.pt",
+      "chunk_2020_02.pt",
+      "chunk_2020_03.pt",
+      "chunk_2020_04.pt",
+      "chunk_2020_05.pt",
+      "chunk_2020_06.pt",
+      "chunk_2020_07.pt"
+    ]
+  },
+  "validation_period": {
+    "start": "2020-08-01",
+    "end": "2020-08-31",
+    "num_days": 31,
+    "chunks": [
+      "chunk_2020_08.pt"
+    ]
+  },
+  "test_period": {
+    "start": "2020-09-01",
+    "end": "2020-09-30",
+    "num_days": 30,
+    "chunks": [
+      "chunk_2020_09.pt"
+    ]
+  },
+  "channels": {
+    "sst": {
+      "channel_idx": 0,
+      "mean": 28.638743465939886,
+      "std": 2.079108473174329,
+      "valid_pixel_count": 2547906,
+      "min": 12.962493896484375,
+      "max": 36.11749267578125
+    },
+    "sss": {
+      "channel_idx": 1,
+      "mean": 34.72009578879117,
+      "std": 1.6078257450012596,
+      "valid_pixel_count": 2230233,
+      "min": 24.633148193359375,
+      "max": 44.183040618896484
+    },
+    "ssh": {
+      "channel_idx": 2,
+      "mean": 0.11056826856484687,
+      "std": 0.0974183854042507,
+      "valid_pixel_count": 2564520,
+      "min": -0.4590499997138977,
+      "max": 0.6054750084877014
+    },
+    "u_curr": {
+      "channel_idx": 3,
+      "mean": 0.023055902569878915,
+      "std": 0.24183469863705973,
+      "valid_pixel_count": 2449060,
+      "min": -1.4327499866485596,
+      "max": 1.933500051498413
+    },
+    "v_curr": {
+      "channel_idx": 4,
+      "mean": 0.006787291351207384,
+      "std": 0.20285099733950504,
+      "valid_pixel_count": 2449060,
+      "min": -1.5579999685287476,
+      "max": 1.6082500219345093
+    },
+    "u_wind": {
+      "channel_idx": 5,
+      "mean": 0.44144515783003774,
+      "std": 3.348026428593634,
+      "valid_pixel_count": 5183953,
+      "min": -18.819896697998047,
+      "max": 20.848228454589844
+    },
+    "v_wind": {
+      "channel_idx": 6,
+      "mean": 0.20741232159257988,
+      "std": 3.2255647857944325,
+      "valid_pixel_count": 5183953,
+      "min": -19.76739501953125,
+      "max": 19.746562957763672
+    }
+  }
+}

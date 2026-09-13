@@ -1,0 +1,54 @@
+{
+  "benchmark_timestamp": "2026-09-13T07:04:25Z",
+  "input_grid_dimensions": [
+    1,
+    14,
+    101,
+    241
+  ],
+  "target_depths_count": 15,
+  "models": {
+    "pointwise_mlp": {
+      "display_name": "Pointwise MLP",
+      "parameter_count": 6095,
+      "checkpoint_size_bytes": 27673,
+      "checkpoint_size_mb": 0.03,
+      "inference_latency_ms": {
+        "mean": 4.16,
+        "std": 0.28,
+        "min": 3.67,
+        "max": 4.69
+      },
+      "throughput_grids_per_sec": 240.31,
+      "ram_memory_rss_mb": 467.5
+    },
+    "simple_cnn": {
+      "display_name": "Simple CNN Baseline",
+      "parameter_count": 46031,
+      "checkpoint_size_bytes": 187381,
+      "checkpoint_size_mb": 0.18,
+      "inference_latency_ms": {
+        "mean": 10.94,
+        "std": 0.59,
+        "min": 10.37,
+        "max": 12.71
+      },
+      "throughput_grids_per_sec": 91.39,
+      "ram_memory_rss_mb": 467.5
+    },
+    "oceanembed": {
+      "display_name": "OceanEmbedNet (Multi-Scale U-Net)",
+      "parameter_count": 1342928,
+      "checkpoint_size_bytes": 5416375,
+      "checkpoint_size_mb": 5.17,
+      "inference_latency_ms": {
+        "mean": 360.82,
+        "std": 18.27,
+        "min": 327.89,
+        "max": 397.71
+      },
+      "throughput_grids_per_sec": 2.77,
+      "ram_memory_rss_mb": 480.3
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "project": {
+    "problem_statement": "SIH26066",
+    "name": "OceanEmbed",
+    "description": "Satellite Embedding-Based Deep Learning Framework for Reconstruction of Subsurface Ocean Temperature from Surface Satellite Observations",
+    "status": "RECONNAISSANCE_COMPLETE",
+    "timestamp": "2026-09-12T13:30:00+05:30"
+  },
+  "grid": {
+    "region_name": "North Indian Ocean (NIO)",
+    "lat_min": 5.0,
+    "lat_max": 30.0,
+    "lon_min": 45.0,
+    "lon_max": 105.0,
+    "spatial_resolution_deg": 0.25,
+    "lat_count": 101,
+    "lon_count": 241,
+    "total_grid_cells": 24341,
+    "ocean_cells_surface": 11854,
+    "land_cells_surface": 12487,
+    "ocean_fraction_surface_pct": 48.70
+  },
+  "vertical_structure": {
+    "num_target_depths": 15,
+    "target_depths_meters": [0, 5, 10, 20, 30, 50, 75, 100, 125, 150, 200, 300, 500, 700, 1000],
+    "ocean_cells_at_depths": {
+      "0": 11854,
+      "5": 11854,
+      "10": 11489,
+      "20": 11207,
+      "30": 10875,
+      "50": 10399,
+      "75": 9982,
+      "100": 9763,
+      "125": 9712,
+      "150": 9664,
+      "200": 9577,
+      "300": 9492,
+      "500": 9329,
+      "700": 9210,
+      "1000": 8973
+    }
+  },
+  "datasets": {
+    "GLORYS": {
+      "provider": "Copernicus Marine Service (Mercator Ocean International)",
+      "product_id": "GLOBAL_MULTIYEAR_PHY_001_030",
+      "dataset_id": "cmems_mod_glo_phy_my_0.083deg_P1D-m",
+      "variable": "thetao",
+      "units": "degrees_C",
+      "native_resolution_deg": 0.083,
+      "temporal_resolution": "daily",
+      "native_depth_levels": 36,
+      "native_depth_min_m": 0.494,
+      "native_depth_max_m": 1062.44,
+      "temporal_range_catalog": ["1993-01-01", "2026-06-23"],
+      "download_mechanism": "copernicusmarine subset / python API",
+      "auth_required": true,
+      "local_pilot_file": "data/pilot/glorys_3d_pilot.nc",
+      "local_pilot_processed": "data/pilot/glorys_target_15depths_0.25deg.nc",
+      "status": "VERIFIED_PILOT_ON_DISK"
+    },
+    "SST": {
+      "provider": "UK Met Office / Copernicus Marine",
+      "product_id": "SST_GLO_SST_L4_REP_OBSERVATIONS_010_011",
+      "dataset_id": "METOFFICE-GLO-SST-L4-REP-OBS-SST",
+      "variable": "analysed_sst",
+      "units": "kelvin",
+      "native_resolution_deg": 0.05,
+      "temporal_resolution": "daily",
+      "temporal_range_catalog": ["1981-08-24", "2026-03-31"],
+      "download_mechanism": "copernicusmarine subset / python API",
+      "auth_required": true,
+      "local_pilot_file": "data/pilot/sst_regridded_pilot.nc",
+      "local_pilot_date_anomaly": "2026-03-31 (requires date-specific re-fetch for 2020-01-01)",
+      "status": "VERIFIED_PILOT_ON_DISK"
+    },
+    "SSS": {
+      "provider": "Copernicus Multi-Observation Global Salinity",
+      "product_id": "MULTIOBS_GLO_PHY_REP_015_004",
+      "dataset_id": "cmems_obs-mob_glo_phy-sal_my_multi-oi_P7D-c",
+      "variable": "sss",
+      "units": "psu",
+      "native_resolution_deg": 0.25,
+      "temporal_resolution": "weekly (7-day objective analysis)",
+      "temporal_range_catalog": ["2010-06-03", "2025-12-25"],
+      "download_mechanism": "copernicusmarine subset / python API",
+      "auth_required": true,
+      "local_pilot_file": "data/pilot/sss_pilot.nc",
+      "status": "VERIFIED_PILOT_ON_DISK"
+    },
+    "SSH": {
+      "provider": "CNES / CLS / Copernicus DUACS",
+      "product_id": "SEALEVEL_GLO_PHY_L4_MY_008_047",
+      "dataset_id": "cmems_obs-sl_glo_phy-ssh_my_allsat-l4-duacs-0.125deg_P1D",
+      "variable": "sla",
+      "units": "m",
+      "native_resolution_deg": 0.125,
+      "temporal_resolution": "daily",
+      "temporal_range_catalog": ["1993-01-01", "2026-03-31"],
+      "download_mechanism": "copernicusmarine subset / python API",
+      "auth_required": true,
+      "local_pilot_file": "data/pilot/ssh_pilot.nc",
+      "status": "VERIFIED_PILOT_ON_DISK"
+    },
+    "CURRENTS": {
+      "provider": "Copernicus Multi-Observation Global Currents",
+      "product_id": "MULTIOBS_GLO_PHY_REP_015_004",
+      "dataset_id": "cmems_obs-mob_glo_phy-cur_my_0.25deg_P1D-m",
+      "variables": ["uo", "vo"],
+      "units": "m/s",
+      "native_resolution_deg": 0.25,
+      "temporal_resolution": "daily",
+      "vertical_levels": [0, 15],
+      "surface_level_index": 0,
+      "temporal_range_catalog": ["1993-01-01", "2026-03-31"],
+      "download_mechanism": "copernicusmarine subset / python API",
+      "auth_required": true,
+      "local_pilot_file": "data/pilot/currents_pilot.nc",
+      "status": "VERIFIED_PILOT_ON_DISK"
+    },
+    "WINDS": {
+      "provider": "KNMI / Copernicus Marine Scatterometer",
+      "product_id": "WIND_GLO_PHY_L4_MY_012_006",
+      "dataset_id": "cmems_obs-wind_glo_phy_my_l4_0.25deg_PT1H",
+      "variables": ["eastward_wind", "northward_wind"],
+      "units": "m/s",
+      "native_resolution_deg": 0.25,
+      "temporal_resolution": "hourly (PT1H -> daily mean aggregated)",
+      "temporal_range_catalog": ["2007-01-11", "2026-04-21"],
+      "download_mechanism": "copernicusmarine subset / python API",
+      "auth_required": true,
+      "local_pilot_file": "data/pilot/winds_pilot.nc",
+      "status": "VERIFIED_PILOT_ON_DISK"
+    },
+    "ARGO": {
+      "provider": "Coriolis Global Data Assembly Centre (GDAC) / INCOIS",
+      "endpoint": "https://data-argo.ifremer.fr/geo/indian_ocean/ and /dac/incois/",
+      "variables": ["TEMP", "PRES", "LATITUDE", "LONGITUDE", "JULD"],
+      "units": "TEMP: deg_C, PRES: dbar",
+      "access_type": "Direct HTTP / Open Access (No auth required)",
+      "http_status_verified": 200,
+      "local_pilot_file": "data/argo/20221101_prof.nc",
+      "status": "VERIFIED_OPEN_ACCESS"
+    }
+  },
+  "temporal_intersection": {
+    "limiting_start_dataset": "SSS (cmems_obs-mob_glo_phy-sal_my_multi-oi_P7D-c)",
+    "limiting_end_dataset": "SSS (cmems_obs-mob_glo_phy-sal_my_multi-oi_P7D-c)",
+    "earliest_common_date": "2010-06-03",
+    "latest_common_date": "2025-12-25",
+    "total_common_span_days": 5684,
+    "total_common_span_years": 15.6,
+    "recommended_train_period": ["2016-01-01", "2020-12-31"],
+    "recommended_val_period": ["2021-01-01", "2021-12-31"],
+    "recommended_test_period": ["2022-01-01", "2022-12-31"]
+  },
+  "hardware": {
+    "cpu": "AMD Ryzen 7 7435HS (8 physical cores, 16 logical threads)",
+    "ram_total_gb": 15.82,
+    "ram_available_gb": 4.24,
+    "gpu_name": "NVIDIA GeForce RTX 2050",
+    "gpu_vram_mb": 4096,
+    "gpu_driver": "610.88",
+    "cuda_system_support": "13.3",
+    "disk_free_gb": 171.58,
+    "python_version": "3.13.5",
+    "pytorch_version": "2.12.0+cpu"
+  },
+  "storage_estimates": {
+    "bytes_per_sample_X": 1363096,
+    "bytes_per_sample_Y": 1460460,
+    "bytes_per_sample_total": 2823556,
+    "mb_per_sample_total": 2.69,
+    "time_horizons": {
+      "1_day": {"processed_mb": 2.69, "raw_approx_mb": 15.0},
+      "7_days": {"processed_mb": 18.8, "raw_approx_mb": 105.0},
+      "30_days": {"processed_mb": 80.8, "raw_approx_mb": 450.0},
+      "90_days": {"processed_mb": 242.4, "raw_approx_gb": 1.35},
+      "365_days": {"processed_mb": 982.9, "raw_approx_gb": 5.5},
+      "3_years": {"processed_gb": 2.95, "raw_approx_gb": 16.5},
+      "5_years": {"processed_gb": 4.91, "raw_approx_gb": 27.5},
+      "10_years": {"processed_gb": 9.83, "raw_approx_gb": 55.0}
+    }
+  },
+  "credentials_audit": {
+    "copernicus_cached_file": "~/.copernicusmarine/.copernicusmarine-credentials",
+    "copernicus_auth_status": "EXPIRED_OR_INVALID_GRANT (HTTP 400 from auth.marine.copernicus.eu)",
+    "copernicus_remediation": "Update credentials via 'copernicusmarine login' or set COPERNICUSMARINE_SERVICE_USERNAME / PASSWORD",
+    "coriolis_gdac_auth_status": "OPEN_ACCESS_HTTP_200 (No authentication required)"
+  }
+}

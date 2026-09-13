@@ -1,0 +1,291 @@
+{
+  "month": "2020-02",
+  "chunk_name": "chunk_2020_02",
+  "file_path": "data/processed/chunk_2020_02.pt",
+  "file_size_bytes": 81885653,
+  "preprocessing_version": "1.0.0",
+  "acquisition_timestamp": "2026-09-12T16:20:01.254505+00:00",
+  "validation_status": "PASSED",
+  "qc_all_passed": true,
+  "num_days": 29,
+  "date_start": "2020-02-01",
+  "date_end": "2020-02-29",
+  "dates_included": [
+    "2020-02-01",
+    "2020-02-02",
+    "2020-02-03",
+    "2020-02-04",
+    "2020-02-05",
+    "2020-02-06",
+    "2020-02-07",
+    "2020-02-08",
+    "2020-02-09",
+    "2020-02-10",
+    "2020-02-11",
+    "2020-02-12",
+    "2020-02-13",
+    "2020-02-14",
+    "2020-02-15",
+    "2020-02-16",
+    "2020-02-17",
+    "2020-02-18",
+    "2020-02-19",
+    "2020-02-20",
+    "2020-02-21",
+    "2020-02-22",
+    "2020-02-23",
+    "2020-02-24",
+    "2020-02-25",
+    "2020-02-26",
+    "2020-02-27",
+    "2020-02-28",
+    "2020-02-29"
+  ],
+  "missing_dates": [],
+  "dimensions": {
+    "X_shape": [
+      29,
+      14,
+      101,
+      241
+    ],
+    "Y_shape": [
+      29,
+      15,
+      101,
+      241
+    ],
+    "spatial_grid": [
+      101,
+      241
+    ],
+    "num_surface_channels": 14,
+    "num_depth_levels": 15
+  },
+  "distributions": {
+    "surface_variables": {
+      "sst": {
+        "channel_index": 0,
+        "mask_index": 7,
+        "valid_cells": 346898,
+        "nan_cells": 0,
+        "min": 12.9625,
+        "max": 30.925,
+        "mean": 26.8356,
+        "std": 2.0601
+      },
+      "sss": {
+        "channel_index": 1,
+        "mask_index": 8,
+        "valid_cells": 303978,
+        "nan_cells": 0,
+        "min": 29.5268,
+        "max": 42.781,
+        "mean": 34.6506,
+        "std": 1.674
+      },
+      "ssh": {
+        "channel_index": 2,
+        "mask_index": 9,
+        "valid_cells": 349160,
+        "nan_cells": 0,
+        "min": -0.459,
+        "max": 0.3727,
+        "mean": 0.0851,
+        "std": 0.1014
+      },
+      "u_curr": {
+        "channel_index": 3,
+        "mask_index": 10,
+        "valid_cells": 333471,
+        "nan_cells": 0,
+        "min": -1.1797,
+        "max": 0.9075,
+        "mean": -0.1019,
+        "std": 0.2025
+      },
+      "v_curr": {
+        "channel_index": 4,
+        "mask_index": 11,
+        "valid_cells": 333471,
+        "nan_cells": 0,
+        "min": -0.9525,
+        "max": 1.094,
+        "mean": 0.0031,
+        "std": 0.1768
+      },
+      "u_wind": {
+        "channel_index": 5,
+        "mask_index": 12,
+        "valid_cells": 705889,
+        "nan_cells": 0,
+        "min": -12.4236,
+        "max": 11.8776,
+        "mean": -1.688,
+        "std": 2.5588
+      },
+      "v_wind": {
+        "channel_index": 6,
+        "mask_index": 13,
+        "valid_cells": 705889,
+        "nan_cells": 0,
+        "min": -14.2549,
+        "max": 12.538,
+        "mean": -1.6816,
+        "std": 2.6649
+      }
+    },
+    "subsurface_temperatures": {
+      "0m": {
+        "depth_index": 0,
+        "depth_meters": 0.0,
+        "valid_cells": 343795,
+        "nan_cells": 362094,
+        "min": 13.3516,
+        "max": 32.2768,
+        "mean": 26.8728,
+        "std": 2.0446
+      },
+      "5m": {
+        "depth_index": 1,
+        "depth_meters": 5.0,
+        "valid_cells": 343795,
+        "nan_cells": 362094,
+        "min": 13.9437,
+        "max": 32.1236,
+        "mean": 26.8124,
+        "std": 2.0433
+      },
+      "10m": {
+        "depth_index": 2,
+        "depth_meters": 10.0,
+        "valid_cells": 333239,
+        "nan_cells": 372650,
+        "min": 15.6112,
+        "max": 31.7785,
+        "mean": 26.8736,
+        "std": 1.8982
+      },
+      "20m": {
+        "depth_index": 3,
+        "depth_meters": 20.0,
+        "valid_cells": 325032,
+        "nan_cells": 380857,
+        "min": 16.236,
+        "max": 31.3794,
+        "mean": 26.9149,
+        "std": 1.7901
+      },
+      "30m": {
+        "depth_index": 4,
+        "depth_meters": 30.0,
+        "valid_cells": 315375,
+        "nan_cells": 390514,
+        "min": 17.3808,
+        "max": 30.7358,
+        "mean": 26.9335,
+        "std": 1.7339
+      },
+      "50m": {
+        "depth_index": 5,
+        "depth_meters": 50.0,
+        "valid_cells": 301629,
+        "nan_cells": 404260,
+        "min": 18.5189,
+        "max": 30.9113,
+        "mean": 26.7281,
+        "std": 1.7534
+      },
+      "75m": {
+        "depth_index": 6,
+        "depth_meters": 75.0,
+        "valid_cells": 289536,
+        "nan_cells": 416353,
+        "min": 18.1939,
+        "max": 31.3857,
+        "mean": 25.7516,
+        "std": 2.0817
+      },
+      "100m": {
+        "depth_index": 7,
+        "depth_meters": 100.0,
+        "valid_cells": 283156,
+        "nan_cells": 422733,
+        "min": 16.0406,
+        "max": 29.9353,
+        "mean": 23.6322,
+        "std": 2.3636
+      },
+      "125m": {
+        "depth_index": 8,
+        "depth_meters": 125.0,
+        "valid_cells": 281677,
+        "nan_cells": 424212,
+        "min": 13.7249,
+        "max": 28.3027,
+        "mean": 21.0503,
+        "std": 2.282
+      },
+      "150m": {
+        "depth_index": 9,
+        "depth_meters": 150.0,
+        "valid_cells": 280285,
+        "nan_cells": 425604,
+        "min": 12.8821,
+        "max": 24.8013,
+        "mean": 18.6832,
+        "std": 2.0384
+      },
+      "200m": {
+        "depth_index": 10,
+        "depth_meters": 200.0,
+        "valid_cells": 277733,
+        "nan_cells": 428156,
+        "min": 10.3531,
+        "max": 22.518,
+        "mean": 15.6696,
+        "std": 1.7586
+      },
+      "300m": {
+        "depth_index": 11,
+        "depth_meters": 300.0,
+        "valid_cells": 275268,
+        "nan_cells": 430621,
+        "min": 10.1945,
+        "max": 19.3472,
+        "mean": 13.1119,
+        "std": 1.5861
+      },
+      "500m": {
+        "depth_index": 12,
+        "depth_meters": 500.0,
+        "valid_cells": 270541,
+        "nan_cells": 435348,
+        "min": 8.9663,
+        "max": 16.6241,
+        "mean": 11.2776,
+        "std": 1.2816
+      },
+      "700m": {
+        "depth_index": 13,
+        "depth_meters": 700.0,
+        "valid_cells": 267090,
+        "nan_cells": 438799,
+        "min": 7.4314,
+        "max": 14.5648,
+        "mean": 9.8193,
+        "std": 1.2686
+      },
+      "1000m": {
+        "depth_index": 14,
+        "depth_meters": 1000.0,
+        "valid_cells": 260246,
+        "nan_cells": 445643,
+        "min": 5.695,
+        "max": 12.5143,
+        "mean": 7.7551,
+        "std": 1.0526
+      }
+    }
+  }
+}

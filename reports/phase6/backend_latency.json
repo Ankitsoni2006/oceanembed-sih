@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-13T18:15:00Z",
+  "device": "cpu",
+  "model": "OceanEmbedNetV3_Decoder",
+  "total_iterations": 30,
+  "warmup_total_ms": 61.3,
+  "warmup_model_ms": 30.78,
+  "complete_api_latency_ms": {
+    "mean": 35.87,
+    "median": 34.92,
+    "p95": 44.84,
+    "min": 29.86,
+    "max": 47.52,
+    "std": 4.78
+  },
+  "model_only_inference_ms": {
+    "mean": 31.85,
+    "median": 30.67,
+    "p95": 40.12,
+    "min": 26.3,
+    "max": 42.05
+  },
+  "preprocessing_and_serialization_overhead_ms": {
+    "mean": 4.03,
+    "median": 3.89,
+    "p95": 4.71
+  }
+}

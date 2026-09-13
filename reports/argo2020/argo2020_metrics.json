@@ -1,0 +1,520 @@
+{
+  "benchmark_type": "CONTEMPORANEOUS_IN_SITU_ARGO_VALIDATION_2020",
+  "evaluation_timestamp": "2026-09-13T15:18:00Z",
+  "dataset_summary": {
+    "source": "Coriolis / INCOIS GDAC",
+    "observation_dates": [
+      "2020-09-01",
+      "2020-09-15",
+      "2020-09-25"
+    ],
+    "profile_count": 36,
+    "unique_floats_count": 28,
+    "total_valid_pairs": 497,
+    "max_temporal_offset_hours": 10.87,
+    "mean_spatial_distance_km": 9.95
+  },
+  "overall_metrics": {
+    "climatology": {
+      "count": 497,
+      "rmse": 3.0363,
+      "mae": 2.559,
+      "bias": -2.2871,
+      "corr": 0.9685
+    },
+    "mlp": {
+      "count": 497,
+      "rmse": 1.1602,
+      "mae": 0.656,
+      "bias": 0.167,
+      "corr": 0.9888
+    },
+    "simple_cnn": {
+      "count": 497,
+      "rmse": 0.9526,
+      "mae": 0.5874,
+      "bias": 0.0757,
+      "corr": 0.9924
+    },
+    "oceanembed": {
+      "count": 497,
+      "rmse": 1.8126,
+      "mae": 1.2805,
+      "bias": -0.3397,
+      "corr": 0.9738
+    }
+  },
+  "depth_wise_metrics": {
+    "0m": {
+      "count": 0,
+      "climatology": {
+        "count": 0,
+        "rmse": null,
+        "mae": null,
+        "bias": null,
+        "corr": null
+      },
+      "mlp": {
+        "count": 0,
+        "rmse": null,
+        "mae": null,
+        "bias": null,
+        "corr": null
+      },
+      "simple_cnn": {
+        "count": 0,
+        "rmse": null,
+        "mae": null,
+        "bias": null,
+        "corr": null
+      },
+      "oceanembed": {
+        "count": 0,
+        "rmse": null,
+        "mae": null,
+        "bias": null,
+        "corr": null
+      }
+    },
+    "5m": {
+      "count": 34,
+      "climatology": {
+        "count": 34,
+        "rmse": 1.5237,
+        "mae": 1.112,
+        "bias": -0.2804,
+        "corr": null
+      },
+      "mlp": {
+        "count": 34,
+        "rmse": 1.1769,
+        "mae": 0.3778,
+        "bias": 0.1573,
+        "corr": 0.6287
+      },
+      "simple_cnn": {
+        "count": 34,
+        "rmse": 0.5825,
+        "mae": 0.2788,
+        "bias": 0.0732,
+        "corr": 0.9421
+      },
+      "oceanembed": {
+        "count": 34,
+        "rmse": 1.6249,
+        "mae": 1.4252,
+        "bias": 1.4252,
+        "corr": 0.9504
+      }
+    },
+    "10m": {
+      "count": 35,
+      "climatology": {
+        "count": 35,
+        "rmse": 1.7033,
+        "mae": 1.2498,
+        "bias": -0.4511,
+        "corr": null
+      },
+      "mlp": {
+        "count": 35,
+        "rmse": 1.3359,
+        "mae": 0.3963,
+        "bias": 0.2222,
+        "corr": 0.5974
+      },
+      "simple_cnn": {
+        "count": 35,
+        "rmse": 0.7618,
+        "mae": 0.3175,
+        "bias": 0.1378,
+        "corr": 0.9218
+      },
+      "oceanembed": {
+        "count": 35,
+        "rmse": 1.5315,
+        "mae": 1.2455,
+        "bias": 1.2455,
+        "corr": 0.9449
+      }
+    },
+    "20m": {
+      "count": 35,
+      "climatology": {
+        "count": 35,
+        "rmse": 1.9382,
+        "mae": 1.4794,
+        "bias": -0.7823,
+        "corr": null
+      },
+      "mlp": {
+        "count": 35,
+        "rmse": 1.4473,
+        "mae": 0.4856,
+        "bias": 0.2051,
+        "corr": 0.59
+      },
+      "simple_cnn": {
+        "count": 35,
+        "rmse": 0.8695,
+        "mae": 0.4013,
+        "bias": 0.0409,
+        "corr": 0.8953
+      },
+      "oceanembed": {
+        "count": 35,
+        "rmse": 1.4253,
+        "mae": 1.0253,
+        "bias": 1.0202,
+        "corr": 0.934
+      }
+    },
+    "30m": {
+      "count": 35,
+      "climatology": {
+        "count": 35,
+        "rmse": 2.2936,
+        "mae": 1.9159,
+        "bias": -1.3516,
+        "corr": null
+      },
+      "mlp": {
+        "count": 35,
+        "rmse": 1.4326,
+        "mae": 0.6011,
+        "bias": 0.1962,
+        "corr": 0.6468
+      },
+      "simple_cnn": {
+        "count": 35,
+        "rmse": 0.9604,
+        "mae": 0.5059,
+        "bias": 0.0713,
+        "corr": 0.8726
+      },
+      "oceanembed": {
+        "count": 35,
+        "rmse": 1.3535,
+        "mae": 0.8961,
+        "bias": 0.8929,
+        "corr": 0.9252
+      }
+    },
+    "50m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 3.2665,
+        "mae": 2.993,
+        "bias": -2.5448,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 1.3701,
+        "mae": 0.8422,
+        "bias": -0.0118,
+        "corr": 0.7648
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 1.0366,
+        "mae": 0.7193,
+        "bias": -0.0431,
+        "corr": 0.8886
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 1.0327,
+        "mae": 0.7085,
+        "bias": -0.1117,
+        "corr": 0.9004
+      }
+    },
+    "75m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 3.918,
+        "mae": 3.6009,
+        "bias": -3.3024,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 1.2904,
+        "mae": 0.9546,
+        "bias": 0.0233,
+        "corr": 0.8358
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 1.222,
+        "mae": 0.8744,
+        "bias": -0.048,
+        "corr": 0.8444
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 2.0084,
+        "mae": 1.7172,
+        "bias": -1.4862,
+        "corr": 0.8034
+      }
+    },
+    "100m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 4.4135,
+        "mae": 3.9077,
+        "bias": -3.738,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 1.5873,
+        "mae": 1.1936,
+        "bias": 0.0904,
+        "corr": 0.7644
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 1.6876,
+        "mae": 1.1879,
+        "bias": -0.1653,
+        "corr": 0.7082
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 3.2492,
+        "mae": 2.5891,
+        "bias": -2.5756,
+        "corr": 0.5637
+      }
+    },
+    "125m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 4.1292,
+        "mae": 3.7105,
+        "bias": -3.6623,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 1.089,
+        "mae": 0.8457,
+        "bias": 0.2569,
+        "corr": 0.8338
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 1.1984,
+        "mae": 0.9315,
+        "bias": 0.0684,
+        "corr": 0.7788
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 3.143,
+        "mae": 2.5926,
+        "bias": -2.5926,
+        "corr": 0.3683
+      }
+    },
+    "150m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 3.7769,
+        "mae": 3.3506,
+        "bias": -3.3506,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 1.1049,
+        "mae": 0.8598,
+        "bias": 0.4181,
+        "corr": 0.8132
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 1.0278,
+        "mae": 0.7865,
+        "bias": 0.2529,
+        "corr": 0.8209
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 2.4853,
+        "mae": 1.9389,
+        "bias": -1.9284,
+        "corr": 0.437
+      }
+    },
+    "200m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 2.8128,
+        "mae": 2.4355,
+        "bias": -2.4355,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 1.228,
+        "mae": 0.8906,
+        "bias": 0.3914,
+        "corr": 0.6837
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 1.1067,
+        "mae": 0.8063,
+        "bias": 0.2918,
+        "corr": 0.7163
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 1.4327,
+        "mae": 1.1091,
+        "bias": -0.9187,
+        "corr": 0.6421
+      }
+    },
+    "300m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 2.6816,
+        "mae": 2.4098,
+        "bias": -2.4098,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 0.8385,
+        "mae": 0.6036,
+        "bias": 0.1188,
+        "corr": 0.8064
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 0.6147,
+        "mae": 0.4241,
+        "bias": 0.1108,
+        "corr": 0.8804
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 1.0948,
+        "mae": 0.7338,
+        "bias": -0.6616,
+        "corr": 0.6834
+      }
+    },
+    "500m": {
+      "count": 36,
+      "climatology": {
+        "count": 36,
+        "rmse": 2.8531,
+        "mae": 2.6387,
+        "bias": -2.6387,
+        "corr": null
+      },
+      "mlp": {
+        "count": 36,
+        "rmse": 0.701,
+        "mae": 0.427,
+        "bias": 0.0427,
+        "corr": 0.8047
+      },
+      "simple_cnn": {
+        "count": 36,
+        "rmse": 0.4532,
+        "mae": 0.3168,
+        "bias": 0.0714,
+        "corr": 0.9142
+      },
+      "oceanembed": {
+        "count": 36,
+        "rmse": 0.5385,
+        "mae": 0.3796,
+        "bias": -0.0485,
+        "corr": 0.9094
+      }
+    },
+    "700m": {
+      "count": 35,
+      "climatology": {
+        "count": 35,
+        "rmse": 2.7655,
+        "mae": 2.5508,
+        "bias": -2.5508,
+        "corr": null
+      },
+      "mlp": {
+        "count": 35,
+        "rmse": 0.3877,
+        "mae": 0.3065,
+        "bias": 0.0768,
+        "corr": 0.9404
+      },
+      "simple_cnn": {
+        "count": 35,
+        "rmse": 0.3757,
+        "mae": 0.3179,
+        "bias": 0.0864,
+        "corr": 0.94
+      },
+      "oceanembed": {
+        "count": 35,
+        "rmse": 0.4624,
+        "mae": 0.3992,
+        "bias": 0.1245,
+        "corr": 0.9432
+      }
+    },
+    "1000m": {
+      "count": 35,
+      "climatology": {
+        "count": 35,
+        "rmse": 2.4844,
+        "mae": 2.299,
+        "bias": -2.299,
+        "corr": null
+      },
+      "mlp": {
+        "count": 35,
+        "rmse": 0.4433,
+        "mae": 0.3519,
+        "bias": 0.1508,
+        "corr": 0.8997
+      },
+      "simple_cnn": {
+        "count": 35,
+        "rmse": 0.4037,
+        "mae": 0.3087,
+        "bias": 0.113,
+        "corr": 0.9117
+      },
+      "oceanembed": {
+        "count": 35,
+        "rmse": 1.1861,
+        "mae": 1.1272,
+        "bias": 1.1272,
+        "corr": 0.9222
+      }
+    }
+  },
+  "spatial_distances": {
+    "min_km": 4.32,
+    "mean_km": 9.95,
+    "median_km": 10.86,
+    "max_km": 15.72
+  }
+}

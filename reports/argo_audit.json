@@ -1,0 +1,106 @@
+[
+  {
+    "profile_idx": 34,
+    "wmo_float_id": "2902267",
+    "cycle_number": 138,
+    "latitude": 17.954,
+    "longitude": 63.554,
+    "juld_timestamp": "2022-11-01T15:30:40.000000256",
+    "valid_observation_count": 95,
+    "pressure_range_dbar": [
+      1.0,
+      1964.0
+    ]
+  },
+  {
+    "profile_idx": 37,
+    "wmo_float_id": "6903007",
+    "cycle_number": 273,
+    "latitude": 15.671423333333333,
+    "longitude": 52.538713333333334,
+    "juld_timestamp": "2022-11-01T14:57:30.000000256",
+    "valid_observation_count": 624,
+    "pressure_range_dbar": [
+      2.799999952316284,
+      930.5
+    ]
+  },
+  {
+    "profile_idx": 38,
+    "wmo_float_id": "6903059",
+    "cycle_number": 252,
+    "latitude": 22.968758333333334,
+    "longitude": 61.99602333333333,
+    "juld_timestamp": "2022-11-01T14:57:30.000000256",
+    "valid_observation_count": 600,
+    "pressure_range_dbar": [
+      3.5999999046325684,
+      813.0
+    ]
+  },
+  {
+    "profile_idx": 44,
+    "wmo_float_id": "2902201",
+    "cycle_number": 244,
+    "latitude": 18.088,
+    "longitude": 60.242,
+    "juld_timestamp": "2022-11-01T13:49:36.000000000",
+    "valid_observation_count": 59,
+    "pressure_range_dbar": [
+      4.300000190734863,
+      1998.300048828125
+    ]
+  },
+  {
+    "profile_idx": 55,
+    "wmo_float_id": "6903060",
+    "cycle_number": 272,
+    "latitude": 23.851828333333334,
+    "longitude": 58.61722666666667,
+    "juld_timestamp": "2022-11-01T11:12:30.000000256",
+    "valid_observation_count": 447,
+    "pressure_range_dbar": [
+      3.9000000953674316,
+      553.0999755859375
+    ]
+  },
+  {
+    "profile_idx": 64,
+    "wmo_float_id": "2902388",
+    "cycle_number": 261,
+    "latitude": 8.49306,
+    "longitude": 64.63582,
+    "juld_timestamp": "2022-11-01T07:04:38.000000000",
+    "valid_observation_count": 508,
+    "pressure_range_dbar": [
+      1.2000000476837158,
+      1006.52001953125
+    ]
+  },
+  {
+    "profile_idx": 78,
+    "wmo_float_id": "2902680",
+    "cycle_number": 231,
+    "latitude": 6.374,
+    "longitude": 84.193,
+    "juld_timestamp": "2022-11-01T05:42:10.000000000",
+    "valid_observation_count": 74,
+    "pressure_range_dbar": [
+      6.699999809265137,
+      1998.199951171875
+    ]
+  },
+  {
+    "profile_idx": 82,
+    "wmo_float_id": "2902771",
+    "cycle_number": 117,
+    "latitude": 6.093,
+    "longitude": 83.365,
+    "juld_timestamp": "2022-11-01T05:17:31.000000000",
+    "valid_observation_count": 102,
+    "pressure_range_dbar": [
+      0.20000000298023224,
+      1983.800048828125
+    ]
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-09-13T16:00:00Z",
+  "frozen_reference_checkpoints": {
+    "checkpoints/pointwise_mlp_best.pt": {
+      "size_bytes": 27673,
+      "sha256": "208e19a00489ab9e35570b5eeab6246473b185ecfe713fa66db5e30773d52678",
+      "role": "Frozen Pointwise MLP baseline (6,095 params)",
+      "status": "VERIFIED & PRESERVED"
+    },
+    "checkpoints/simple_cnn_best.pt": {
+      "size_bytes": 187381,
+      "sha256": "572909d4c13b2421c60959c905b1fa9e39a34bc67c52ee6cb4c8ec6bba22ebc2",
+      "role": "Frozen Simple CNN baseline (46,031 params)",
+      "status": "VERIFIED & PRESERVED"
+    },
+    "checkpoints/oceanembed_best.pt": {
+      "size_bytes": 5416375,
+      "sha256": "0d2ba68163c08ba1f95a7ba9316d2b63feeeea1bf9ce91739c9f7fe493bb3d7c",
+      "role": "Frozen OceanEmbedNet model (1,342,928 params)",
+      "status": "VERIFIED & PRESERVED"
+    }
+  },
+  "frozen_configuration": {
+    "configs/scaler_params_experiment_2020.json": {
+      "size_bytes": 444,
+      "sha256": "8458d64b3cc33c4f74d081ef4045f9498ca6e2ceb1613eb5c942858b73fa6039",
+      "role": "Zero-leakage training-only standardizer parameters (Jan-Jul 2020)",
+      "status": "VERIFIED & PRESERVED"
+    }
+  },
+  "processed_chunks": {
+    "chunk_2020_01.pt": {
+      "path": "data/processed/chunk_2020_01.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_02.pt": {
+      "path": "data/processed/chunk_2020_02.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_03.pt": {
+      "path": "data/processed/chunk_2020_03.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_04.pt": {
+      "path": "data/processed/chunk_2020_04.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_05.pt": {
+      "path": "data/processed/chunk_2020_05.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_06.pt": {
+      "path": "data/processed/chunk_2020_06.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_07.pt": {
+      "path": "data/processed/chunk_2020_07.pt",
+      "partition": "TRAIN"
+    },
+    "chunk_2020_08.pt": {
+      "path": "data/processed/chunk_2020_08.pt",
+      "partition": "VAL"
+    },
+    "chunk_2020_09.pt": {
+      "path": "data/processed/chunk_2020_09.pt",
+      "partition": "TEST"
+    }
+  }
+}

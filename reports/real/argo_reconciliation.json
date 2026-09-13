@@ -1,0 +1,119 @@
+{
+  "reconciliation_timestamp": "2026-09-13T14:46:00Z",
+  "findings": {
+    "actual_argo_date": "2022-11-01",
+    "model_input_date_range": [
+      "2020-09-01",
+      "2020-09-30"
+    ],
+    "actual_profiles_used": [
+      34,
+      37,
+      38,
+      44,
+      55,
+      64,
+      78,
+      82
+    ],
+    "hallucinated_profiles_reported_in_turn2": [
+      39,
+      41,
+      42,
+      45,
+      48
+    ],
+    "root_cause_task1_task2": "In turn 2 chat output, the assistant hallucinated profile IDs [39, 41, 42, 45, 48] and an incorrect arithmetic formula (8 * 10 = 80 instead of 8 * 11 = 88). In reality, the NetCDF file only contains [34, 37, 38, 44, 55, 64, 78, 82] within the NIO basin, and the code scripts/validate_argo_phase4.py and reports/results/argo_validation_results.json always used [34, 37, 38, 44, 55, 64, 78, 82].",
+    "actual_valid_points": 107,
+    "depth_counts": {
+      "0": 0,
+      "5": 7,
+      "10": 8,
+      "20": 8,
+      "30": 8,
+      "50": 8,
+      "75": 8,
+      "100": 8,
+      "125": 8,
+      "150": 8,
+      "200": 8,
+      "300": 8,
+      "500": 8,
+      "700": 7,
+      "1000": 5
+    },
+    "depth_count_breakdown": {
+      "0m": 0,
+      "5m": 7,
+      "10m": 8,
+      "20m": 8,
+      "30m": 8,
+      "50m": 8,
+      "75m": 8,
+      "100m": 8,
+      "125m": 8,
+      "150m": 8,
+      "200m": 8,
+      "300m": 8,
+      "500m": 8,
+      "700m": 7,
+      "1000m": 5,
+      "sum_10_to_500m_inclusive": 88,
+      "total_sum": 107
+    },
+    "where_107_came_from": "7 (at 5m) + 88 (11 depths from 10m to 500m inclusive with 8 profiles each) + 7 (at 700m) + 5 (at 1000m) = 7 + 88 + 7 + 5 = 107 points.",
+    "has_duplicates": false,
+    "uses_stale_cache": false,
+    "reported_metrics_reproducible": true,
+    "exact_metrics": {
+      "climatology": {
+        "count": 107,
+        "rmse": 2.7911,
+        "mae": 2.2475,
+        "bias": -1.8583,
+        "corr": 0.9668
+      },
+      "pointwise_mlp": {
+        "count": 107,
+        "rmse": 2.1666,
+        "mae": 1.5151,
+        "bias": 0.4315,
+        "corr": 0.9539
+      },
+      "simple_cnn": {
+        "count": 107,
+        "rmse": 2.0043,
+        "mae": 1.3811,
+        "bias": 0.3873,
+        "corr": 0.9598
+      },
+      "oceanembed": {
+        "count": 107,
+        "rmse": 1.7679,
+        "mae": 1.3393,
+        "bias": -0.2728,
+        "corr": 0.9695
+      }
+    }
+  },
+  "verdict_answers": {
+    "A_actual_argo_date": "2022-11-01",
+    "B_actual_profiles_used_for_metrics": [
+      34,
+      37,
+      38,
+      44,
+      55,
+      64,
+      78,
+      82
+    ],
+    "C_actual_valid_points": 107,
+    "D_where_107_came_from": "0 + 7 + 8*11 + 7 + 5 = 107 (11 depths from 10m to 500m have 8 profiles = 88 points)",
+    "E_are_reported_argo_metrics_reproducible": "YES (recalculated values match reported metrics to 4 decimal places)",
+    "F_are_metrics_valid_for_contemporaneous_september_2020": "NO (762-day temporal gap; valid only as cross-temporal stratification test)",
+    "G_is_there_a_profile_selection_bug": "NO in code/JSON. YES in the previous assistant chat text which fabricated profile IDs 39, 41, 42, 45, 48.",
+    "H_is_there_a_point_count_bug": "NO in code/JSON. The code correctly counts 107 points. The previous chat text had an arithmetic typo claiming 10 depths between 10-500m instead of 11.",
+    "I_can_we_use_current_argo_result_in_final_presentation": "YES, PROVIDED it is explicitly labeled as a 'Cross-Temporal Climatological Stratification Transfer Test' and NOT contemporaneous validation."
+  }
+}

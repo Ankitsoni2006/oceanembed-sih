@@ -1,0 +1,42 @@
+{
+  "target_date": "2020-02-01",
+  "dataset_id": "cmems_mod_glo_phy_my_0.083deg_P1D-m",
+  "variable": "thetao",
+  "spatial_bounds": {
+    "lon_min": 44.8,
+    "lon_max": 105.2,
+    "lat_min": 4.8,
+    "lat_max": 30.2
+  },
+  "depth_bounds": {
+    "min_depth": 0.49,
+    "max_depth": 1063.0
+  },
+  "timeout_seconds": 180,
+  "request_start": "2026-09-12T14:02:06.091052Z",
+  "status": "SUCCESS",
+  "wall_clock_duration_seconds": 72.88,
+  "file_size_bytes": 15948702,
+  "file_size_mb": 15.21,
+  "verification": {
+    "variables": [
+      "thetao"
+    ],
+    "timestamps": [
+      "2020-02-01"
+    ],
+    "num_depth_levels": 36,
+    "depth_range": [
+      0.49,
+      1062.44
+    ],
+    "spatial_shape": [
+      305,
+      725
+    ],
+    "date_verified": true,
+    "thetao_mean": 22.037898858925768,
+    "thetao_valid_cells": 109141
+  },
+  "request_end": "2026-09-12T14:03:18.968021Z"
+}

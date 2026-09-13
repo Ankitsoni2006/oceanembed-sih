@@ -1,0 +1,240 @@
+{
+  "audit_timestamp": "2026-09-13T06:28:26Z",
+  "stage": "STAGE 1: FINAL TRAINING-READINESS AUDIT",
+  "training_readiness_status": "PASSED",
+  "hardware": {
+    "pytorch_version": "2.12.0+cpu",
+    "cuda_available": false,
+    "device": "cpu",
+    "cpu_count_logical": 16,
+    "ram_total_gb": 15.82,
+    "ram_available_gb": 5.97,
+    "ram_used_pct": 62.3
+  },
+  "dataset_audit": {
+    "expected_days": 274,
+    "actual_days": 274,
+    "date_start": "2020-01-01",
+    "date_end": "2020-09-30",
+    "date_continuity": true,
+    "missing_dates": [],
+    "duplicate_dates_count": 0,
+    "shapes_valid": true,
+    "land_ocean_mask_valid": true,
+    "anomalies": [],
+    "channel_stats": {
+      "sst": {
+        "channel_idx": 0,
+        "valid_fraction": 0.4914,
+        "min": 12.9625,
+        "max": 36.445,
+        "mean": 28.6254,
+        "std": 2.0142,
+        "status": "OK"
+      },
+      "sss": {
+        "channel_idx": 1,
+        "valid_fraction": 0.43,
+        "min": 20.3612,
+        "max": 44.183,
+        "mean": 34.7459,
+        "std": 1.6755,
+        "status": "OK"
+      },
+      "ssh": {
+        "channel_idx": 2,
+        "valid_fraction": 0.4946,
+        "min": -0.459,
+        "max": 0.6055,
+        "mean": 0.1091,
+        "std": 0.0966,
+        "status": "OK"
+      },
+      "u_curr": {
+        "channel_idx": 3,
+        "valid_fraction": 0.4724,
+        "min": -1.9925,
+        "max": 2.2595,
+        "mean": 0.0536,
+        "std": 0.2562,
+        "status": "OK"
+      },
+      "v_curr": {
+        "channel_idx": 4,
+        "valid_fraction": 0.4724,
+        "min": -2.2965,
+        "max": 1.7953,
+        "mean": 0.0085,
+        "std": 0.2173,
+        "status": "OK"
+      },
+      "u_wind": {
+        "channel_idx": 5,
+        "valid_fraction": 0.9999,
+        "min": -18.8199,
+        "max": 20.8482,
+        "mean": 0.9557,
+        "std": 3.4847,
+        "status": "OK"
+      },
+      "v_wind": {
+        "channel_idx": 6,
+        "valid_fraction": 0.9999,
+        "min": -19.7674,
+        "max": 19.7466,
+        "mean": 0.6087,
+        "std": 3.2902,
+        "status": "OK"
+      }
+    },
+    "target_stats": {
+      "0m": {
+        "depth_m": 0.0,
+        "valid_fraction": 0.487,
+        "min": 13.3516,
+        "max": 36.0613,
+        "mean": 28.7018,
+        "std": 1.996
+      },
+      "5m": {
+        "depth_m": 5.0,
+        "valid_fraction": 0.487,
+        "min": 13.9437,
+        "max": 35.9778,
+        "mean": 28.6073,
+        "std": 1.9781
+      },
+      "10m": {
+        "depth_m": 10.0,
+        "valid_fraction": 0.4721,
+        "min": 15.6112,
+        "max": 35.3485,
+        "mean": 28.5748,
+        "std": 1.8993
+      },
+      "20m": {
+        "depth_m": 20.0,
+        "valid_fraction": 0.4605,
+        "min": 16.236,
+        "max": 35.0305,
+        "mean": 28.4454,
+        "std": 1.8512
+      },
+      "30m": {
+        "depth_m": 30.0,
+        "valid_fraction": 0.4468,
+        "min": 17.3808,
+        "max": 35.2069,
+        "mean": 28.1771,
+        "std": 1.8256
+      },
+      "50m": {
+        "depth_m": 50.0,
+        "valid_fraction": 0.4273,
+        "min": 16.5056,
+        "max": 31.497,
+        "mean": 27.2841,
+        "std": 1.9141
+      },
+      "75m": {
+        "depth_m": 75.0,
+        "valid_fraction": 0.4102,
+        "min": 15.8813,
+        "max": 31.3857,
+        "mean": 25.6885,
+        "std": 2.1697
+      },
+      "100m": {
+        "depth_m": 100.0,
+        "valid_fraction": 0.4011,
+        "min": 14.3319,
+        "max": 30.1628,
+        "mean": 23.5332,
+        "std": 2.3643
+      },
+      "125m": {
+        "depth_m": 125.0,
+        "valid_fraction": 0.399,
+        "min": 13.0366,
+        "max": 28.6654,
+        "mean": 21.072,
+        "std": 2.3624
+      },
+      "150m": {
+        "depth_m": 150.0,
+        "valid_fraction": 0.3971,
+        "min": 11.387,
+        "max": 27.319,
+        "mean": 18.8046,
+        "std": 2.2206
+      },
+      "200m": {
+        "depth_m": 200.0,
+        "valid_fraction": 0.3935,
+        "min": 10.142,
+        "max": 25.6141,
+        "mean": 15.8349,
+        "std": 1.8789
+      },
+      "300m": {
+        "depth_m": 300.0,
+        "valid_fraction": 0.39,
+        "min": 9.9818,
+        "max": 21.5388,
+        "mean": 13.1912,
+        "std": 1.5551
+      },
+      "500m": {
+        "depth_m": 500.0,
+        "valid_fraction": 0.3833,
+        "min": 8.5951,
+        "max": 17.8011,
+        "mean": 11.2885,
+        "std": 1.2308
+      },
+      "700m": {
+        "depth_m": 700.0,
+        "valid_fraction": 0.3784,
+        "min": 5.925,
+        "max": 16.1789,
+        "mean": 9.8491,
+        "std": 1.2002
+      },
+      "1000m": {
+        "depth_m": 1000.0,
+        "valid_fraction": 0.3687,
+        "min": 4.8747,
+        "max": 12.6653,
+        "mean": 7.7867,
+        "std": 1.0144
+      }
+    }
+  },
+  "streaming_audit": {
+    "status": "PASSED",
+    "sec_per_batch": 0.083
+  },
+  "model_audit": {
+    "PointwiseMLP": {
+      "parameters": 6095,
+      "forward_time_s": 0.032,
+      "backward_time_s": 0.0531,
+      "checkpoint_kb": 27.0,
+      "status": "PASSED"
+    },
+    "SimpleCNNBaseline": {
+      "parameters": 46031,
+      "forward_time_s": 0.0789,
+      "backward_time_s": 0.0763,
+      "checkpoint_kb": 183.1,
+      "status": "PASSED"
+    },
+    "OceanEmbedNet": {
+      "parameters": 1342928,
+      "forward_time_s": 1.0173,
+      "backward_time_s": 2.1033,
+      "checkpoint_kb": 5289.7,
+      "status": "PASSED"
+    }
+  }
+}

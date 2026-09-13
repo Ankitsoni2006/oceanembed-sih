@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "alignment_checks": [
+    {
+      "target_date": "2020-01-15",
+      "raw_glorys_internal_date": "2020-01-15",
+      "processed_chunk_date": "2020-01-15",
+      "exact_alignment": true
+    },
+    {
+      "target_date": "2020-04-15",
+      "raw_glorys_internal_date": "2020-04-15",
+      "processed_chunk_date": "2020-04-15",
+      "exact_alignment": true
+    },
+    {
+      "target_date": "2020-07-15",
+      "raw_glorys_internal_date": "2020-07-15",
+      "processed_chunk_date": "2020-07-15",
+      "exact_alignment": true
+    },
+    {
+      "target_date": "2020-09-15",
+      "raw_glorys_internal_date": "2020-09-15",
+      "processed_chunk_date": "2020-09-15",
+      "exact_alignment": true
+    }
+  ]
+}

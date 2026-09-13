@@ -1,0 +1,107 @@
+{
+  "audit_timestamp": "2026-09-12T20:41:56Z",
+  "processed_dir": "data/processed",
+  "scaler_path": "data/processed/scaler_params.json",
+  "gates": {
+    "gate_01_chronological_continuity": {
+      "passed": true,
+      "total_days": 274,
+      "date_range": [
+        "2020-01-01",
+        "2020-09-30"
+      ],
+      "duplicate_dates": 0
+    },
+    "gate_04_05_tensor_shapes": {
+      "passed": true,
+      "expected_X_spatial": [
+        14,
+        101,
+        241
+      ],
+      "expected_Y_spatial": [
+        15,
+        101,
+        241
+      ]
+    },
+    "gate_06_07_grid_and_depths": {
+      "passed": true,
+      "grid": {
+        "lat_bounds": [
+          5.0,
+          30.0
+        ],
+        "lon_bounds": [
+          45.0,
+          105.0
+        ],
+        "resolution": 0.25,
+        "dimensions": [
+          101,
+          241
+        ]
+      },
+      "target_depths": [
+        0.0,
+        5.0,
+        10.0,
+        20.0,
+        30.0,
+        50.0,
+        75.0,
+        100.0,
+        125.0,
+        150.0,
+        200.0,
+        300.0,
+        500.0,
+        700.0,
+        1000.0
+      ],
+      "num_depths": 15
+    },
+    "gate_11_temporal_split_separation": {
+      "passed": true,
+      "train_samples": 274,
+      "train_range": [
+        "2020-01-01",
+        "2020-09-30"
+      ],
+      "val_samples": 0,
+      "val_range": null,
+      "test_samples": 0,
+      "test_range": null
+    },
+    "gate_12_scaler_zero_leakage": {
+      "passed": true,
+      "scaler_means": [
+        28.6253662109375,
+        34.74586486816406,
+        0.10910645127296448,
+        0.05358012020587921,
+        0.008470752276480198,
+        0.9557496309280396,
+        0.6087268590927124
+      ],
+      "scaler_stds": [
+        2.0141940116882324,
+        1.6754528284072876,
+        0.0966455489397049,
+        0.25622835755348206,
+        0.21734003722667694,
+        3.484689712524414,
+        3.2901949882507324
+      ],
+      "num_channels": 7
+    },
+    "gate_09_10_physical_integrity": {
+      "masks_strictly_binary": true,
+      "sst_ocean_min": 13.71,
+      "sst_ocean_max": 30.84,
+      "passed": true
+    }
+  },
+  "partition_summary": {},
+  "overall_status": "PASSED"
+}

@@ -1,0 +1,36 @@
+{
+  "benchmark_timestamp": "2026-09-13T06:30:26Z",
+  "total_train_samples": 213,
+  "models": {
+    "PointwiseMLP": {
+      "batch_size": 4,
+      "sec_per_batch": 0.076,
+      "batches_per_sec": 13.16,
+      "samples_per_sec": 52.63,
+      "batches_per_epoch": 54,
+      "estimated_epoch_sec": 4.1,
+      "estimated_epoch_min": 0.07,
+      "ram_mb": 490.4
+    },
+    "SimpleCNNBaseline": {
+      "batch_size": 4,
+      "sec_per_batch": 0.1806,
+      "batches_per_sec": 5.54,
+      "samples_per_sec": 22.14,
+      "batches_per_epoch": 54,
+      "estimated_epoch_sec": 9.75,
+      "estimated_epoch_min": 0.16,
+      "ram_mb": 529.6
+    },
+    "OceanEmbedNet": {
+      "batch_size": 2,
+      "sec_per_batch": 2.8756,
+      "batches_per_sec": 0.35,
+      "samples_per_sec": 0.7,
+      "batches_per_epoch": 107,
+      "estimated_epoch_sec": 307.69,
+      "estimated_epoch_min": 5.13,
+      "ram_mb": 849.6
+    }
+  }
+}

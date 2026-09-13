@@ -1,0 +1,53 @@
+# Dependencies & Builds
+node_modules/
+dist/
+build/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Python Environments & Caches
+myenv/
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets & Credentials
+*.key
+*.pem
+*.cert
+*.pfx
+.copernicusmarine*
+secrets*
+credentials*
+
+# Scratch & Prompt Dumps
+part_*.txt
+prompt_*.txt
+*.tmp
+
+# Raw Large Datasets & Archives (>100MB)
+data/raw/
+*.nc
+*.h5
+*.zarr
+
+# Binary Model Checkpoints & Tensors (ignored by default)
+*.ckpt
+*.pth
+*.pt
+
+# Whitelisted Production Checkpoint & Data Chunks (Jan-Sep 2020)
+!checkpoints/phase5/oceanembed_v3_decoder.pt
+!data/pilot/sample_X_Y_real.pt
+!data/processed/train_climatology_3d.pt
+!data/processed/chunk_2020_*.pt
+
+

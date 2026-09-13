@@ -1,0 +1,1520 @@
+{
+  "samples": [
+    {
+      "date": "2020-01-01",
+      "chunk_file": "chunk_2020_01_pilot.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-01-01",
+      "chunk_file": "chunk_2020_01_2day.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-01-01",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-01-01",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-01-01",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-01-02",
+      "chunk_file": "chunk_2020_01_2day.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-01-02",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-01-02",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-01-02",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-01-03",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-01-03",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-01-03",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-01-04",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-01-04",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-01-04",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-01-05",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-01-05",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-01-05",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-01-06",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-01-06",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-01-06",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-01-07",
+      "chunk_file": "chunk_real_2020_01_w1.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-01-07",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-01-07",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-01-08",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-01-08",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-01-09",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-01-09",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-01-10",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-01-10",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-01-11",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-01-11",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-01-12",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-01-12",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-01-13",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-01-13",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-01-14",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-01-14",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-01-15",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-01-15",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-01-16",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-01-16",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-01-17",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-01-17",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-01-18",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-01-18",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-01-19",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-01-19",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-01-20",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-01-20",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-01-21",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-01-21",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-01-22",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-01-22",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-01-23",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-01-23",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-01-24",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-01-24",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-01-25",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-01-25",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-01-26",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-01-26",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-01-27",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-01-27",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-01-28",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-01-28",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-01-29",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-01-29",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-01-30",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-01-30",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-01-31",
+      "chunk_file": "chunk_real_2020_01_31day.pt",
+      "offset": 30
+    },
+    {
+      "date": "2020-01-31",
+      "chunk_file": "chunk_2020_01.pt",
+      "offset": 30
+    },
+    {
+      "date": "2020-03-01",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-03-02",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-03-03",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-03-04",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-03-05",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-03-06",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-03-07",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-03-08",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-03-09",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-03-10",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-03-11",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-03-12",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-03-13",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-03-14",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-03-15",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-03-16",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-03-17",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-03-18",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-03-19",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-03-20",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-03-21",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-03-22",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-03-23",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-03-24",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-03-25",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-03-26",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-03-27",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-03-28",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-03-29",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-03-30",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-03-31",
+      "chunk_file": "chunk_2020_03.pt",
+      "offset": 30
+    },
+    {
+      "date": "2020-04-01",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-04-02",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-04-03",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-04-04",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-04-05",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-04-06",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-04-07",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-04-08",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-04-09",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-04-10",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-04-11",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-04-12",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-04-13",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-04-14",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-04-15",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-04-16",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-04-17",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-04-18",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-04-19",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-04-20",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-04-21",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-04-22",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-04-23",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-04-24",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-04-25",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-04-26",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-04-27",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-04-28",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-04-29",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-04-30",
+      "chunk_file": "chunk_2020_04.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-05-01",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-05-02",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-05-03",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-05-04",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-05-05",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-05-06",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-05-07",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-05-08",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-05-09",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-05-10",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-05-11",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-05-12",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-05-13",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-05-14",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-05-15",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-05-16",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-05-17",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-05-18",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-05-19",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-05-20",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-05-21",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-05-22",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-05-23",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-05-24",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-05-25",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-05-26",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-05-27",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-05-28",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-05-29",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-05-30",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-05-31",
+      "chunk_file": "chunk_2020_05.pt",
+      "offset": 30
+    },
+    {
+      "date": "2020-06-01",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-06-02",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-06-03",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-06-04",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-06-05",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-06-06",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-06-07",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-06-08",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-06-09",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-06-10",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-06-11",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-06-12",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-06-13",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-06-14",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-06-15",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-06-16",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-06-17",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-06-18",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-06-19",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-06-20",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-06-21",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-06-22",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-06-23",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-06-24",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-06-25",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-06-26",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-06-27",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-06-28",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-06-29",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-06-30",
+      "chunk_file": "chunk_2020_06.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-07-01",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-07-02",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-07-03",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-07-04",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-07-05",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-07-06",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-07-07",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-07-08",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-07-09",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-07-10",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-07-11",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-07-12",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-07-13",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-07-14",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-07-15",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-07-16",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-07-17",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-07-18",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-07-19",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-07-20",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-07-21",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-07-22",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-07-23",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-07-24",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-07-25",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-07-26",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-07-27",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-07-28",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-07-29",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-07-30",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-07-31",
+      "chunk_file": "chunk_2020_07.pt",
+      "offset": 30
+    },
+    {
+      "date": "2020-08-01",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-08-02",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-08-03",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-08-04",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-08-05",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-08-06",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-08-07",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-08-08",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-08-09",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-08-10",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-08-11",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-08-12",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-08-13",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-08-14",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-08-15",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-08-16",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-08-17",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-08-18",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-08-19",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-08-20",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-08-21",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-08-22",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-08-23",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-08-24",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-08-25",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-08-26",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-08-27",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-08-28",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-08-29",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-08-30",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 29
+    },
+    {
+      "date": "2020-08-31",
+      "chunk_file": "chunk_2020_08.pt",
+      "offset": 30
+    },
+    {
+      "date": "2020-09-01",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 0
+    },
+    {
+      "date": "2020-09-02",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 1
+    },
+    {
+      "date": "2020-09-03",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 2
+    },
+    {
+      "date": "2020-09-04",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 3
+    },
+    {
+      "date": "2020-09-05",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 4
+    },
+    {
+      "date": "2020-09-06",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 5
+    },
+    {
+      "date": "2020-09-07",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 6
+    },
+    {
+      "date": "2020-09-08",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 7
+    },
+    {
+      "date": "2020-09-09",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 8
+    },
+    {
+      "date": "2020-09-10",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 9
+    },
+    {
+      "date": "2020-09-11",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 10
+    },
+    {
+      "date": "2020-09-12",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 11
+    },
+    {
+      "date": "2020-09-13",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 12
+    },
+    {
+      "date": "2020-09-14",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 13
+    },
+    {
+      "date": "2020-09-15",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 14
+    },
+    {
+      "date": "2020-09-16",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 15
+    },
+    {
+      "date": "2020-09-17",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 16
+    },
+    {
+      "date": "2020-09-18",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 17
+    },
+    {
+      "date": "2020-09-19",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 18
+    },
+    {
+      "date": "2020-09-20",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 19
+    },
+    {
+      "date": "2020-09-21",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 20
+    },
+    {
+      "date": "2020-09-22",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 21
+    },
+    {
+      "date": "2020-09-23",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 22
+    },
+    {
+      "date": "2020-09-24",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 23
+    },
+    {
+      "date": "2020-09-25",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 24
+    },
+    {
+      "date": "2020-09-26",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 25
+    },
+    {
+      "date": "2020-09-27",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 26
+    },
+    {
+      "date": "2020-09-28",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 27
+    },
+    {
+      "date": "2020-09-29",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 28
+    },
+    {
+      "date": "2020-09-30",
+      "chunk_file": "chunk_2020_09.pt",
+      "offset": 29
+    }
+  ],
+  "chunks": {
+    "chunk_2020_01_pilot": {
+      "file": "chunk_2020_01_pilot.pt",
+      "num_days": 1,
+      "date_start": "2020-01-01",
+      "date_end": "2020-01-01",
+      "size_bytes": 2826117
+    },
+    "chunk_2020_01_2day": {
+      "file": "chunk_2020_01_2day.pt",
+      "num_days": 2,
+      "date_start": "2020-01-01",
+      "date_end": "2020-01-02",
+      "size_bytes": 5649853
+    },
+    "chunk_real_2020_01_w1": {
+      "file": "chunk_real_2020_01_w1.pt",
+      "num_days": 7,
+      "date_start": "2020-01-01",
+      "date_end": "2020-01-07",
+      "size_bytes": 19768789
+    },
+    "chunk_real_2020_01_31day": {
+      "file": "chunk_real_2020_01_31day.pt",
+      "num_days": 31,
+      "date_start": "2020-01-01",
+      "date_end": "2020-01-31",
+      "size_bytes": 87539757
+    },
+    "chunk_2020_01": {
+      "file": "chunk_2020_01.pt",
+      "num_days": 31,
+      "date_start": "2020-01-01",
+      "date_end": "2020-01-31",
+      "size_bytes": 87532757
+    },
+    "chunk_2020_03": {
+      "file": "chunk_2020_03.pt",
+      "num_days": 31,
+      "date_start": "2020-03-01",
+      "date_end": "2020-03-31",
+      "size_bytes": 87532757
+    },
+    "chunk_2020_04": {
+      "file": "chunk_2020_04.pt",
+      "num_days": 30,
+      "date_start": "2020-04-01",
+      "date_end": "2020-04-30",
+      "size_bytes": 84709141
+    },
+    "chunk_2020_05": {
+      "file": "chunk_2020_05.pt",
+      "num_days": 31,
+      "date_start": "2020-05-01",
+      "date_end": "2020-05-31",
+      "size_bytes": 87532757
+    },
+    "chunk_2020_06": {
+      "file": "chunk_2020_06.pt",
+      "num_days": 30,
+      "date_start": "2020-06-01",
+      "date_end": "2020-06-30",
+      "size_bytes": 84709141
+    },
+    "chunk_2020_07": {
+      "file": "chunk_2020_07.pt",
+      "num_days": 31,
+      "date_start": "2020-07-01",
+      "date_end": "2020-07-31",
+      "size_bytes": 87532757
+    },
+    "chunk_2020_08": {
+      "file": "chunk_2020_08.pt",
+      "num_days": 31,
+      "date_start": "2020-08-01",
+      "date_end": "2020-08-31",
+      "size_bytes": 87532757
+    },
+    "chunk_2020_09": {
+      "file": "chunk_2020_09.pt",
+      "num_days": 30,
+      "date_start": "2020-09-01",
+      "date_end": "2020-09-30",
+      "size_bytes": 84709141
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-09-13T16:00:00Z",
+  "experiments": [
+    {
+      "experiment": "Static Climatology Baseline",
+      "data_source": "GLORYS Jan-Jul 2020 Mean Profile",
+      "split": "Held-out Test (Sep 2020)",
+      "scaler": "None (Raw Physical)",
+      "checkpoint": "Fixed Profile",
+      "glorys_rmse": 2.9976,
+      "argo_rmse": 3.0363,
+      "reproduced": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "experiment": "Pointwise MLP Baseline",
+      "data_source": "14-Channel Satellite Chunks",
+      "split": "Train: Jan-Jul (213d), Val: Aug (31d), Test: Sep (30d)",
+      "scaler": "scaler_params_experiment_2020.json",
+      "checkpoint": "checkpoints/pointwise_mlp_best.pt",
+      "glorys_rmse": 1.1177,
+      "argo_rmse": 1.1602,
+      "reproduced": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "experiment": "Simple CNN Baseline",
+      "data_source": "14-Channel Satellite Chunks",
+      "split": "Train: Jan-Jul (213d), Val: Aug (31d), Test: Sep (30d)",
+      "scaler": "scaler_params_experiment_2020.json",
+      "checkpoint": "checkpoints/simple_cnn_best.pt",
+      "glorys_rmse": 1.0418,
+      "argo_rmse": 0.9526,
+      "reproduced": true,
+      "status": "CONFIRMED (CURRENT BEST)"
+    },
+    {
+      "experiment": "OceanEmbedNet (Multi-Scale U-Net)",
+      "data_source": "14-Channel Satellite Chunks",
+      "split": "Train: Jan-Jul (213d), Val: Aug (31d), Test: Sep (30d)",
+      "scaler": "scaler_params_experiment_2020.json",
+      "checkpoint": "checkpoints/oceanembed_best.pt",
+      "glorys_rmse": 1.8142,
+      "argo_rmse": 1.8126,
+      "reproduced": true,
+      "status": "CONFIRMED (PHASE 5 ENHANCEMENT CANDIDATE)"
+    },
+    {
+      "experiment": "Contemporaneous ARGO Validation",
+      "data_source": "Coriolis GDAC ARGO NetCDFs (Sept 1, 15, 25, 2020)",
+      "split": "Same-Day Collocation with chunk_2020_09.pt",
+      "scaler": "scaler_params_experiment_2020.json",
+      "checkpoint": "All frozen checkpoints",
+      "sample_count": 497,
+      "reproduced": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "experiment": "Cross-Temporal ARGO Transfer Test",
+      "data_source": "Coriolis GDAC ARGO NetCDF (Nov 1, 2022)",
+      "split": "Interannual Out-of-Distribution (762-day gap)",
+      "scaler": "scaler_params_experiment_2020.json",
+      "checkpoint": "All frozen checkpoints",
+      "sample_count": 107,
+      "reproduced": true,
+      "status": "CONFIRMED (TRANSFER TEST ONLY)"
+    }
+  ]
+}

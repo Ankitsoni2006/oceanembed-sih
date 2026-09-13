@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-09-13T16:00:00Z",
+  "claims": [
+    {
+      "id": "CLAIM-01",
+      "original_claim": "OceanEmbed achieves a near-zero generalization gap (|1.8142 - 1.8126| = 0.0016 C) between reanalysis and in-situ ARGO",
+      "evidence": "GLORYS and ARGO represent heterogeneous observation modalities with completely distinct spatial geometries and sampling densities",
+      "verdict": "REMOVED",
+      "replacement_text": "OceanEmbed yields a similar aggregate RMSE magnitude (~1.81 C) across both GLORYS reanalysis and ARGO in-situ point observations"
+    },
+    {
+      "id": "CLAIM-02",
+      "original_claim": "OceanEmbed exhibits consistent generalization across reanalysis and in-situ data",
+      "evidence": "Simple CNN outperforms OceanEmbed by 0.86 C on ARGO and 0.77 C on GLORYS; Pointwise MLP is second",
+      "verdict": "REMOVED",
+      "replacement_text": "OceanEmbed maintains a consistent error scale (~1.81 C), but currently underperforms simpler CNN and MLP baselines across both evaluation references"
+    },
+    {
+      "id": "CLAIM-03",
+      "original_claim": "The model is well-calibrated",
+      "evidence": "No uncertainty estimation, conformal prediction, or calibration curves were evaluated; prediction is deterministic point estimate",
+      "verdict": "REMOVED",
+      "replacement_text": "Deterministic point predictions yield an overall mean bias of -0.34 C against in-situ ARGO profiles"
+    },
+    {
+      "id": "CLAIM-04",
+      "original_claim": "Comprehensive September 2020 ARGO validation across the entire month",
+      "evidence": "ARGO profiles were retrieved exclusively on three calendar snapshot dates: September 1, 15, and 25 (36 profiles, 497 points)",
+      "verdict": "SOFTENED",
+      "replacement_text": "Contemporaneous in-situ observational evaluation across three discrete snapshot dates in September 2020 (Sept 1, 15, 25; 36 profiles, 497 points)"
+    },
+    {
+      "id": "CLAIM-05",
+      "original_claim": "Fully independent observational validation against ground truth",
+      "evidence": "ARGO is independent of model inputs, but GLORYS12V1 operationally assimilates in-situ observations; float assimilation status was unverified",
+      "verdict": "SOFTENED",
+      "replacement_text": "In-situ observational validation independent of model training inputs. Float assimilation status within GLORYS12V1 was not verified"
+    },
+    {
+      "id": "CLAIM-06",
+      "original_claim": "OceanEmbed demonstrates superior deep-ocean representation",
+      "evidence": "Simple CNN achieves lower RMSE at every single depth below 150m (CNN 0.40 C vs OceanEmbed 1.19 C at 1000m)",
+      "verdict": "REMOVED",
+      "replacement_text": "While OceanEmbed resolves abyssal layers below 500m to within 0.54 C, Simple CNN achieves lower error across all depths, indicating substantial room for OceanEmbed architectural refinement"
+    },
+    {
+      "id": "CLAIM-07",
+      "original_claim": "TensorRT and ONNX deployment acceleration implemented",
+      "evidence": "PyTorch CPU and CUDA execution are operational; TensorRT and ONNX export are planned for Phase 5",
+      "verdict": "SOFTENED",
+      "replacement_text": "PyTorch CPU/CUDA operational with ~367 ms/grid latency; TensorRT and ONNX export planned for production scaling"
+    },
+    {
+      "id": "CLAIM-08",
+      "original_claim": "Thermocline error is caused by internal waves and non-monotonic stratification",
+      "evidence": "No internal wave modeling or baroclinic wave experiments were executed in this codebase",
+      "verdict": "REPLACED",
+      "replacement_text": "Observed architectural performance limitation in the 75-150m depth window where vertical thermal gradients are sharpest"
+    }
+  ]
+}
