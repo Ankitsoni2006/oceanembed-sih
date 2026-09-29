@@ -27,9 +27,19 @@ export const ModelPerformance: React.FC = () => {
           <h2 className="text-base font-bold text-slate-900 tracking-tight flex items-center gap-2">
             <Award className="w-5 h-5 text-sky-700" />
             Validation Results
+            <span className="text-[10px] font-mono font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded normal-case tracking-normal">
+              Previously evaluated benchmarks
+            </span>
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Performance evaluated against a held-out GLORYS reanalysis reference and selected September 2020 ARGO observations.
+            Two distinct benchmarks: the <strong>GLORYS held-out reference</strong> (supervised
+            training/reference dataset) and the <strong>ARGO observational benchmark</strong>{' '}
+            (in-situ floats). The figures on this card are historical, verified experiment results
+            — they are not recomputed per click. Live, request-time ARGO values are shown in the{' '}
+            <a href="#argo-validation" className="text-sky-700 underline underline-offset-2">
+              ARGO Observational Validation
+            </a>{' '}
+            section above.
           </p>
         </div>
       </div>
@@ -39,7 +49,7 @@ export const ModelPerformance: React.FC = () => {
         {/* Metric 1: GLORYS Reanalysis Reference */}
         <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg">
           <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1">
-            Reanalysis Reference (GLORYS)
+            GLORYS Held-Out Benchmark
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl font-extrabold font-mono text-slate-900">0.8601°C</span>
@@ -49,14 +59,14 @@ export const ModelPerformance: React.FC = () => {
           </div>
           <div className="mt-2 text-[11px] text-slate-500 flex items-center justify-between border-t border-slate-200 pt-1.5 font-mono">
             <span>Simple CNN: 1.0418°C</span>
-            <span className="text-slate-400">Sep 2020 Test</span>
+            <span className="text-slate-400">Historical • Sep 2020 test</span>
           </div>
         </div>
 
         {/* Metric 2: ARGO Observational Check */}
-        <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg">
-          <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mb-1">
-            ARGO Observational Check
+        <div className="p-4 bg-amber-50/50 border border-amber-200 rounded-lg">
+          <div className="text-[11px] font-mono text-amber-800 uppercase tracking-wider mb-1">
+            ARGO Observational Benchmark
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl font-extrabold font-mono text-sky-900">0.7973°C</span>
@@ -64,9 +74,9 @@ export const ModelPerformance: React.FC = () => {
               -16.3% error
             </span>
           </div>
-          <div className="mt-2 text-[11px] text-slate-500 flex items-center justify-between border-t border-slate-200 pt-1.5 font-mono">
+          <div className="mt-2 text-[11px] text-slate-500 flex items-center justify-between border-t border-amber-200 pt-1.5 font-mono">
             <span>Simple CNN: 0.9526°C</span>
-            <span className="text-slate-400">Selected Sep Snapshots</span>
+            <span className="text-slate-400">Historical • Sep 2020</span>
           </div>
         </div>
 
@@ -109,9 +119,11 @@ export const ModelPerformance: React.FC = () => {
       <div className="bg-sky-50/60 border border-sky-200 rounded-lg p-3 text-xs text-sky-900 mb-6 flex items-start gap-2.5">
         <ShieldCheck className="w-4 h-4 text-sky-700 shrink-0 mt-0.5" />
         <div>
-          <span className="font-bold block">Observational Verification Protocol:</span>
+          <span className="font-bold block">Observational Verification Protocol (historical benchmark):</span>
           <span>
             Independent observational check using <strong>497 matched profile-depth observations from 36 ARGO profiles across 28 unique WMO floats in September 2020</strong>.
+            These are static results from a previously evaluated, verified offline experiment — the
+            live per-request equivalent is served by <code className="font-mono">GET /argo/summary</code> in the ARGO section above.
           </span>
         </div>
       </div>
@@ -120,7 +132,7 @@ export const ModelPerformance: React.FC = () => {
       <div>
         <div className="flex items-center justify-between mb-2">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
-            ARGO Observational Check — RMSE by Depth
+            ARGO Depth-wise RMSE — Previously evaluated benchmark
           </h3>
           <div className="flex items-center gap-2 text-[11px] text-slate-500">
             <span className="w-2.5 h-2.5 rounded-xs bg-amber-100 border border-amber-300 inline-block" />
@@ -165,7 +177,7 @@ export const ModelPerformance: React.FC = () => {
           </table>
         </div>
         <p className="text-[10px] text-slate-500 mt-1.5 font-mono">
-          * OceanEmbed v3 achieved lower ARGO RMSE than the Simple CNN at all 14 evaluated depth levels (0m had no ARGO observations).
+          * Historical, previously evaluated benchmark: OceanEmbed v3 achieved lower ARGO RMSE than the Simple CNN at all 14 evaluated depth levels (0m had no ARGO observations). Live depth-wise values are returned by <code>GET /argo/summary</code> in the ARGO section.
         </p>
       </div>
     </section>

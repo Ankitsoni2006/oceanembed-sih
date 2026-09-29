@@ -46,9 +46,13 @@ from backend.schemas import (
     DateRange,
     PredictionRequest,
     PredictionResponse,
-    ErrorResponse
+    ErrorResponse,
+    ArgoProfileListResponse,
+    ArgoComparisonResponse,
+    ArgoSummaryResponse
 )
 from backend.inference import INFERENCE_SERVICE
+from backend.argo import ARGO_VALIDATION_SERVICE, ARGO_SOURCE_NOTE
 
 # Structured Logging Configuration
 logging.basicConfig(
@@ -76,6 +80,22 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error(f"Fatal error during model initialization: {e}", exc_info=True)
         raise
+
+    # Build the ARGO observational evaluation index once at startup so NetCDF
+    # files are never re-parsed per request. A missing/unreadable ARGO archive
+    # degrades only the ARGO evaluation routes, never reconstruction inference.
+    try:
+        ARGO_VALIDATION_SERVICE.initialize()
+        argo_diag = ARGO_VALIDATION_SERVICE.diagnostics()
+        logger.info(
+            "ARGO evaluation index ready: %d authentic profiles, %d unique WMO floats, "
+            "%d valid profile-depth observations.",
+            argo_diag["accepted_profiles"],
+            argo_diag["unique_wmo_count"],
+            argo_diag["total_valid_target_depth_observations"],
+        )
+    except Exception as e:
+        logger.error(f"ARGO evaluation index unavailable: {e}", exc_info=True)
 
     yield
 
@@ -244,7 +264,110 @@ def predict_temperature_profile(request: PredictionRequest) -> PredictionRespons
     return PredictionResponse(**result)
 
 
+@app.get(
+    "/argo/profiles",
+    response_model=ArgoProfileListResponse,
+    summary="List Authentic ARGO Evaluation Profiles",
+    tags=["ARGO Observational Evaluation"]
+)
+def get_argo_profiles() -> ArgoProfileListResponse:
+    """
+    Returns the complete authentic ARGO evaluation set: the September 2020
+    North Indian Ocean profiling-float casts used as an INDEPENDENT observational
+    check on the frozen OceanEmbed v3 reconstruction.
+
+    ARGO observations are never used as model input, and they play no part in
+    training or model selection.
+    """
+    try:
+        profiles = ARGO_VALIDATION_SERVICE.list_profiles()
+    except Exception as exc:
+        logger.error(f"Failed to build the ARGO catalog: {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="ARGO evaluation archive is unavailable or could not be indexed."
+        )
+
+    diag = ARGO_VALIDATION_SERVICE.diagnostics()
+
+    return ArgoProfileListResponse(
+        evaluation_type="INDEPENDENT_OFFLINE_ARGO_OBSERVATIONAL_EVALUATION",
+        source=ARGO_SOURCE_NOTE,
+        provenance_note=(
+            "ARGO validation is an offline observational evaluation using September 2020 profiles. "
+            "The current prototype does not provide a live or global ARGO feed."
+        ),
+        target_depths_m=TARGET_DEPTHS,
+        total_profiles=len(profiles),
+        unique_wmo_count=diag["unique_wmo_count"],
+        observation_dates=diag["observation_dates"],
+        total_valid_observations=diag["total_valid_target_depth_observations"],
+        source_files=diag["source_files"],
+        profiles=profiles,
+    )
+
+
+@app.get(
+    "/argo/summary",
+    response_model=ArgoSummaryResponse,
+    summary="Aggregate ARGO Observational Evaluation",
+    tags=["ARGO Observational Evaluation"]
+)
+def get_argo_summary(refresh: bool = Query(False, description="Recompute instead of returning the cached evaluation")) -> ArgoSummaryResponse:
+    """
+    Evaluates every authentic ARGO profile in the catalog against the frozen
+    OceanEmbed v3 model and returns aggregate statistics.
+
+    All values are computed at request time from the authentic observations and
+    fresh model forward passes. No benchmark number is hardcoded.
+    """
+    try:
+        summary = ARGO_VALIDATION_SERVICE.summary(force=refresh)
+    except KeyError as ke:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(ke).strip("'\""))
+    except Exception as exc:
+        logger.error(f"ARGO aggregate evaluation failed: {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Internal failure while computing the aggregate ARGO evaluation."
+        )
+
+    return ArgoSummaryResponse(**summary)
+
+
+@app.get(
+    "/argo/compare/{profile_id}",
+    response_model=ArgoComparisonResponse,
+    responses={404: {"model": ErrorResponse, "description": "ARGO profile not present in the evaluation catalog"}},
+    summary="Compare One ARGO Profile Against OceanEmbed v3",
+    tags=["ARGO Observational Evaluation"]
+)
+def compare_argo_profile(profile_id: str) -> ArgoComparisonResponse:
+    """
+    Compares a single authentic ARGO profile against a fresh OceanEmbed v3
+    reconstruction at the profile's matched date and nearest 0.25 degree grid cell,
+    returning the observed and predicted vertical profiles plus dynamically
+    computed RMSE / MAE / Bias / Pearson r.
+    """
+    try:
+        comparison = ARGO_VALIDATION_SERVICE.compare(profile_id)
+    except KeyError as ke:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(ke).strip("'\"")
+        )
+    except Exception as exc:
+        logger.error(f"ARGO comparison failed for '{profile_id}': {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Internal failure while comparing the ARGO profile against the model."
+        )
+
+    return ArgoComparisonResponse(**comparison)
+
+
 @app.get("/", summary="Root Documentation Link", tags=["System"])
+
 def root_endpoint():
     """Welcome endpoint providing service name and documentation URL."""
     return {

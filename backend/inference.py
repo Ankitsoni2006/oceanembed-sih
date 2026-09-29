@@ -175,6 +175,69 @@ class OceanEmbedInferenceService:
 
         return lat_idx, lon_idx, grid_lat, grid_lon
 
+    # ------------------------------------------------------------------
+    # Public accessors used by the ARGO observational evaluation service.
+    # These expose the already-cached tensors without changing the
+    # reconstruction inference path in any way.
+    # ------------------------------------------------------------------
+    def get_raw_day_tensor(self, date_str: str) -> torch.Tensor:
+        """
+        Returns the cached, un-normalized 14-channel surface tensor for a date.
+
+        Shape: ``[14, 101, 241]`` on CPU. The chunk LRU cache is reused, so no
+        additional disk I/O is incurred beyond what ``/predict`` already performs.
+        """
+        if not self.is_initialized:
+            self.initialize()
+        return self._get_day_tensor(date_str)
+
+    def get_fitted_scaler(self) -> OceanStandardScaler:
+        """Returns the frozen train-only scaler, initializing the service if needed."""
+        if not self.is_initialized:
+            self.initialize()
+        return self.scaler
+
+    def resolve_nearest_available_date(self, target_date: str) -> Tuple[str, float]:
+        """
+        Resolves a requested calendar date to the closest indexed observation date.
+
+        Exact calendar-day matches take strict priority (the matching convention
+        used by the existing offline ARGO evaluation). Otherwise the nearest
+        available date is returned.
+
+        Returns
+        -------
+        (resolved_date, absolute_offset_hours)
+            The offset is measured against 12:00 UTC, the nominal centre of the
+            daily-mean surface products the model consumes.
+        """
+        if not self.is_initialized:
+            self.initialize()
+
+        if not self.available_dates:
+            raise KeyError("Processed data archive is empty or currently unindexed.")
+
+        if target_date in self.date_to_chunk_index:
+            return target_date, 0.0
+
+        from datetime import datetime
+
+        try:
+            target_dt = datetime.strptime(target_date, "%Y-%m-%d")
+        except ValueError as exc:
+            raise KeyError(f"Date '{target_date}' is not a valid YYYY-MM-DD date.") from exc
+
+        target_noon = target_dt.replace(hour=12, minute=0, second=0)
+        best_date = self.available_dates[0]
+        best_delta = None
+        for candidate in self.available_dates:
+            cand_dt = datetime.strptime(candidate, "%Y-%m-%d").replace(hour=12, minute=0, second=0)
+            delta = abs((target_noon - cand_dt).total_seconds())
+            if best_delta is None or delta < best_delta:
+                best_delta = delta
+                best_date = candidate
+        return best_date, float(best_delta or 0.0) / 3600.0
+
     @staticmethod
     def compute_oceanographic_indices(depths: List[int], temps: List[float]) -> Dict[str, Optional[float]]:
         """

@@ -9,6 +9,9 @@ import {
   AvailableDatesResponse,
   PredictionRequest,
   PredictionResponse,
+  ArgoProfileListResponse,
+  ArgoProfileComparison,
+  ArgoSummary,
 } from '../types';
 
 const getApiBaseUrl = () => {
@@ -23,6 +26,34 @@ const getApiBaseUrl = () => {
 };
 
 const API_BASE_URL = getApiBaseUrl();
+
+/**
+ * Generic typed GET helper used by the read-only ARGO evaluation routes.
+ * Never mutates state; callers receive typed backend data or an ApiError.
+ */
+async function fetchArgoJson<T>(path: string, fallbackError: string): Promise<T> {
+  try {
+    const response = await fetch(`${API_BASE_URL}${path}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok) {
+      let msg = `${fallbackError} (${response.status})`;
+      if (data && data.detail) {
+        msg = typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail);
+      }
+      throw new ApiError(msg, response.status, data);
+    }
+
+    return data as T;
+  } catch (err: any) {
+    if (err instanceof ApiError) throw err;
+    throw new ApiError(err.message || fallbackError, 0, err);
+  }
+}
 
 class ApiError extends Error {
   statusCode: number;
@@ -132,5 +163,39 @@ export const api = {
       if (err instanceof ApiError) throw err;
       throw new ApiError(err.message || 'Network error while contacting inference server', 0, err);
     }
+  },
+
+  /**
+   * Retrieves the authentic ARGO evaluation catalog (profile metadata only —
+   * no NetCDF data ever reaches the browser).
+   */
+  async getArgoProfiles(): Promise<ArgoProfileListResponse> {
+    return fetchArgoJson<ArgoProfileListResponse>(
+      '/argo/profiles',
+      'Unable to load the ARGO evaluation catalog from the backend'
+    );
+  },
+
+  /**
+   * Retrieves the aggregate ARGO observational evaluation, computed at
+   * request time by the backend from authentic observations + fresh forward passes.
+   */
+  async getArgoSummary(refresh: boolean = false): Promise<ArgoSummary> {
+    const suffix = refresh ? '?refresh=true' : '';
+    return fetchArgoJson<ArgoSummary>(
+      `/argo/summary${suffix}`,
+      'Unable to compute the aggregate ARGO evaluation'
+    );
+  },
+
+  /**
+   * Compares one authentic ARGO profile against a fresh OceanEmbed v3
+   * reconstruction performed server-side at the profile's location/date.
+   */
+  async getArgoComparison(profileId: string): Promise<ArgoProfileComparison> {
+    return fetchArgoJson<ArgoProfileComparison>(
+      `/argo/compare/${encodeURIComponent(profileId)}`,
+      'ARGO comparison unavailable for this profile'
+    );
   },
 };

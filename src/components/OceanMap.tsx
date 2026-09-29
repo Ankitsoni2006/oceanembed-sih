@@ -1,11 +1,26 @@
 import React, { useRef, useCallback } from 'react';
 import { MapPin, Navigation, Crosshair, Check } from 'lucide-react';
+import { ArgoProfile } from '../types';
 
 interface OceanMapProps {
   latitude: number;
   longitude: number;
   onSelectCoordinates: (lat: number, lon: number) => void;
   disabled?: boolean;
+  /** Authentic ARGO profile markers to render (ARGO Validation Mode only). */
+  argoProfiles?: ArgoProfile[];
+  /** Profile id of the currently selected ARGO profile (highlighted marker). */
+  selectedProfileId?: string | null;
+  /** Fired when an ARGO marker is clicked — selects that profile for comparison. */
+  onSelectProfile?: (profileId: string) => void;
+  /** Optional card heading override (ARGO Validation Mode). */
+  title?: string;
+  /** Optional card sub-heading override (ARGO Validation Mode). */
+  subtitle?: string;
+  /** Hide reconstruction preset chips when used outside Reconstruction Mode. */
+  showPresets?: boolean;
+  /** Hide the reconstruction coordinate readout badge when used in ARGO Mode. */
+  showCoordinateReadout?: boolean;
 }
 
 // Bounding box of North Indian Ocean model domain
@@ -28,6 +43,13 @@ export const OceanMap: React.FC<OceanMapProps> = ({
   longitude,
   onSelectCoordinates,
   disabled = false,
+  argoProfiles,
+  selectedProfileId = null,
+  onSelectProfile,
+  title,
+  subtitle,
+  showPresets = true,
+  showCoordinateReadout = true,
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -71,23 +93,26 @@ export const OceanMap: React.FC<OceanMapProps> = ({
         <div>
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
             <Navigation className="w-4 h-4 text-sky-700" />
-            North Indian Ocean Domain
+            {title ?? 'North Indian Ocean Domain'}
           </h2>
           <p className="text-xs text-slate-500">
-            Click to set coordinate or choose a preset basin location
+            {subtitle ?? 'Click to set coordinate or choose a preset basin location'}
           </p>
         </div>
 
         {/* Selected Coordinates Readout Badge */}
+        {showCoordinateReadout && (
         <div className="hidden sm:flex items-center gap-2 text-xs font-mono bg-slate-100 border border-slate-200 px-2.5 py-1 rounded">
           <Crosshair className="w-3.5 h-3.5 text-slate-500" />
           <span className="font-semibold text-slate-800">{latitude.toFixed(2)}°N, {longitude.toFixed(2)}°E</span>
           <span className="text-slate-400">→</span>
           <span className="text-slate-600">Grid: {gridLat}°N, {gridLon}°E</span>
         </div>
+        )}
       </div>
 
       {/* Preset Location Quick-Select Chips */}
+      {showPresets && (
       <div className="flex flex-wrap gap-1.5 mb-3">
         {PRESET_LOCATIONS.map((preset) => {
           const isSelected =
@@ -110,6 +135,7 @@ export const OceanMap: React.FC<OceanMapProps> = ({
           );
         })}
       </div>
+      )}
 
       {/* Interactive SVG Ocean Map */}
       <div className="relative border border-slate-300 rounded-lg overflow-hidden select-none bg-[#e8f1f5]">
@@ -244,12 +270,61 @@ export const OceanMap: React.FC<OceanMapProps> = ({
             {/* Center target dot */}
             <circle cx="0" cy="0" r="4" fill="#0284c7" stroke="#ffffff" strokeWidth="2" />
           </g>
+
+          {/* Authentic ARGO Profile Markers (ARGO Validation Mode) */}
+          {(argoProfiles ?? []).map((profile) => {
+            const markerX =
+              ((profile.longitude - LON_MIN) / (LON_MAX - LON_MIN)) * 600;
+            const markerY =
+              ((LAT_MAX - profile.latitude) / (LAT_MAX - LAT_MIN)) * 350;
+            const isSelected = profile.profile_id === selectedProfileId;
+            return (
+              <g
+                key={profile.profile_id}
+                className="cursor-pointer"
+                onClick={(e) => {
+                  // Selecting a float must never re-target the reconstruction coordinate
+                  e.stopPropagation();
+                  onSelectProfile?.(profile.profile_id);
+                }}
+              >
+                {isSelected && (
+                  <circle
+                    cx={markerX}
+                    cy={markerY}
+                    r="9.5"
+                    fill="none"
+                    stroke="#d97706"
+                    strokeWidth="2"
+                    opacity="0.9"
+                  />
+                )}
+                <circle
+                  cx={markerX}
+                  cy={markerY}
+                  r={isSelected ? 5.5 : 4}
+                  fill={isSelected ? '#d97706' : '#0284c7'}
+                  stroke="#ffffff"
+                  strokeWidth="1.5"
+                />
+                <title>{`ARGO float WMO ${profile.wmo} | ${profile.date} | ${profile.latitude.toFixed(2)}°N, ${profile.longitude.toFixed(2)}°E`}</title>
+              </g>
+            );
+          })}
         </svg>
 
         {/* Small Domain Legend in Corner */}
         <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-xs border border-slate-200 px-2 py-1 rounded text-[10px] text-slate-600 font-mono pointer-events-none">
           Domain: 5°N–30°N | 45°E–105°E
         </div>
+
+        {/* ARGO Marker Legend (only when ARGO markers are rendered) */}
+        {argoProfiles && argoProfiles.length > 0 && (
+          <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-xs border border-slate-200 px-2 py-1 rounded text-[10px] text-slate-600 font-mono pointer-events-none flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-sky-600 border border-white inline-block" />
+            <span>ARGO profile (click to compare)</span>
+          </div>
+        )}
       </div>
     </div>
   );

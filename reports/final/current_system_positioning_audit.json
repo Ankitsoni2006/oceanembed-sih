@@ -1,0 +1,456 @@
+{
+  "audit_metadata": {
+    "audit_timestamp": "2026-09-29T01:20:00+05:30",
+    "auditor_role": "Senior ML Systems Engineer + Oceanographic Data Engineer + Scientific Software Auditor",
+    "project_name": "OceanEmbed — Satellite Embedding-Based Deep Learning Framework for Reconstruction of Subsurface Ocean Temperature from Surface Satellite Observations",
+    "sih_problem_statement": "SIH26066",
+    "audit_mode": "STRICT_READ_ONLY",
+    "files_modified_count": 0,
+    "target_domain": {
+      "region": "North Indian Ocean",
+      "lat_min": 5.0,
+      "lat_max": 30.0,
+      "lon_min": 45.0,
+      "lon_max": 105.0,
+      "grid_resolution_deg": 0.25,
+      "grid_shape": [101, 241],
+      "depths_m": [0, 5, 10, 20, 30, 50, 75, 100, 125, 150, 200, 300, 500, 700, 1000]
+    }
+  },
+  "executive_summary": {
+    "current_position": "PRODUCTION-GRADE RESEARCH PROTOTYPE FOR SINGLE-POINT PREDICTION; OFFLINE-ONLY FOR ARGO VALIDATION",
+    "real_interactive_argo_validation": "NO",
+    "verified_model": {
+      "name": "OceanEmbedNetV3_Decoder",
+      "version": "v3",
+      "checkpoint": "checkpoints/phase5/oceanembed_v3_decoder.pt",
+      "parameter_count": 1275934,
+      "status": "VALIDATED_AND_ACTIVE"
+    },
+    "verified_offline_benchmarks": {
+      "glorys_held_out_september_2020_rmse_deg_c": 0.8601,
+      "glorys_held_out_september_2020_mae_deg_c": 0.5780,
+      "glorys_held_out_september_2020_corr": 0.9936,
+      "argo_in_situ_september_2020_rmse_deg_c": 0.7973,
+      "argo_in_situ_september_2020_mae_deg_c": 0.4820,
+      "argo_in_situ_september_2020_corr": 0.9946,
+      "argo_dataset_composition": {
+        "authentic_profiles_count": 36,
+        "unique_wmo_floats_count": 28,
+        "matched_profile_depth_observations_count": 497
+      }
+    },
+    "biggest_current_gap": "The live FastAPI backend and React frontend have NO interactive ARGO endpoints, float selectors, or profile overlays. ARGO validation exists exclusively as offline scripts and static reports, while the UI displays static, hardcoded metrics in ModelPerformance.tsx."
+  },
+  "repository_structure_inventory": {
+    "root_directory": {
+      "entrypoints": ["main.py", "start_backend.bat", "start_frontend.bat", "vite.config.ts", "package.json"],
+      "documentation": ["README.md", "OCEANEMBED_DUE_DILIGENCE.md", "OCEANEMBED_FEASIBILITY_AUDIT.md", "OCEANEMBED_RESEARCH_REPORT.md", "OCEANEMBED_TEAM_RESEARCH_DOSSIER.md"]
+    },
+    "backend_directory": {
+      "path": "backend/",
+      "files": ["backend/main.py", "backend/inference.py", "backend/schemas.py", "backend/config.py", "backend/requirements.txt", "backend/__init__.py"],
+      "status": "Active modern backend (Phase 6 implementation)"
+    },
+    "legacy_api_directory": {
+      "path": "api/",
+      "files": ["api/server.py"],
+      "status": "Legacy Phase 4 server (not referenced by current start scripts or frontend)"
+    },
+    "frontend_components": {
+      "root_app": "src/App.tsx",
+      "services": ["src/services/api.ts"],
+      "types": ["src/types/index.ts"],
+      "components": [
+        "src/components/Header.tsx",
+        "src/components/Hero.tsx",
+        "src/components/ControlPanel.tsx",
+        "src/components/OceanMap.tsx",
+        "src/components/ProfileChart.tsx",
+        "src/components/DepthInspector.tsx",
+        "src/components/ProfileMetrics.tsx",
+        "src/components/SurfaceObservationsPanel.tsx",
+        "src/components/ModelPerformance.tsx",
+        "src/components/Methodology.tsx",
+        "src/components/Limitations.tsx",
+        "src/components/Footer.tsx"
+      ],
+      "orphan_mock_file": "src/data/mock.ts (Contains stale Phase 4 export data; unreferenced by components)"
+    },
+    "data_directory": {
+      "processed_chunks": [
+        "chunk_2020_01.pt", "chunk_2020_02.pt", "chunk_2020_03.pt",
+        "chunk_2020_04.pt", "chunk_2020_05.pt", "chunk_2020_06.pt",
+        "chunk_2020_07.pt", "chunk_2020_08.pt", "chunk_2020_09.pt"
+      ],
+      "raw_directories": ["data/raw/sst", "data/raw/sss", "data/raw/ssh", "data/raw/currents", "data/raw/winds", "data/raw/glorys"],
+      "argo_directories": ["data/argo/argo2020/20200901_prof.nc", "data/argo/argo2020/20200915_prof.nc", "data/argo/argo2020/20200925_prof.nc", "data/argo/20221101_prof.nc"]
+    },
+    "checkpoints_directory": {
+      "active_phase5_winner": "checkpoints/phase5/oceanembed_v3_decoder.pt",
+      "phase4_legacy_checkpoints": [
+        "checkpoints/oceanembed_best.pt",
+        "checkpoints/oceanembed_latest.pt",
+        "checkpoints/simple_cnn_best.pt",
+        "checkpoints/pointwise_mlp_best.pt"
+      ]
+    },
+    "test_suites": [
+      "tests/test_backend.py (12 comprehensive tests for active backend)",
+      "tests/test_e2e.py (Legacy Phase 4 integration test using api/server.py)",
+      "tests/test_leakage.py (Unit test for masking and temporal split conceptual logic)"
+    ]
+  },
+  "data_pipeline_audit": {
+    "surface_inputs": {
+      "sst": {
+        "variable_in_dataset": "analysed_sst",
+        "dataset_name": "UKMO OSTIA L4 REP (010_011)",
+        "native_res_deg": 0.05,
+        "cadence": "daily",
+        "channel_idx": 0,
+        "mask_idx": 7,
+        "status": "VERIFIED_AUTHENTIC"
+      },
+      "sss": {
+        "variable_in_dataset": "sss",
+        "dataset_name": "SMOS/SMAP L4 OI LOPS-v2025 (015_004)",
+        "native_res_deg": 0.25,
+        "cadence": "daily",
+        "channel_idx": 1,
+        "mask_idx": 8,
+        "status": "VERIFIED_AUTHENTIC"
+      },
+      "ssh": {
+        "variable_in_dataset": "sla",
+        "dataset_name": "Copernicus DUACS Altimetry L4 (008_047)",
+        "native_res_deg": 0.125,
+        "cadence": "daily",
+        "channel_idx": 2,
+        "mask_idx": 9,
+        "status": "VERIFIED_AUTHENTIC"
+      },
+      "u_current": {
+        "variable_in_dataset": "uo",
+        "dataset_name": "Copernicus GlobCurrent / CLS Multi-Obs Surface Currents",
+        "native_res_deg": 0.25,
+        "cadence": "daily",
+        "channel_idx": 3,
+        "mask_idx": 10,
+        "status": "VERIFIED_AUTHENTIC"
+      },
+      "v_current": {
+        "variable_in_dataset": "vo",
+        "dataset_name": "Copernicus GlobCurrent / CLS Multi-Obs Surface Currents",
+        "native_res_deg": 0.25,
+        "cadence": "daily",
+        "channel_idx": 4,
+        "mask_idx": 11,
+        "status": "VERIFIED_AUTHENTIC"
+      },
+      "u_wind": {
+        "variable_in_dataset": "eastward_wind",
+        "dataset_name": "Copernicus KNMI Scatterometer L4 (012_006)",
+        "native_res_deg": 0.125,
+        "cadence": "daily_mean",
+        "channel_idx": 5,
+        "mask_idx": 12,
+        "status": "VERIFIED_AUTHENTIC"
+      },
+      "v_wind": {
+        "variable_in_dataset": "northward_wind",
+        "dataset_name": "Copernicus KNMI Scatterometer L4 (012_006)",
+        "native_res_deg": 0.125,
+        "cadence": "daily_mean",
+        "channel_idx": 6,
+        "mask_idx": 13,
+        "status": "VERIFIED_AUTHENTIC"
+      }
+    },
+    "subsurface_reference_target": {
+      "provider": "Copernicus Marine Service",
+      "dataset_id": "GLOBAL_MULTIYEAR_PHY_001_030 (MERCATOR GLORYS12V1)",
+      "variable_name": "thetao (Potential Temperature, °C)",
+      "target_vertical_levels_m": [0, 5, 10, 20, 30, 50, 75, 100, 125, 150, 200, 300, 500, 700, 1000],
+      "interpolation": "1D linear interpolation from 50 native levels bounded within [0.494m, 1062.5m]; 0m extrapolated from 0.494m",
+      "regridding": "Bilinear regridding from native 0.083° to target 0.25° grid",
+      "nature_of_target": "Numerical reanalysis reference (NOT direct in-situ observational ground truth)"
+    },
+    "processed_dataset_inventory": {
+      "date_range": "2020-01-01 to 2020-09-30",
+      "total_daily_fields": 274,
+      "temporal_partitions": {
+        "train": "2020-01-01 to 2020-07-31 (213 days)",
+        "validation": "2020-08-01 to 2020-08-31 (31 days)",
+        "test": "2020-09-01 to 2020-09-30 (30 days)"
+      },
+      "spatial_dimensions": [101, 241],
+      "spatial_resolution_deg": 0.25,
+      "input_tensor_shape": [14, 101, 241],
+      "target_tensor_shape": [15, 101, 241],
+      "valid_ocean_vs_land_masking": "Strictly binary; channel 7 (mask_sst) indicates valid marine water cell (1.0) vs land/missing (0.0)"
+    }
+  },
+  "model_audit": {
+    "active_backend_model": {
+      "architecture_class": "OceanEmbedNetV3_Decoder",
+      "source_module": "src/models/oceanembed_v3_decoder.py",
+      "checkpoint_path": "checkpoints/phase5/oceanembed_v3_decoder.pt",
+      "checkpoint_size_bytes": 5148823,
+      "checkpoint_integrity": "VALIDATED_LOADS_WITHOUT_ERROR",
+      "trainable_parameters": 1275934,
+      "total_parameters": 1275934,
+      "input_channels": 14,
+      "output_depths": 15,
+      "base_features": 32,
+      "embedding_dim": 128,
+      "projection_head": "Conv2d(32, 15, kernel_size=1) with regional climatological stratification prior",
+      "normalization": "OceanStandardScaler loaded from configs/scaler_params_experiment_2020.json (fitted strictly on Jan-Jul 2020 train partition)",
+      "inference_mode": "torch.inference_mode()",
+      "active_compute_device": "CPU (auto-selects CUDA if available)",
+      "lifecycle_loading": "Loaded ONCE at FastAPI lifespan startup in singleton OceanEmbedInferenceService",
+      "is_mock_or_baseline": false,
+      "is_oceanembed_v3": true
+    }
+  },
+  "argo_dedicated_audit": {
+    "physical_data_present_locally": true,
+    "local_argo_files": [
+      "data/argo/argo2020/20200901_prof.nc",
+      "data/argo/argo2020/20200915_prof.nc",
+      "data/argo/argo2020/20200925_prof.nc",
+      "data/argo/20221101_prof.nc"
+    ],
+    "programmatic_access_verified": true,
+    "profile_locations_available": true,
+    "timestamps_available": true,
+    "wmo_float_ids_available": true,
+    "observed_temp_depth_available": true,
+    "offline_matching_algorithm_implemented": true,
+    "offline_model_prediction_at_argo_locations_implemented": true,
+    "offline_metrics_calculation_implemented": true,
+    "exposed_via_fastapi_backend": false,
+    "exposed_via_react_frontend_interactively": false,
+    "frontend_argo_display_nature": "STATIC_HARDCODED_TABLE_AND_TEXT_IN_ModelPerformance.tsx",
+    "can_user_select_argo_profile_in_ui": false,
+    "explicit_verdict_interactive_argo_validation": "NO",
+    "verdict_evidence": "1. backend/main.py contains exactly 5 endpoints (/, /health, /model-info, /available-dates, /predict); zero ARGO endpoints exist. 2. src/services/api.ts contains zero ARGO fetch methods. 3. ProfileChart.tsx plots only prediction.temperatures_c; no ARGO trace is overlaid. 4. ModelPerformance.tsx renders a static hardcoded array depthBreakdown with frozen metrics from offline evaluation reports."
+  },
+  "backend_audit": {
+    "app_instance": "backend.main:app",
+    "server_entrypoint": "main.py and start_backend.bat",
+    "endpoints": [
+      {
+        "route": "/",
+        "method": "GET",
+        "purpose": "Root documentation and openapi links",
+        "data_source": "Static dictionary",
+        "invokes_model": false,
+        "is_dynamic": false,
+        "is_tested": false
+      },
+      {
+        "route": "/health",
+        "method": "GET",
+        "purpose": "Health check, model loaded flag, device name",
+        "data_source": "Inference service state",
+        "invokes_model": false,
+        "is_dynamic": true,
+        "is_tested": true
+      },
+      {
+        "route": "/model-info",
+        "method": "GET",
+        "purpose": "Model telemetry, parameters, input/output dimensions, domain coordinates",
+        "data_source": "backend/config.py and service state",
+        "invokes_model": false,
+        "is_dynamic": true,
+        "is_tested": true
+      },
+      {
+        "route": "/available-dates",
+        "method": "GET",
+        "purpose": "List supported observation dates from processed archive (274 days)",
+        "data_source": "In-memory date index from chunk_2020_01 to chunk_2020_09",
+        "invokes_model": false,
+        "is_dynamic": true,
+        "is_tested": true
+      },
+      {
+        "route": "/predict",
+        "method": "POST",
+        "purpose": "Reconstruct 15-depth vertical temperature profile from satellite inputs",
+        "data_source": "Processed monthly PyTorch tensor chunks + live model forward pass",
+        "invokes_model": true,
+        "is_dynamic": true,
+        "is_tested": true
+      }
+    ],
+    "features": {
+      "cors_enabled": true,
+      "allowed_origins": ["*"],
+      "caching_strategy": "OrderedDict in-memory LRU cache storing up to 3 monthly chunks (~250MB RAM)",
+      "land_rejection": "Returns HTTP 400 Bad Request if target grid cell has mask_sst <= 0.5",
+      "boundary_validation": "Returns HTTP 400 Bad Request if latitude not in [5.0, 30.0] or longitude not in [45.0, 105.0]",
+      "date_validation": "Returns HTTP 404 Not Found if date outside indexed 2020 archive"
+    }
+  },
+  "frontend_audit": {
+    "framework": "React 19.0.1 + Vite 6.2.3 + Tailwind CSS 4",
+    "user_inputs": {
+      "latitude_selection": "Direct number input or map click (5.00°N to 30.00°N)",
+      "longitude_selection": "Direct number input or map click (45.00°E to 105.00°E)",
+      "date_selection": "HTML select populated dynamically via /available-dates API",
+      "preset_chips": ["Bay of Bengal (Default)", "Central Arabian Sea", "Southern NIO / Sri Lanka", "Northern Arabian Sea", "Andaman Sea Basin"]
+    },
+    "dynamic_components": {
+      "ProfileChart": "Renders dynamic SVG temperature vs depth curve (0-1000m) from API response",
+      "DepthInspector": "15 interactive pills displaying exact predicted temperature at each standard depth",
+      "ProfileMetrics": "Displays dynamically derived indicators: Surface, 100m, 500m, 1000m, MLD (0.2°C threshold), Thermocline depth (peak gradient), OHC300 (trapezoidal integration)",
+      "SurfaceObservationsPanel": "Displays 7 raw surface variables extracted at query grid cell (SST, SSS, SSH, U-current, V-current, U-wind, V-wind)"
+    },
+    "static_hardcoded_components": {
+      "ModelPerformance": "Hardcoded JSX values (0.8601°C, 0.7973°C, ~35.9 ms, and depthBreakdown array)",
+      "OceanMap": "Custom SVG map with math-based coordinate projections (NOT Leaflet)"
+    },
+    "error_handling": {
+      "on_land_error": "Displays red alert in ControlPanel and clears stale prediction",
+      "on_network_error": "Displays connection error and resets prediction state"
+    }
+  },
+  "technology_stack_audit": {
+    "pytorch": "IMPLEMENTED AND ACTIVE",
+    "xarray": "IMPLEMENTED BUT NOT CURRENTLY USED IN BACKEND (used in preprocessing/evaluation scripts)",
+    "netcdf4": "IMPLEMENTED BUT NOT CURRENTLY USED IN BACKEND (used in preprocessing scripts)",
+    "pandas": "IMPLEMENTED BUT NOT CURRENTLY USED IN BACKEND (used in evaluation scripts)",
+    "fastapi": "IMPLEMENTED AND ACTIVE",
+    "uvicorn": "IMPLEMENTED AND ACTIVE",
+    "react": "IMPLEMENTED AND ACTIVE",
+    "vite": "IMPLEMENTED AND ACTIVE",
+    "leaflet": "NOT FOUND (Custom SVG vector map is used)",
+    "charting_library_recharts": "PARTIAL / INFRASTRUCTURE ONLY (Installed in package.json, but ProfileChart uses pure custom SVG)",
+    "postgresql": "NOT FOUND",
+    "redis": "NOT FOUND (In-memory Python OrderedDict LRU cache is used)",
+    "jwt": "NOT FOUND",
+    "docker": "NOT FOUND",
+    "nginx": "NOT FOUND",
+    "onnx": "NOT FOUND",
+    "tensorrt": "NOT FOUND",
+    "u_net": "IMPLEMENTED AND ACTIVE (OceanEmbedNetV3_Decoder)",
+    "mixed_precision": "IMPLEMENTED IN TRAINING SCRIPTS BUT NOT IN CURRENT INFERENCE (inference uses fp32)"
+  },
+  "demo_readiness_checklist": {
+    "select_date": "WORKING",
+    "select_lat_lon": "WORKING",
+    "retrieve_real_surface_data": "WORKING",
+    "run_real_oceanembed_v3": "WORKING",
+    "display_15_depth_prediction": "WORKING",
+    "display_map": "WORKING",
+    "display_temperature_profile": "WORKING",
+    "display_derived_indicators": "WORKING",
+    "select_real_argo_profile": "NOT IMPLEMENTED",
+    "display_argo_observed_profile": "NOT IMPLEMENTED",
+    "display_oceanembed_vs_argo": "NOT IMPLEMENTED",
+    "calculate_argo_rmse_dynamically": "NOT IMPLEMENTED",
+    "display_depth_wise_error": "PARTIAL (Static table in ModelPerformance.tsx)",
+    "display_glorys_reference_comparison": "PARTIAL (Static card in ModelPerformance.tsx)",
+    "run_entire_pipeline_without_editing_files": "WORKING (Batch scripts launch backend and frontend seamlessly)"
+  },
+  "claims_vs_reality": [
+    {
+      "claim": "Real-time satellite data ingestion",
+      "where_claimed": "Early research dossier / proposal slides",
+      "actual_implementation": "Historical reprocessed 2020 archive (274 daily fields)",
+      "status": "RESEARCH ARCHIVE ONLY"
+    },
+    {
+      "claim": "Interactive ARGO float comparison dashboard",
+      "where_claimed": "Project roadmap and decision document",
+      "actual_implementation": "ARGO data evaluated offline; static numbers hardcoded in ModelPerformance.tsx",
+      "status": "OFFLINE ONLY / NOT INTERACTIVE"
+    },
+    {
+      "claim": "Interactive Leaflet geospatial map",
+      "where_claimed": "OCEANEMBED_PROJECT_UNDERSTANDING.md and docs",
+      "actual_implementation": "Custom interactive SVG map component (OceanMap.tsx)",
+      "status": "CUSTOM SVG REPLACEMENT"
+    },
+    {
+      "claim": "PostgreSQL + Redis + JWT enterprise architecture",
+      "where_claimed": "Preliminary architecture blueprints",
+      "actual_implementation": "In-memory LRU cache + file-based tensor chunks; zero databases, zero JWT",
+      "status": "NOT FOUND"
+    },
+    {
+      "claim": "Docker / Containerized deployment",
+      "where_claimed": "Execution roadmap / PPT",
+      "actual_implementation": "Windows batch scripts (start_backend.bat, start_frontend.bat)",
+      "status": "NOT FOUND"
+    },
+    {
+      "claim": "ONNX / TensorRT runtime acceleration",
+      "where_claimed": "Roadmap Phase 9",
+      "actual_implementation": "Standard PyTorch CPU execution (~35.9 ms latency)",
+      "status": "PLANNED / NOT IMPLEMENTED"
+    },
+    {
+      "claim": "3D WebGL volumetric ocean rendering",
+      "where_claimed": "Master decision guide Section 4",
+      "actual_implementation": "2D vertical profile SVG plot + 15 depth pills",
+      "status": "NOT IMPLEMENTED"
+    },
+    {
+      "claim": "Tropical cyclone heat potential & cold wake tracking",
+      "where_claimed": "Decision guide and scientific rationale",
+      "actual_implementation": "Upper ocean heat content (OHC300) indicator calculated; named storm tracks not implemented",
+      "status": "INDICATOR DERIVED / NO STORM TRACKER"
+    },
+    {
+      "claim": "Naval acoustic duct (SVP) modeling",
+      "where_claimed": "Defense use-case slides",
+      "actual_implementation": "Not implemented in backend or frontend",
+      "status": "CONCEPTUAL ONLY"
+    }
+  ],
+  "security_and_credentials_audit": {
+    "hardcoded_credentials_found": 0,
+    "active_api_keys_exposed": 0,
+    "copernicus_secrets_in_repo": 0,
+    "env_file_tracking_risk": "SAFE (.env.example has placeholder strings; .env does not exist on disk)",
+    "git_tracking_risk": "CLEAN (.gitignore excludes .env, checkpoints, data)"
+  },
+  "performance_audit": {
+    "model_forward_pass_ms": 31.85,
+    "total_api_latency_mean_ms": 35.87,
+    "total_api_latency_median_ms": 34.92,
+    "total_api_latency_p95_ms": 44.84,
+    "memory_footprint_ram_mb": 250,
+    "compute_device": "CPU"
+  },
+  "recommended_next_phase": {
+    "title": "PHASE 7: REAL INTERACTIVE ARGO IN-SITU VALIDATION SYSTEM",
+    "rationale": "All prerequisites (ARGO NetCDF files, verified collocation logic, OceanEmbed v3 model, FastAPI backend, React frontend) exist locally. Building an end-to-end interactive ARGO feature will bridge the single biggest gap in the project and eliminate static mock perceptions.",
+    "sub_phases": [
+      {
+        "phase": "PHASE A: ARGO Data Harmonization & Profile Indexing",
+        "objective": "Build backend ingestion module to parse the 36 authentic September 2020 ARGO profiles from data/argo/argo2020/, cache them into a clean JSON/parquet catalog with WMO IDs, timestamps, coordinates, and 15-depth interpolated observed temperatures.",
+        "files_involved": ["src/data/argo_indexer.py", "data/argo/argo2020_index.json"]
+      },
+      {
+        "phase": "PHASE B: FastAPI ARGO Endpoints",
+        "objective": "Expose dedicated endpoints: GET /argo/profiles (list all 36 floats with metadata) and GET /argo/compare/{profile_id} (returns observed ARGO profile vs OceanEmbed v3 prediction at exact float location/date with depth-wise absolute errors and summary RMSE).",
+        "files_involved": ["backend/main.py", "backend/schemas.py", "backend/inference.py"]
+      },
+      {
+        "phase": "PHASE C: Frontend Interactive Float Map & Comparison Chart",
+        "objective": "Add an 'ARGO In-Situ Validation' mode to the UI: render real float pins on the ocean map, allow clicking a float pin, and plot dual curves (ARGO Observed vs OceanEmbed Predicted) in ProfileChart with dynamic RMSE/MAE telemetry.",
+        "files_involved": ["src/components/OceanMap.tsx", "src/components/ProfileChart.tsx", "src/components/ArgoSelector.tsx", "src/services/api.ts", "src/types/index.ts"]
+      },
+      {
+        "phase": "PHASE D: End-to-End Validation & Automated Testing",
+        "objective": "Add automated pytest integration tests verifying that float comparison returns identical 0.7973°C basin benchmark across the 497 points and that all 36 profiles resolve cleanly.",
+        "files_involved": ["tests/test_argo_api.py", "tests/test_backend.py"]
+      }
+    ]
+  }
+}

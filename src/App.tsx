@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Layers, Waves } from 'lucide-react';
 import { api } from './services/api';
 import {
   HealthResponse,
@@ -17,8 +18,21 @@ import { ModelPerformance } from './components/ModelPerformance';
 import { Methodology } from './components/Methodology';
 import { Limitations } from './components/Limitations';
 import { Footer } from './components/Footer';
+import { ArgoValidation } from './components/ArgoValidation';
+import { WhyOceanEmbed } from './components/WhyOceanEmbed';
+
+/**
+ * Two clearly separated frontend experiences:
+ *  A. Reconstruction Mode — surface inputs → OceanEmbed v3 → 15-depth profile
+ *  B. ARGO Validation Mode — real ARGO float → backend inference → comparison
+ * ARGO observations are never passed into the model as inputs.
+ */
+type WorkspaceMode = 'reconstruction' | 'argo';
 
 export default function App() {
+  // State: Active workspace — Reconstruction Mode vs ARGO Validation Mode
+  const [mode, setMode] = useState<WorkspaceMode>('reconstruction');
+
   // State: Coordinates & Date (Initial default: Central Bay of Bengal, benchmark date)
   const [latitude, setLatitude] = useState<number>(15.0);
   const [longitude, setLongitude] = useState<number>(85.0);
@@ -115,7 +129,44 @@ export default function App() {
 
       {/* 3. Main Workspace Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        
+
+        {/* Workspace Mode Switch: Reconstruction vs ARGO Validation */}
+        <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-1.5 bg-slate-100 border border-slate-200 rounded-lg p-1 w-full sm:w-auto">
+            <button
+              type="button"
+              onClick={() => setMode('reconstruction')}
+              className={`flex-1 sm:flex-none text-xs font-semibold px-4 py-2 rounded-md flex items-center justify-center gap-2 transition-colors ${
+                mode === 'reconstruction'
+                  ? 'bg-sky-800 text-white shadow-xs'
+                  : 'text-slate-600 hover:bg-white'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              Reconstruction Mode
+            </button>
+            <button
+              type="button"
+              onClick={() => setMode('argo')}
+              className={`flex-1 sm:flex-none text-xs font-semibold px-4 py-2 rounded-md flex items-center justify-center gap-2 transition-colors ${
+                mode === 'argo'
+                  ? 'bg-amber-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:bg-white'
+              }`}
+            >
+              <Waves className="w-3.5 h-3.5" />
+              ARGO Validation Mode
+            </button>
+          </div>
+          <p className="text-[11px] text-slate-500 leading-snug">
+            {mode === 'reconstruction'
+              ? 'Surface observations → OceanEmbed v3 → 15-depth subsurface profile.'
+              : 'Real ARGO float → backend OceanEmbed inference → observed vs predicted comparison.'}
+          </p>
+        </div>
+
+        {mode === 'reconstruction' ? (
+          <>
         {/* Workspace Grid: Controls & Map (Left) vs Profile & Diagnostics (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
@@ -181,6 +232,14 @@ export default function App() {
             )}
           </div>
         </div>
+          </>
+        ) : (
+          /* B. ARGO Validation Mode — additive, never touches /predict flow */
+          <ArgoValidation />
+        )}
+
+        {/* Uniqueness story: pipeline & differentiators */}
+        <WhyOceanEmbed />
 
         {/* Section 4: Validation Results */}
         <ModelPerformance />
