@@ -112,12 +112,19 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // Any change to the query invalidates the displayed profile, so a reconstruction
+  // is never shown under coordinates/date it was not computed for.
+  const invalidatePrediction = useCallback(() => {
+    setError(null);
+    setPrediction(null);
+  }, []);
+
   // Handlers for coordinate updates from map or control panel
   const handleSelectCoordinates = useCallback((lat: number, lon: number) => {
     setLatitude(lat);
     setLongitude(lon);
-    setError(null);
-  }, []);
+    invalidatePrediction();
+  }, [invalidatePrediction]);
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col font-sans antialiased selection:bg-sky-500 selection:text-white">
@@ -161,7 +168,7 @@ export default function App() {
           <p className="text-[11px] text-slate-500 leading-snug">
             {mode === 'reconstruction'
               ? 'Surface observations → OceanEmbed v3 → 15-depth subsurface profile.'
-              : 'Real ARGO float → backend OceanEmbed inference → observed vs predicted comparison.'}
+              : 'Sep 2020 ARGO float → surface-only OceanEmbed inference at its location/date → observed vs predicted comparison.'}
           </p>
         </div>
 
@@ -176,16 +183,16 @@ export default function App() {
               latitude={latitude}
               longitude={longitude}
               onChangeLatitude={(lat) => {
-                setError(null);
+                invalidatePrediction();
                 setLatitude(lat);
               }}
               onChangeLongitude={(lon) => {
-                setError(null);
+                invalidatePrediction();
                 setLongitude(lon);
               }}
               date={date}
               onChangeDate={(dt) => {
-                setError(null);
+                invalidatePrediction();
                 setDate(dt);
               }}
               availableDates={availableDates}

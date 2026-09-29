@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calendar, Play, AlertCircle, RefreshCw, SlidersHorizontal, Info } from 'lucide-react';
 import { AvailableDatesResponse } from '../types';
 
@@ -31,8 +31,25 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
   error,
   onClearError,
 }) => {
-  const isLatValid = latitude >= 5.0 && latitude <= 30.0;
-  const isLonValid = longitude >= 45.0 && longitude <= 105.0;
+  // Keep the raw text the user types so a cleared or partially typed field is not
+  // silently replaced by a default value; only finite numbers are sent upward.
+  const [latText, setLatText] = useState<string>(String(latitude));
+  const [lonText, setLonText] = useState<string>(String(longitude));
+
+  // Sync when coordinates change elsewhere (map click, preset chip)
+  useEffect(() => {
+    if (parseFloat(latText) !== latitude) setLatText(String(latitude));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [latitude]);
+  useEffect(() => {
+    if (parseFloat(lonText) !== longitude) setLonText(String(longitude));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [longitude]);
+
+  const latNum = parseFloat(latText);
+  const lonNum = parseFloat(lonText);
+  const isLatValid = Number.isFinite(latNum) && latNum >= 5.0 && latNum <= 30.0;
+  const isLonValid = Number.isFinite(lonNum) && lonNum >= 45.0 && lonNum <= 105.0;
   const canSubmit = isLatValid && isLonValid && !isLoading;
 
   return (
@@ -60,10 +77,12 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
                 step="0.25"
                 min="5.0"
                 max="30.0"
-                value={latitude}
+                value={latText}
                 onChange={(e) => {
                   onClearError();
-                  onChangeLatitude(parseFloat(e.target.value) || 5.0);
+                  setLatText(e.target.value);
+                  const v = parseFloat(e.target.value);
+                  if (Number.isFinite(v)) onChangeLatitude(v);
                 }}
                 disabled={isLoading}
                 className={`w-full text-sm font-mono px-3 py-2 rounded-lg border bg-white focus:outline-hidden focus:ring-2 ${
@@ -91,10 +110,12 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
                 step="0.25"
                 min="45.0"
                 max="105.0"
-                value={longitude}
+                value={lonText}
                 onChange={(e) => {
                   onClearError();
-                  onChangeLongitude(parseFloat(e.target.value) || 45.0);
+                  setLonText(e.target.value);
+                  const v = parseFloat(e.target.value);
+                  if (Number.isFinite(v)) onChangeLongitude(v);
                 }}
                 disabled={isLoading}
                 className={`w-full text-sm font-mono px-3 py-2 rounded-lg border bg-white focus:outline-hidden focus:ring-2 ${
@@ -149,7 +170,8 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
           <p className="text-[11px] text-slate-500 mt-1.5 leading-tight flex items-start gap-1">
             <Info className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
             <span>
-              Real processed satellite surface inputs are available daily for Jan 1 – Sep 30, 2020.
+              Processed (archived) satellite surface inputs are available daily for Jan 1 – Sep 30,
+              2020. Sep 2020 is the held-out test month.
             </span>
           </p>
         </div>

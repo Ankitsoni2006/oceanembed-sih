@@ -44,5 +44,13 @@ MODEL_VERSION: str = "v3"
 MODEL_PARAMETERS: int = 1275934
 MODEL_STATUS: str = "validated"
 
-# CORS Configuration for Frontend Development & Network Demo
-ALLOWED_ORIGINS: List[str] = ["*"]
+# CORS Configuration for Frontend Development & Network Demo.
+# Defaults to "*" so the dashboard works from localhost and any LAN host without
+# editing code. Restrict with a comma-separated list, e.g.
+#   OCEANEMBED_ALLOWED_ORIGINS=http://localhost:3000,http://192.168.1.20:3000
+# The API is read-only and never uses cookies/credentials.
+ALLOWED_ORIGINS: List[str] = [
+    origin.strip()
+    for origin in os.environ.get("OCEANEMBED_ALLOWED_ORIGINS", "*").split(",")
+    if origin.strip()
+] or ["*"]

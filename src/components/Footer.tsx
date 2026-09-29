@@ -42,9 +42,10 @@ export const Footer: React.FC = () => {
               <span>Validation Reference</span>
             </div>
             <ul className="space-y-1 text-slate-500">
-              <li>• GLORYS Reanalysis Reference: <strong>0.8601°C RMSE</strong></li>
-              <li>• ARGO Observational Check: <strong>0.7973°C RMSE</strong></li>
-              <li>• Evaluation Sample: 497 matched profile-depth observations</li>
+              <li>• GLORYS reanalysis reference (offline benchmark): <strong>0.8601°C RMSE</strong></li>
+              <li>• ARGO observational check (offline benchmark): <strong>0.7973°C RMSE</strong></li>
+              <li>• ARGO sample: 497 profile-depth observations, 36 profiles, 28 floats</li>
+              <li>• Request-time ARGO values: ARGO Validation Mode</li>
               <li>• Evaluation Split: Held-out September 2020</li>
             </ul>
           </div>

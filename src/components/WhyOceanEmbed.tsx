@@ -41,7 +41,7 @@ const PIPELINE_STAGES = [
   {
     icon: Target,
     title: 'ARGO observational comparison',
-    detail: 'Independent in-situ floats, evaluation only — never an input',
+    detail: 'In-situ floats (Sep 2020, offline set), evaluation only — never an input',
     tone: 'amber',
   },
   {
@@ -66,17 +66,17 @@ const UNIQUE_POINTS = [
   {
     icon: Target,
     title: 'Explicit ARGO observational evaluation',
-    body: 'Every claim is checked against authentic profiling-float observations, not only against the training reference.',
+    body: 'The reconstruction is checked against authentic September 2020 profiling-float observations, not only against the GLORYS training reference.',
   },
   {
     icon: Gauge,
-    title: 'Quantified uncertainty per profile',
-    body: 'RMSE, MAE, Bias and Pearson r are reported for each float and depth, so error is visible rather than implied.',
+    title: 'Transparent per-profile error',
+    body: 'RMSE, MAE, Bias and Pearson r against ARGO are reported for each float and depth, so error is visible rather than implied. (This is observed error, not a model uncertainty estimate.)',
   },
   {
     icon: Droplets,
     title: 'Thermocline-aware analysis',
-    body: 'The 75–200 m thermocline region is tracked explicitly — the hardest and most dynamic part of the column.',
+    body: 'Errors are reported per depth, with the nominal 75–150 m thermocline band highlighted — the hardest and most dynamic part of the column.',
   },
   {
     icon: Rocket,
@@ -100,7 +100,7 @@ export const WhyOceanEmbed: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-5">
+        <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-5">
           {PIPELINE_STAGES.map((stage, idx) => {
             const Icon = stage.icon;
             const border =
@@ -117,7 +117,7 @@ export const WhyOceanEmbed: React.FC = () => {
                   : 'text-sky-700';
             return (
               <React.Fragment key={stage.title}>
-                <div className={`p-3.5 border rounded-lg flex flex-col ${border}`}>
+                <div className={`p-3.5 border rounded-lg flex flex-col md:flex-1 min-w-0 ${border}`}>
                   <div className="flex items-center justify-between mb-2">
                     <Icon className={`w-4 h-4 ${iconColor}`} />
                     <span className="text-[10px] font-mono text-slate-500">
@@ -128,8 +128,8 @@ export const WhyOceanEmbed: React.FC = () => {
                   <p className="text-[11px] text-slate-600 leading-relaxed mt-1">{stage.detail}</p>
                 </div>
                 {idx < PIPELINE_STAGES.length - 1 && (
-                  <div className="hidden md:flex items-center justify-center text-slate-400">
-                    <ArrowRight className="w-4 h-4 md:rotate-90 lg:rotate-0" />
+                  <div className="hidden md:flex items-center justify-center text-slate-400 shrink-0">
+                    <ArrowRight className="w-4 h-4" />
                   </div>
                 )}
               </React.Fragment>

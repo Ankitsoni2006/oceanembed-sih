@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Layers, Info, Thermometer } from 'lucide-react';
 import { PredictionResponse, DepthPoint } from '../types';
+import { THERMOCLINE_TOP_M, THERMOCLINE_BOTTOM_M, isInThermoclineBand } from '../lib/ocean';
 
 interface ProfileChartProps {
   prediction: PredictionResponse | null;
@@ -31,7 +32,7 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
           Reconstructed Temperature Profile
         </h3>
         <p className="text-xs text-slate-500 max-w-sm mt-1 mb-4 leading-relaxed">
-          Select coordinates and an observation date, then click <strong>Reconstruct Temperature</strong> to run the OceanEmbed v3 model via live backend inference.
+          Select coordinates and an observation date, then click <strong>Reconstruct Temperature</strong> to run the OceanEmbed v3 model on the backend.
         </p>
         <div className="text-[11px] font-mono text-slate-500 border border-dashed border-slate-300 bg-slate-50 px-3 py-1.5 rounded">
           Default Coordinates: 15.00°N, 85.00°E (Bay of Bengal) • 2020-09-15
@@ -46,7 +47,7 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
   const points: DepthPoint[] = depths_m.map((depth, idx) => ({
     depth_m: depth,
     temperature_c: temperatures_c[idx],
-    isThermocline: depth >= 75 && depth <= 150,
+    isThermocline: isInThermoclineBand(depth),
   }));
 
   // SVG Chart Dimensions
@@ -81,9 +82,9 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
     })
     .join(' ');
 
-  // Thermocline band coordinates (75m to 150m)
-  const thermoTopY = depthToY(75);
-  const thermoBottomY = depthToY(150);
+  // Nominal thermocline band coordinates
+  const thermoTopY = depthToY(THERMOCLINE_TOP_M);
+  const thermoBottomY = depthToY(THERMOCLINE_BOTTOM_M);
   const thermoHeight = thermoBottomY - thermoTopY;
 
   // Temperature ticks (4°C intervals: 6, 10, 14, 18, 22, 26, 30°C)
@@ -117,7 +118,9 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
           </div>
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-3 bg-amber-100 border border-amber-300 rounded-xs inline-block" />
-            <span className="font-mono text-[11px]">Thermocline (75–150m)</span>
+            <span className="font-mono text-[11px]">
+              Nominal thermocline ({THERMOCLINE_TOP_M}–{THERMOCLINE_BOTTOM_M}m)
+            </span>
           </div>
         </div>
       </div>
@@ -147,7 +150,7 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
               fontFamily="monospace"
               fontWeight="600"
             >
-              Thermocline Gradient Zone (75–150m)
+              Nominal thermocline band ({THERMOCLINE_TOP_M}–{THERMOCLINE_BOTTOM_M}m)
             </text>
 
             {/* Vertical Gridlines (Temperature) */}

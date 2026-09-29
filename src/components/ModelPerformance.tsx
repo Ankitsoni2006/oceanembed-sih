@@ -35,7 +35,7 @@ export const ModelPerformance: React.FC = () => {
             Two distinct benchmarks: the <strong>GLORYS held-out reference</strong> (supervised
             training/reference dataset) and the <strong>ARGO observational benchmark</strong>{' '}
             (in-situ floats). The figures on this card are historical, verified experiment results
-            — they are not recomputed per click. Live, request-time ARGO values are shown in the{' '}
+            — they are not recomputed per click. ARGO values recomputed by the backend at request time are shown in the{' '}
             <a href="#argo-validation" className="text-sky-700 underline underline-offset-2">
               ARGO Observational Validation
             </a>{' '}
@@ -122,8 +122,8 @@ export const ModelPerformance: React.FC = () => {
           <span className="font-bold block">Observational Verification Protocol (historical benchmark):</span>
           <span>
             Independent observational check using <strong>497 matched profile-depth observations from 36 ARGO profiles across 28 unique WMO floats in September 2020</strong>.
-            These are static results from a previously evaluated, verified offline experiment — the
-            live per-request equivalent is served by <code className="font-mono">GET /argo/summary</code> in the ARGO section above.
+            These are static results from a previously evaluated offline experiment — the
+            request-time equivalent is served by <code className="font-mono">GET /argo/summary</code> in the ARGO section above.
           </span>
         </div>
       </div>
@@ -136,7 +136,7 @@ export const ModelPerformance: React.FC = () => {
           </h3>
           <div className="flex items-center gap-2 text-[11px] text-slate-500">
             <span className="w-2.5 h-2.5 rounded-xs bg-amber-100 border border-amber-300 inline-block" />
-            <span>Thermocline-Region ARGO RMSE</span>
+            <span>Nominal thermocline band (75–150 m)</span>
           </div>
         </div>
 
@@ -177,7 +177,7 @@ export const ModelPerformance: React.FC = () => {
           </table>
         </div>
         <p className="text-[10px] text-slate-500 mt-1.5 font-mono">
-          * Historical, previously evaluated benchmark: OceanEmbed v3 achieved lower ARGO RMSE than the Simple CNN at all 14 evaluated depth levels (0m had no ARGO observations). Live depth-wise values are returned by <code>GET /argo/summary</code> in the ARGO section.
+          * Historical, previously evaluated benchmark: OceanEmbed v3 achieved lower ARGO RMSE than the Simple CNN at all 14 evaluated depth levels (0m had no ARGO observations). Request-time depth-wise v3 values are returned by <code>GET /argo/summary</code> in the ARGO section; the Simple CNN column exists only in the offline experiment.
         </p>
       </div>
     </section>

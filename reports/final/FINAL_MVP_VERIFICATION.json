@@ -1,0 +1,90 @@
+{
+  "generated": "2026-09-29",
+  "branch": "final-mvp-hardening",
+  "base_commit": "50c7c6b",
+  "note": "Every value below was produced by commands executed on 2026-09-29 on the developer Windows host (CPU, Python 3.13.5, torch 2.12.0+cpu, numpy 2.3.1, Node 20.20.2). Nothing is copied from earlier reports.",
+
+  "model_checkpoint_verified": true,
+  "model_checkpoint": {
+    "path": "checkpoints/phase5/oceanembed_v3_decoder.pt",
+    "size_bytes": 5148823,
+    "sha256": "29e94f9cc28b13f370a1993c20971d90ed6861df15af32f3dbc71d3ffc351cf2",
+    "git_blob_matches_committed": true,
+    "architecture": "OceanEmbedNetV3_Decoder",
+    "trainable_parameters": 1275934,
+    "input_shape": [14, 101, 241],
+    "output_shape": [15, 101, 241],
+    "outputs_finite": true
+  },
+  "scaler_train_only_verified": true,
+  "scaler_train_period": ["2020-01-01", "2020-07-31"],
+  "available_dates": {"count": 274, "start": "2020-01-01", "end": "2020-09-30"},
+  "protected_paths_unchanged": ["checkpoints", "configs", "data", "src/models", "src/preprocessing", "src/validation", "src/evaluation"],
+
+  "argo_profiles": 36,
+  "unique_wmo_floats": 28,
+  "matched_observations": 497,
+  "argo_rmse": 0.7973,
+  "argo_mae": 0.4820,
+  "argo_bias": 0.0507,
+  "argo_pearson_r": 0.9946,
+  "argo_skipped_profiles": 0,
+  "argo_profiles_with_degraded_surface_input": ["20200901_prof.nc_40 (WMO 6902948, 3/7 channels, no valid SST)"],
+  "argo_benchmark_source": "GET /argo/summary?refresh=true on the running uvicorn server (localhost and LAN IP), and tests/test_argo_api.py",
+  "argo_depth_wise_rmse": {
+    "0": null, "5": 0.5284, "10": 0.6030, "20": 0.6582, "30": 0.7194, "50": 0.8679,
+    "75": 1.0388, "100": 1.5317, "125": 1.0631, "150": 0.8645, "200": 0.9100,
+    "300": 0.3585, "500": 0.2997, "700": 0.2631, "1000": 0.2586
+  },
+  "argo_depth_wise_counts": {
+    "0": 0, "5": 34, "10": 35, "20": 35, "30": 35, "50": 36, "75": 36, "100": 36,
+    "125": 36, "150": 36, "200": 36, "300": 36, "500": 36, "700": 35, "1000": 35
+  },
+  "argo_collocation": {"max_temporal_offset_hours": 10.87, "mean_temporal_offset_hours": 5.31,
+                       "min_spatial_offset_km": 4.32, "mean_spatial_offset_km": 9.95, "max_spatial_offset_km": 15.72},
+
+  "backend_tests_passed": 52,
+  "backend_tests_failed": 0,
+  "backend_tests_command": "python -m pytest -q",
+  "argo_tests_passed": 20,
+  "argo_tests_failed": 0,
+  "baseline_tests_before_changes": "30 passed, 1 collection error (scripts/data_pipeline/02_pipeline_test.py)",
+  "python_compile_passed": true,
+  "frontend_typecheck_passed": true,
+  "frontend_build_passed": true,
+
+  "api_smoke_tests": {
+    "hosts": ["http://127.0.0.1:8000", "http://192.168.43.6:8000"],
+    "GET /": 200, "GET /health": 200, "GET /model-info": 200, "GET /available-dates": 200,
+    "POST /predict valid": 200,
+    "POST /predict latitude out of range": 422,
+    "POST /predict longitude out of range": 422,
+    "POST /predict land cell (23N,78E)": 400,
+    "POST /predict unavailable date": 404,
+    "POST /predict malformed body": 422,
+    "GET /argo/profiles": 200, "GET /argo/summary": 200,
+    "GET /argo/compare/{real_id}": 200, "GET /argo/compare/{unknown_id}": 404,
+    "cors_header": "*"
+  },
+
+  "performance": {
+    "method": "30 sequential POST /predict (2020-09-15, 15N 85E) over HTTP on localhost, CPU",
+    "server_total_latency_mean_ms": 55.3,
+    "server_total_latency_median_ms": 52.3,
+    "model_forward_mean_ms": 53.1,
+    "http_roundtrip_mean_ms": 62.1,
+    "deterministic_outputs": true,
+    "argo_full_aggregate_recompute_warm_ms": 25.6,
+    "comment": "Slower than the earlier recorded 35.9 ms / 31.8 ms. The unchanged model forward pass accounts for the difference, so it reflects host load at measurement time (two Vite servers and the backend were running), not a code regression."
+  },
+
+  "ui_demo_flow": {
+    "tool": "Playwright + installed Chrome (headless), scripted clicks on the real UI",
+    "urls": {"http://192.168.43.6:3001/ (npm run dev -- --host 0.0.0.0 --port 3001)": "34/34 checks passed",
+             "http://localhost:3000/ (pre-existing dev server)": "34/34 checks passed"},
+    "browser_console_errors": "only the deliberate land-cell HTTP 400",
+    "uncaught_page_errors": 0
+  },
+  "lan_demo_verified": true,
+  "lan_demo_scope": "Frontend (:3001 and :3000) and backend (:8000) reached through the host LAN IP 192.168.43.6 from the same machine. Not tested from a second physical device; Windows firewall rules for ports 3000/8000 may need allowing."
+}

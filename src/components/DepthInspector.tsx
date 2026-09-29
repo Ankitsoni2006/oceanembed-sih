@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sliders, Target, Thermometer } from 'lucide-react';
+import { THERMOCLINE_TOP_M, THERMOCLINE_BOTTOM_M, isInThermoclineBand } from '../lib/ocean';
 
 interface DepthInspectorProps {
   depths: number[];
@@ -63,7 +64,7 @@ export const DepthInspector: React.FC<DepthInspectorProps> = ({
         <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-15 gap-1.5">
           {depths.map((d, i) => {
             const isSelected = activeDepth === d;
-            const isThermocline = d >= 75 && d <= 150;
+            const isThermocline = isInThermoclineBand(d);
             const tempVal = temperatures[i];
 
             return (
@@ -101,7 +102,7 @@ export const DepthInspector: React.FC<DepthInspectorProps> = ({
           </span>
           <span className="flex items-center gap-1">
             <span className="w-2.5 h-2.5 rounded-xs bg-amber-100 border border-amber-300 inline-block" />
-            <span>Thermocline (75–150m)</span>
+            <span>Nominal thermocline ({THERMOCLINE_TOP_M}–{THERMOCLINE_BOTTOM_M}m)</span>
           </span>
           <span className="flex items-center gap-1">
             <span className="w-2.5 h-2.5 rounded-xs bg-slate-100 border border-slate-300 inline-block" />

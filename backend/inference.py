@@ -43,6 +43,10 @@ from src.preprocessing.normalization import OceanStandardScaler
 
 logger = logging.getLogger("OceanEmbed.Backend.Inference")
 
+# np.trapezoid exists only in NumPy >= 2.0; np.trapz is its NumPy 1.x name.
+# requirements.txt permits numpy>=1.24, so resolve whichever is available.
+_trapezoid = getattr(np, "trapezoid", None) or np.trapz
+
 
 class OceanEmbedInferenceService:
     """
@@ -282,7 +286,7 @@ class OceanEmbedInferenceService:
         idx_300 = np.where(z <= 300)[0]
         z_sub = z[idx_300]
         t_sub = t[idx_300]
-        ohc_joules = float(np.trapezoid(t_sub, z_sub) * rho_0 * c_p)
+        ohc_joules = float(_trapezoid(t_sub, z_sub) * rho_0 * c_p)
         ohc_gj = float(ohc_joules / 1e9)  # Convert to GJ/m²
 
         return {
@@ -350,6 +354,19 @@ class OceanEmbedInferenceService:
 
         # 8. Extract 15-depth vertical temperature column at target grid cell
         pred_col = pred_3d[0, :, lat_idx, lon_idx].cpu().numpy()
+        if not np.all(np.isfinite(pred_col)):
+            # Never serve NaN/Inf as a temperature; surface it as an invalid cell instead.
+            logger.warning(f"Non-finite model output at ({grid_lat}, {grid_lon}) on {date_str}.")
+            return {
+                "date": date_str,
+                "latitude": lat,
+                "longitude": lon,
+                "grid_latitude": grid_lat,
+                "grid_longitude": grid_lon,
+                "is_valid_ocean": False,
+                "error": "Non-finite model output",
+                "message": f"The model produced a non-finite value at grid cell ({grid_lat}°N, {grid_lon}°E) on {date_str}; no profile can be reported for this cell."
+            }
         temps_c = [round(float(v), 4) for v in pred_col]
 
         # 9. Compute oceanographic indicators

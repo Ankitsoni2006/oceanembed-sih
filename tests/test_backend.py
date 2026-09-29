@@ -215,3 +215,31 @@ def test_12_repeated_requests_stability_and_numerical_consistency(client):
     # Verify average latency is fast (< 100ms)
     avg_latency = sum(latencies) / len(latencies)
     assert avg_latency < 150.0, f"Average repeated API latency too high: {avg_latency:.2f} ms"
+
+
+@pytest.mark.parametrize("bad_date", ["2020-13-45", "not-a-date", "", "2019-12-31"])
+def test_13_malformed_or_unavailable_date_returns_404(client, bad_date):
+    """Test 13: malformed or out-of-archive dates are rejected with a clean 404."""
+    response = client.post("/predict", json={"date": bad_date, "latitude": 15.0, "longitude": 85.0})
+    assert response.status_code == 404
+    assert "traceback" not in response.text.lower()
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [{}, {"date": "2020-09-15"}, {"date": "2020-09-15", "latitude": "north", "longitude": 85.0}],
+)
+def test_14_schema_violations_return_422(client, payload):
+    """Test 14: missing or non-numeric fields fail schema validation (422)."""
+    assert client.post("/predict", json=payload).status_code == 422
+
+
+def test_15_derived_indicators_are_finite(client):
+    """Test 15: MLD, thermocline depth and OHC300 are returned and finite."""
+    data = client.post("/predict", json={"date": "2020-09-15", "latitude": 15.0, "longitude": 85.0}).json()
+    ind = data["oceanographic_indicators"]
+    for key in ("mixed_layer_depth_m", "thermocline_depth_m", "ocean_heat_content_300m_gj_m2"):
+        assert ind[key] is not None and math.isfinite(ind[key]), f"{key} missing or non-finite"
+    assert 0 <= ind["mixed_layer_depth_m"] <= 1000
+    assert 0 < ind["thermocline_depth_m"] < 1000
+    assert ind["ocean_heat_content_300m_gj_m2"] > 0

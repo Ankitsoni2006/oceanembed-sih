@@ -25,6 +25,7 @@ import logging
 import math
 import time
 from collections import OrderedDict
+from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
@@ -62,6 +63,13 @@ def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     )
     c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
     return radius_km * c
+
+
+def temporal_offset_hours(observation_timestamp: str, matched_date: str) -> float:
+    """Absolute hours between a cast time and the 12:00 UTC centre of the matched daily mean."""
+    obs_dt = datetime.strptime(observation_timestamp, "%Y-%m-%dT%H:%M:%S")
+    centre_dt = datetime.strptime(matched_date, "%Y-%m-%d").replace(hour=12, minute=0, second=0)
+    return abs((obs_dt - centre_dt).total_seconds()) / 3600.0
 
 
 def _round_or_none(value: Optional[float], digits: int = 4) -> Optional[float]:
@@ -206,13 +214,6 @@ class ArgoValidationService:
         """
         matched_date, _ = INFERENCE_SERVICE.resolve_nearest_available_date(profile.date)
 
-        # Temporal offset against the 12:00 UTC centre of the daily-mean product.
-        from datetime import datetime
-
-        obs_dt = datetime.strptime(profile.timestamp, "%Y-%m-%dT%H:%M:%S")
-        centre_dt = datetime.strptime(matched_date, "%Y-%m-%d").replace(hour=12, minute=0, second=0)
-        temporal_offset_hours = abs((obs_dt - centre_dt).total_seconds()) / 3600.0
-
         # Spatial mapping to the canonical reconstruction grid.
         lat_idx, lon_idx, grid_lat, grid_lon = INFERENCE_SERVICE.map_coordinates_to_grid(
             profile.latitude, profile.longitude
@@ -267,8 +268,10 @@ class ArgoValidationService:
         """
         profile = self.catalog.get(profile_id)
         if profile is None:
+            # Echo only a short, printable form of the user-supplied id.
+            shown_id = "".join(ch for ch in profile_id if ch.isprintable())[:80]
             raise KeyError(
-                f"ARGO profile '{profile_id}' is not present in the authentic "
+                f"ARGO profile '{shown_id}' is not present in the authentic "
                 f"September 2020 evaluation catalog ({len(self.catalog)} profiles available)."
             )
 
@@ -312,11 +315,7 @@ class ArgoValidationService:
                 }
             )
 
-        from datetime import datetime
-
-        obs_dt = datetime.strptime(profile.timestamp, "%Y-%m-%dT%H:%M:%S")
-        centre_dt = datetime.strptime(matched_date, "%Y-%m-%d").replace(hour=12, minute=0, second=0)
-        temporal_offset_hours = abs((obs_dt - centre_dt).total_seconds()) / 3600.0
+        offset_hours = temporal_offset_hours(profile.timestamp, matched_date)
 
         total_ms = (time.perf_counter() - t_start) * 1000.0
 
@@ -327,7 +326,7 @@ class ArgoValidationService:
             "model_version": "v3",
             "argo_profile": profile.to_metadata(),
             "matched_model_date": matched_date,
-            "temporal_offset_hours": round(temporal_offset_hours, 2),
+            "temporal_offset_hours": round(offset_hours, 2),
             "spatial_offset_km": round(spatial_offset_km, 2),
             "grid_latitude": grid_lat,
             "grid_longitude": grid_lon,
@@ -401,13 +400,7 @@ class ArgoValidationService:
                     }
                 )
 
-            from datetime import datetime
-
-            obs_dt = datetime.strptime(profile.timestamp, "%Y-%m-%dT%H:%M:%S")
-            centre_dt = datetime.strptime(matched_date, "%Y-%m-%d").replace(
-                hour=12, minute=0, second=0
-            )
-            temporal_offsets.append(abs((obs_dt - centre_dt).total_seconds()) / 3600.0)
+            temporal_offsets.append(temporal_offset_hours(profile.timestamp, matched_date))
             spatial_offsets.append(spatial_offset_km)
             if matched_date not in matched_dates:
                 matched_dates.append(matched_date)

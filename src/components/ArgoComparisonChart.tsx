@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { LineChart, GitCompareArrows, Info } from 'lucide-react';
 import { ArgoProfileComparison, DepthComparison } from '../types';
+import { THERMOCLINE_TOP_M, THERMOCLINE_BOTTOM_M, isInThermoclineBand } from '../lib/ocean';
 
 interface ArgoComparisonChartProps {
   comparison: ArgoProfileComparison | null;
 }
-
-// Thermocline region highlighted in the comparison chart (75–200 m)
-const THERMOCLINE_TOP_M = 75;
-const THERMOCLINE_BOTTOM_M = 200;
 
 const OBSERVED_COLOR = '#d97706'; // ARGO observed — amber
 const PREDICTED_COLOR = '#0369a1'; // OceanEmbed predicted — sky blue
@@ -30,8 +27,8 @@ export const ArgoComparisonChart: React.FC<ArgoComparisonChartProps> = ({ compar
         </div>
         <h3 className="text-base font-bold text-slate-800">Observed vs Predicted Profile</h3>
         <p className="text-xs text-slate-500 max-w-sm mt-1 leading-relaxed">
-          No ARGO profile selected. Choose a float on the map or from the profile list to run a
-          live backend comparison.
+          No ARGO profile selected. Choose a float on the map or from the profile list to run an
+          on-demand backend comparison.
         </p>
       </div>
     );
@@ -177,7 +174,7 @@ export const ArgoComparisonChart: React.FC<ArgoComparisonChartProps> = ({ compar
             fontSize="9.5"
             fontWeight="600"
           >
-            thermocline region
+            nominal thermocline band
           </text>
 
           <g transform={`translate(${margin.left}, ${margin.top})`}>
@@ -387,8 +384,7 @@ export const ArgoComparisonChart: React.FC<ArgoComparisonChartProps> = ({ compar
               {errorRows.map((row, idx) => {
                 const y = errMargin.top + idx * errRowHeight;
                 const w = errScale(row.error_c);
-                const isThermo =
-                  row.depth_m >= THERMOCLINE_TOP_M && row.depth_m <= THERMOCLINE_BOTTOM_M;
+                const isThermo = isInThermoclineBand(row.depth_m);
                 const barEnd = w >= 0 ? errZeroX + w : errZeroX + w;
                 return (
                   <g key={`err-${row.depth_m}`}>
@@ -432,8 +428,9 @@ export const ArgoComparisonChart: React.FC<ArgoComparisonChartProps> = ({ compar
         <p className="text-[10px] text-slate-500 mt-1.5 flex items-start gap-1">
           <Info className="w-3 h-3 shrink-0 mt-0.5" />
           <span>
-            Only depths with a genuine ARGO observation are plotted. Depth {THERMOCLINE_TOP_M}–
-            {THERMOCLINE_BOTTOM_M} m is the thermocline region.
+            Only depths with a genuine ARGO observation are plotted. The shaded{' '}
+            {THERMOCLINE_TOP_M}–{THERMOCLINE_BOTTOM_M} m band is a fixed, nominal thermocline band
+            for display.
           </span>
         </p>
       </div>

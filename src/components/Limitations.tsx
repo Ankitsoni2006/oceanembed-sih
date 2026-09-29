@@ -11,7 +11,7 @@ export const Limitations: React.FC = () => {
             Scope & Limitations
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Operational envelope, reference targets, and validation boundaries.
+            Prototype scope, reference targets, and validation boundaries.
           </p>
         </div>
       </div>

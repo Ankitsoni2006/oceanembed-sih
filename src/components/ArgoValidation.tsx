@@ -19,6 +19,7 @@ import {
 } from '../types';
 import { OceanMap } from './OceanMap';
 import { ArgoComparisonChart } from './ArgoComparisonChart';
+import { THERMOCLINE_TOP_M, THERMOCLINE_BOTTOM_M, isInThermoclineBand } from '../lib/ocean';
 
 /**
  * The ARGO catalog is static metadata (~profiles), so it is cached once per
@@ -34,8 +35,8 @@ const EMPTY_SELECTION_PLACEHOLDER = (
     </div>
     <h3 className="text-base font-bold text-slate-800">No ARGO profile selected</h3>
     <p className="text-xs text-slate-500 max-w-sm mt-1 leading-relaxed">
-      Click an ARGO marker on the map or pick a float from the profile list to run a live
-      OceanEmbed v3 comparison against the observed profile.
+      Click an ARGO marker on the map or pick a float from the profile list to run an
+      on-demand OceanEmbed v3 comparison against the observed profile.
     </p>
   </div>
 );
@@ -196,7 +197,7 @@ export const ArgoValidation: React.FC = () => {
             </p>
           </div>
           <span className="text-[11px] font-mono bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded font-medium shrink-0">
-            September 2020 — Coriolis / INCOIS GDAC ARGO evaluation set
+            September 2020 Offline Observational Evaluation — Coriolis / INCOIS GDAC
           </span>
         </div>
 
@@ -303,6 +304,7 @@ export const ArgoValidation: React.FC = () => {
             subtitle="Click a float marker to load its observational comparison"
             showPresets={false}
             showCoordinateReadout={false}
+            showReticle={false}
           />
 
           {/* -------- Searchable profile selector -------- */}
@@ -590,7 +592,7 @@ export const ArgoValidation: React.FC = () => {
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-mono">
                       {comparison.depth_comparison.map((row) => {
-                        const isThermo = row.depth_m >= 75 && row.depth_m <= 200;
+                        const isThermo = isInThermoclineBand(row.depth_m);
                         return (
                           <tr
                             key={row.depth_m}
@@ -695,6 +697,19 @@ export const ArgoValidation: React.FC = () => {
                   The model never sees ARGO temperature — the float is the referee, not the input.
                 </div>
 
+                {!comparison.is_valid_ocean && (
+                  <div className="mt-2 p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-[11px] text-rose-900 flex items-start gap-2">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                    <span>
+                      The matched 0.25° grid cell has <strong>no valid SST observation</strong> on
+                      this date, so Reconstruction Mode (<code className="font-mono">/predict</code>)
+                      would reject it. The reconstruction shown here was produced from degraded
+                      surface input and is kept in the aggregate for transparency; treat its error
+                      with caution.
+                    </span>
+                  </div>
+                )}
+
                 {!comparison.surface_input_availability.is_complete && (
                   <div className="mt-2 p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-[11px] text-amber-900 flex items-start gap-2">
                     <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
@@ -723,8 +738,9 @@ export const ArgoValidation: React.FC = () => {
               Aggregate ARGO Validation
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              Every profile in the evaluation set, reconstructed and compared server-side. Values
-              are returned live by <code className="font-mono">GET /argo/summary</code>.
+              Every profile in the offline September 2020 evaluation set, reconstructed and
+              compared server-side. Values are computed by the backend at request time via{' '}
+              <code className="font-mono">GET /argo/summary</code>.
             </p>
           </div>
           <span className="text-[11px] font-mono bg-slate-100 text-slate-600 border border-slate-200 px-2.5 py-1 rounded shrink-0">
@@ -811,7 +827,9 @@ export const ArgoValidation: React.FC = () => {
                   </h3>
                   <div className="flex items-center gap-2 text-[11px] text-slate-500">
                     <span className="w-2.5 h-2.5 rounded-xs bg-amber-100 border border-amber-300 inline-block" />
-                    <span>Thermocline region</span>
+                    <span>
+                      Nominal thermocline band ({THERMOCLINE_TOP_M}–{THERMOCLINE_BOTTOM_M} m)
+                    </span>
                   </div>
                 </div>
                 <div className="overflow-x-auto border border-slate-200 rounded-lg max-h-96 overflow-y-auto">
@@ -827,7 +845,7 @@ export const ArgoValidation: React.FC = () => {
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-mono">
                       {summary.depth_wise.map((row) => {
-                        const isThermo = row.depth_m >= 75 && row.depth_m <= 200;
+                        const isThermo = isInThermoclineBand(row.depth_m);
                         return (
                           <tr
                             key={row.depth_m}
@@ -924,6 +942,36 @@ export const ArgoValidation: React.FC = () => {
                     {summary.profile_count} evaluated
                   </div>
                 </div>
+
+                {summary.profile_metadata.profiles_with_degraded_surface_inputs.length > 0 && (
+                  <div className="p-3.5 bg-amber-50/60 border border-amber-200 rounded-lg text-xs text-amber-950 leading-relaxed">
+                    <span className="font-bold block mb-1">
+                      Profiles on cells with incomplete surface input (
+                      {summary.profile_metadata.profiles_with_degraded_surface_inputs.length}):
+                    </span>
+                    <ul className="space-y-1 font-mono text-[11px]">
+                      {summary.profile_metadata.profiles_with_degraded_surface_inputs.map((p) => (
+                        <li key={p.profile_id}>
+                          <button
+                            type="button"
+                            onClick={() => handleSelectProfile(p.profile_id)}
+                            className="underline underline-offset-2 hover:text-amber-700"
+                          >
+                            WMO {p.wmo} ({p.profile_id})
+                          </button>
+                          : {p.available_count}/7 channels
+                          {summary.profile_metadata.profiles_mapped_to_non_ocean_cells.includes(
+                            p.profile_id
+                          ) && ', no valid SST'}{' '}
+                          — missing {p.missing_channels.join(', ')}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-1.5 text-[11px]">
+                      {summary.profile_metadata.input_completeness_note}
+                    </p>
+                  </div>
+                )}
 
                 <div className="p-3.5 bg-sky-50/60 border border-sky-200 rounded-lg text-xs text-sky-900 leading-relaxed">
                   <span className="font-bold block mb-0.5">Computation note (from backend):</span>

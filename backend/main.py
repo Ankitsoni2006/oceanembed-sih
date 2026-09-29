@@ -107,9 +107,10 @@ app = FastAPI(
     title="OceanEmbed Subsurface Temperature Reconstruction API",
     version="3.0.0",
     description=(
-        "Production-grade FastAPI service serving real 3D subsurface ocean temperature "
-        "reconstructions (0–1000m) from surface satellite observations in the North Indian Ocean. "
-        "Powered by the validated OceanEmbedNetV3_Decoder architecture (SIH26066)."
+        "Research-prototype FastAPI service (SIH26066) that reconstructs 15-depth (0–1000 m) "
+        "subsurface ocean temperature profiles from surface satellite observations in the North "
+        "Indian Ocean, using the frozen OceanEmbedNetV3_Decoder model on the processed "
+        "Jan–Sep 2020 archive. Also serves an offline September 2020 ARGO observational evaluation."
     ),
     lifespan=lifespan
 )
@@ -117,7 +118,7 @@ app = FastAPI(
 # Configure CORS for Frontend Integration (Local & Network)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -325,6 +326,12 @@ def get_argo_summary(refresh: bool = Query(False, description="Recompute instead
         summary = ARGO_VALIDATION_SERVICE.summary(force=refresh)
     except KeyError as ke:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(ke).strip("'\""))
+    except OSError as exc:
+        logger.error(f"ARGO archive unavailable for aggregate evaluation: {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="ARGO evaluation archive is unavailable or could not be indexed."
+        )
     except Exception as exc:
         logger.error(f"ARGO aggregate evaluation failed: {exc}", exc_info=True)
         raise HTTPException(
@@ -356,6 +363,12 @@ def compare_argo_profile(profile_id: str) -> ArgoComparisonResponse:
             status_code=status.HTTP_404_NOT_FOUND,
             detail=str(ke).strip("'\"")
         )
+    except OSError as exc:
+        logger.error(f"ARGO archive unavailable for comparison '{profile_id}': {exc}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="ARGO evaluation archive is unavailable or could not be indexed."
+        )
     except Exception as exc:
         logger.error(f"ARGO comparison failed for '{profile_id}': {exc}", exc_info=True)
         raise HTTPException(
@@ -367,14 +380,13 @@ def compare_argo_profile(profile_id: str) -> ArgoComparisonResponse:
 
 
 @app.get("/", summary="Root Documentation Link", tags=["System"])
-
 def root_endpoint():
     """Welcome endpoint providing service name and documentation URL."""
     return {
-        "service": "OceanEmbed Subsurface Temperature Reconstruction API",
+        "service": "OceanEmbed Subsurface Temperature Reconstruction API (research prototype)",
         "model": MODEL_NAME,
         "version": MODEL_VERSION,
-        "status": "operational",
+        "status": "running",
         "documentation": "/docs",
         "openapi_spec": "/openapi.json"
     }

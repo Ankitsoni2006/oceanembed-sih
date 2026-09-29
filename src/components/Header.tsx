@@ -1,6 +1,7 @@
 import React from 'react';
 import { Activity, CheckCircle2, AlertTriangle, Layers } from 'lucide-react';
 import { HealthResponse } from '../types';
+import { api } from '../services/api';
 
 interface HeaderProps {
   health: HealthResponse | null;
@@ -44,8 +45,8 @@ export const Header: React.FC<HeaderProps> = ({ health, isHealthLoading }) => {
             }`}
             title={
               isOnline
-                ? `FastAPI connected (${health.device.toUpperCase()})`
-                : 'FastAPI backend is offline at http://127.0.0.1:8000'
+                ? `FastAPI connected at ${api.baseUrl} (${health.device.toUpperCase()})`
+                : `FastAPI backend is not reachable at ${api.baseUrl}`
             }
           >
             <span

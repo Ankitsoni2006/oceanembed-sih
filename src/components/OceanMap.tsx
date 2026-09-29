@@ -21,6 +21,8 @@ interface OceanMapProps {
   showPresets?: boolean;
   /** Hide the reconstruction coordinate readout badge when used in ARGO Mode. */
   showCoordinateReadout?: boolean;
+  /** Draw the reconstruction target crosshair (hidden in ARGO Mode when no float is selected). */
+  showReticle?: boolean;
 }
 
 // Bounding box of North Indian Ocean model domain
@@ -50,6 +52,7 @@ export const OceanMap: React.FC<OceanMapProps> = ({
   subtitle,
   showPresets = true,
   showCoordinateReadout = true,
+  showReticle = true,
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -259,6 +262,7 @@ export const OceanMap: React.FC<OceanMapProps> = ({
           <rect x="1" y="1" width="598" height="348" fill="none" stroke="#475569" strokeWidth="1.5" />
 
           {/* Target Reticle / Location Marker */}
+          {showReticle && (
           <g transform={`translate(${(xPercent / 100) * 600}, ${(yPercent / 100) * 350})`}>
             {/* Outer animated ping ring */}
             <circle cx="0" cy="0" r="14" fill="none" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="3,2" opacity="0.85" />
@@ -270,6 +274,7 @@ export const OceanMap: React.FC<OceanMapProps> = ({
             {/* Center target dot */}
             <circle cx="0" cy="0" r="4" fill="#0284c7" stroke="#ffffff" strokeWidth="2" />
           </g>
+          )}
 
           {/* Authentic ARGO Profile Markers (ARGO Validation Mode) */}
           {(argoProfiles ?? []).map((profile) => {
