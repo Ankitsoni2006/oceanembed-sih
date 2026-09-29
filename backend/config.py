@@ -14,6 +14,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CHECKPOINT_PATH = PROJECT_ROOT / "checkpoints" / "phase5" / "oceanembed_v3_decoder.pt"
 SCALER_PATH = PROJECT_ROOT / "configs" / "scaler_params_experiment_2020.json"
 PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
+DEPLOY_DATA_DIR = PROJECT_ROOT / "data" / "deploy"
+DEPLOY_MONTHLY_DIR = DEPLOY_DATA_DIR / "monthly"
+DEPLOY_MANIFEST_PATH = DEPLOY_DATA_DIR / "dates.json"
 
 # Spatial Grid Configuration (0.25° × 0.25° North Indian Ocean)
 LAT_MIN: float = 5.0

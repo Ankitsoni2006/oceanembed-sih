@@ -7,6 +7,7 @@ import os
 import sys
 import time
 import logging
+import json
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
 from collections import OrderedDict
@@ -20,6 +21,8 @@ from backend.config import (
     CHECKPOINT_PATH,
     SCALER_PATH,
     PROCESSED_DATA_DIR,
+    DEPLOY_MONTHLY_DIR,
+    DEPLOY_MANIFEST_PATH,
     LAT_MIN,
     LAT_MAX,
     LON_MIN,
@@ -60,10 +63,11 @@ class OceanEmbedInferenceService:
         self.scaler: Optional[OceanStandardScaler] = None
         self.date_to_chunk_index: Dict[str, Tuple[Path, int]] = {}
         self.available_dates: List[str] = []
-        # In-memory chunk cache (LRU up to 3 chunks ~250MB RAM)
+        # Deployment cache: one compressed monthly X archive at a time.
+        # Each month is only ~5-6 MB compressed and contains X only.
         self.chunk_cache: OrderedDict[str, torch.Tensor] = OrderedDict()
-        self.max_cached_chunks: int = 3
-        self.is_initialized: bool = False
+        self.max_cached_chunks: int = 1
+        self.is_initialized = False
 
     def initialize(self):
         """
@@ -119,21 +123,50 @@ class OceanEmbedInferenceService:
 
     def _build_date_index(self):
         """
-        Scans monthly processed chunks and maps each YYYY-MM-DD date to its chunk file and day offset.
-        """
-        logger.info(f"Scanning processed data directory: {PROCESSED_DATA_DIR.relative_to(PROJECT_ROOT)}...")
-        # Target standard monthly chunks in order
-        monthly_chunks = [f"chunk_2020_{m:02d}.pt" for m in range(1, 10)]
-        for chunk_name in monthly_chunks:
-            chunk_path = PROCESSED_DATA_DIR / chunk_name
-            if chunk_path.exists():
-                data = torch.load(chunk_path, weights_only=False)
-                dates = data.get("dates", [])
-                for offset, dt in enumerate(dates):
-                    self.date_to_chunk_index[dt] = (chunk_path, offset)
+        Builds the date index from the tiny deployment manifest.
 
-        self.available_dates = sorted(list(self.date_to_chunk_index.keys()))
-        logger.info(f"Indexed {len(self.available_dates)} dates ({self.available_dates[0]} to {self.available_dates[-1]}).")
+        The deployment manifest contains date -> monthly archive + offset,
+        so startup never loads the large training .pt files.
+        """
+        logger.info(
+            f"Loading deployment date manifest from "
+            f"{DEPLOY_MANIFEST_PATH.relative_to(PROJECT_ROOT)}..."
+        )
+
+        if not DEPLOY_MANIFEST_PATH.exists():
+            raise FileNotFoundError(
+                f"Deployment date manifest not found at {DEPLOY_MANIFEST_PATH}"
+            )
+
+        with open(DEPLOY_MANIFEST_PATH, "r", encoding="utf-8") as f:
+            manifest = json.load(f)
+
+        dates = manifest.get("dates", {})
+
+        if not dates:
+            raise RuntimeError("Deployment date manifest contains no dates.")
+
+        self.date_to_chunk_index = {}
+
+        for date_str, entry in dates.items():
+            filename = entry["file"]
+            offset = int(entry["offset"])
+
+            chunk_path = DEPLOY_MONTHLY_DIR / filename
+
+            if not chunk_path.exists():
+                raise FileNotFoundError(
+                    f"Deployment data archive missing for {date_str}: {chunk_path}"
+                )
+
+            self.date_to_chunk_index[date_str] = (chunk_path, offset)
+
+        self.available_dates = sorted(self.date_to_chunk_index.keys())
+
+        logger.info(
+            f"Indexed {len(self.available_dates)} deployment dates "
+            f"({self.available_dates[0]} to {self.available_dates[-1]})."
+        )
 
     def _get_day_tensor(self, date_str: str) -> torch.Tensor:
         """
@@ -153,14 +186,14 @@ class OceanEmbedInferenceService:
         else:
             # Load chunk into cache
             logger.debug(f"Loading chunk {chunk_path.name} into memory cache...")
-            chunk_data = torch.load(chunk_path, weights_only=False)
-            x_chunk = chunk_data["X"]  # [N_days, 14, 101, 241]
+            with np.load(chunk_path) as archive:
+                x_chunk = torch.from_numpy(archive["X"]).to(torch.float16)  # [N_days, 14, 101, 241]
             self.chunk_cache[chunk_key] = x_chunk
             if len(self.chunk_cache) > self.max_cached_chunks:
                 # Evict oldest
                 self.chunk_cache.popitem(last=False)
 
-        return x_chunk[offset]  # [14, 101, 241]
+        return x_chunk[offset].float()  # [14, 101, 241]
 
     def map_coordinates_to_grid(self, lat: float, lon: float) -> Tuple[int, int, float, float]:
         """
